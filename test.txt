@@ -1,1 +1,6 @@
+INICIO
 Hola soy un fichero de prueba
+
+
+Ahora lo he modificado
+FIN
