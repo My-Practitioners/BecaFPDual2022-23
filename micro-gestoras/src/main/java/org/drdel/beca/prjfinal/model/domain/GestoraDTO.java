@@ -35,12 +35,6 @@ public class GestoraDTO {
     @Size(max = 20)
     private String audModUsu;
 
-
-
-
-    //CONSTRUCTOR
-
-
     public GestoraDTO() {
     }
 
