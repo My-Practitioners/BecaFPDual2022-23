@@ -27,7 +27,7 @@ public class DireccionGestoraDTO {
 
 
     @Size(max = 20)
-    private String AudModProc;
+    private String audModProc;
 
     @Size(max = 20)
     private String audCreaUsu;
@@ -40,14 +40,14 @@ public class DireccionGestoraDTO {
     public DireccionGestoraDTO() {
     }
 
-    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date AudCreaDate, Date audModDate, String audCreaProc, String AudModProc, String audCreaUsu, String audModUsu) {
+    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date AudCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
         this.idDireccion = idDireccion;
         this.idGestora = idGestora;
         this.direccion = direccion;
         this.audCreaDate = AudCreaDate;
         this.audModDate = audModDate;
         this.audCreaProc = audCreaProc;
-        this.AudModProc = AudModProc;
+        this.audModProc = audModProc;
         this.audCreaUsu = audCreaUsu;
         this.audModUsu = audModUsu;
     }
@@ -103,11 +103,11 @@ public class DireccionGestoraDTO {
     }
 
     public String getAudModProc() {
-        return AudModProc;
+        return audModProc;
     }
 
     public void setAudModProc(String audModProc) {
-        this.AudModProc = audModProc;
+        this.audModProc = audModProc;
     }
 
     public String getAudCreaUsu() {
@@ -134,7 +134,7 @@ public class DireccionGestoraDTO {
         jsonObject.put("audCreaDate" , audCreaDate);
         jsonObject.put("audModDate" , audModDate);
         jsonObject.put("audCreaProc" , audCreaProc);
-        jsonObject.put("audModProc" , AudModProc);
+        jsonObject.put("audModProc" , audModProc);
         jsonObject.put("audCreaUsu" , audCreaUsu);
         jsonObject.put("audModUsu" , audModUsu);
 
