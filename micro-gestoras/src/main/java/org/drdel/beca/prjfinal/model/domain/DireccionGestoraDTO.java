@@ -16,40 +16,40 @@ public class DireccionGestoraDTO {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Size(max = 10)
-    private Date aud_crea_date;
+    private Date audCreaDate;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Size(max = 20)
-    private Date aud_mod_date;
+    private Date audModDate;
 
     @Size(max = 20)
-    private String aud_crea_proc;
+    private String audCreaProc;
 
 
     @Size(max = 20)
-    private String aud_mod_proc;
+    private String AudModProc;
 
     @Size(max = 20)
-    private String aud_crea_usu;
+    private String audCreaUsu;
 
     @Size(max = 20)
-    private String aud_mod_usu;
+    private String audModUsu;
 
 
     //CONSTRUCTOR
     public DireccionGestoraDTO() {
     }
 
-    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date aud_crea_date, Date aud_mod_date, String aud_crea_proc, String aud_mod_proc, String aud_crea_usu, String aud_mod_usu) {
+    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date AudCreaDate, Date audModDate, String audCreaProc, String AudModProc, String audCreaUsu, String audModUsu) {
         this.idDireccion = idDireccion;
         this.idGestora = idGestora;
         this.direccion = direccion;
-        this.aud_crea_date = aud_crea_date;
-        this.aud_mod_date = aud_mod_date;
-        this.aud_crea_proc = aud_crea_proc;
-        this.aud_mod_proc = aud_mod_proc;
-        this.aud_crea_usu = aud_crea_usu;
-        this.aud_mod_usu = aud_mod_usu;
+        this.audCreaDate = AudCreaDate;
+        this.audModDate = audModDate;
+        this.audCreaProc = audCreaProc;
+        this.AudModProc = AudModProc;
+        this.audCreaUsu = audCreaUsu;
+        this.audModUsu = audModUsu;
     }
 
 
@@ -78,52 +78,52 @@ public class DireccionGestoraDTO {
         this.direccion = direccion;
     }
 
-    public Date getAud_crea_date() {
-        return aud_crea_date;
+    public Date getAudCreaDate() {
+        return audCreaDate;
     }
 
-    public void setAud_crea_date(Date aud_crea_date) {
-        this.aud_crea_date = aud_crea_date;
+    public void setAudCreaDate(Date audCreaDate) {
+        this.audCreaDate = audCreaDate;
     }
 
-    public Date getAud_mod_date() {
-        return aud_mod_date;
+    public Date getAudModDate() {
+        return audModDate;
     }
 
-    public void setAud_mod_date(Date aud_mod_date) {
-        this.aud_mod_date = aud_mod_date;
+    public void setAudModDate(Date audModDate) {
+        this.audModDate = audModDate;
     }
 
-    public String getAud_crea_proc() {
-        return aud_crea_proc;
+    public String getAudCreaProc() {
+        return audCreaProc;
     }
 
-    public void setAud_crea_proc(String aud_crea_proc) {
-        this.aud_crea_proc = aud_crea_proc;
+    public void setAudCreaProc(String audCreaProc) {
+        this.audCreaProc = audCreaProc;
     }
 
-    public String getAud_mod_proc() {
-        return aud_mod_proc;
+    public String getAudModProc() {
+        return AudModProc;
     }
 
-    public void setAud_mod_proc(String aud_mod_proc) {
-        this.aud_mod_proc = aud_mod_proc;
+    public void setAudModProc(String audModProc) {
+        this.AudModProc = audModProc;
     }
 
-    public String getAud_crea_usu() {
-        return aud_crea_usu;
+    public String getAudCreaUsu() {
+        return audCreaUsu;
     }
 
-    public void setAud_crea_usu(String aud_crea_usu) {
-        this.aud_crea_usu = aud_crea_usu;
+    public void setAudCreaUsu(String audCreaUsu) {
+        this.audCreaUsu = audCreaUsu;
     }
 
-    public String getAud_mod_usu() {
-        return aud_mod_usu;
+    public String getAudModUsu() {
+        return audModUsu;
     }
 
-    public void setAud_mod_usu(String aud_mod_usu) {
-        this.aud_mod_usu = aud_mod_usu;
+    public void setAudModUsu(String audModUsu) {
+        this.audModUsu = audModUsu;
     }
 
     public String toJSON(){
@@ -131,12 +131,12 @@ public class DireccionGestoraDTO {
         jsonObject.put("idDireccion" ,idDireccion);
         jsonObject.put("idGestora" ,idGestora);
         jsonObject.put("direccion" ,direccion);
-        jsonObject.put("aud_crea_date" ,aud_crea_date);
-        jsonObject.put("aud_mod_date" ,aud_mod_date);
-        jsonObject.put("aud_crea_proc" ,aud_crea_proc);
-        jsonObject.put("aud_mod_proc" ,aud_mod_proc);
-        jsonObject.put("aud_crea_usu" ,aud_crea_usu);
-        jsonObject.put("aud_mod_usu" ,aud_mod_usu);
+        jsonObject.put("audCreaDate" , audCreaDate);
+        jsonObject.put("audModDate" , audModDate);
+        jsonObject.put("audCreaProc" , audCreaProc);
+        jsonObject.put("audModProc" , AudModProc);
+        jsonObject.put("audCreaUsu" , audCreaUsu);
+        jsonObject.put("audModUsu" , audModUsu);
 
         return jsonObject.toString();
 
