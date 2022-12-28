@@ -118,14 +118,14 @@ public class GestoraDTO {
     public String toJSON() {
 
         JSONObject jsonObject=new JSONObject();
-        jsonObject.put("id_Gestora",idGestora);
+        jsonObject.put("idGestora",idGestora);
         jsonObject.put("nombre",nombre);
-        jsonObject.put("AUD_CREA_DATE", audCreaDate);
-        jsonObject.put("AUD_MOD_DATE", audModDate);
-        jsonObject.put("AUD_CREA_PROC", audCreaProc);
-        jsonObject.put("AUD_MOD_PROC", audModProc);
-        jsonObject.put("AUD_CREA_USU", audCreaUsu);
-        jsonObject.put("AUD_MOD_USU", audModUsu);
+        jsonObject.put("audCreaDate", audCreaDate);
+        jsonObject.put("audModDate", audModDate);
+        jsonObject.put("audCreaProc", audCreaProc);
+        jsonObject.put("audModProc", audModProc);
+        jsonObject.put("audCreaUsu", audCreaUsu);
+        jsonObject.put("audModUsu", audModUsu);
 
         return jsonObject.toString();
 
