@@ -1,25 +1,30 @@
-package org.drdel.beca.prjfinal.model.domain;
+package org.drdel.beca.prjfinal.model.Entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.json.JSONObject;
-
+import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
-public class DireccionGestoraDTO {
 
+@Entity
+@Table(name = "T_direccionGestoras")
+public class DireccionGestora implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDireccion;
 
     private Long idGestora;
 
     private String direccion;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+
     @Size(max = 10)
     private Date audCreaDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+
     @Size(max = 20)
+    @Temporal(TemporalType.DATE)
     private Date audModDate;
 
     @Size(max = 20)
@@ -36,24 +41,10 @@ public class DireccionGestoraDTO {
     private String audModUsu;
 
 
-    //CONSTRUCTOR
-    public DireccionGestoraDTO() {
-    }
 
-    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
-        this.idDireccion = idDireccion;
-        this.idGestora = idGestora;
-        this.direccion = direccion;
-        this.audCreaDate = audCreaDate;
-        this.audModDate = audModDate;
-        this.audCreaProc = audCreaProc;
-        this.audModProc = audModProc;
-        this.audCreaUsu = audCreaUsu;
-        this.audModUsu = audModUsu;
-    }
+    //getter-setter
 
 
-    //SET-GET
     public Long getIdDireccion() {
         return idDireccion;
     }
@@ -126,19 +117,9 @@ public class DireccionGestoraDTO {
         this.audModUsu = audModUsu;
     }
 
-    public String toJSON(){
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("idDireccion" ,idDireccion);
-        jsonObject.put("idGestora" ,idGestora);
-        jsonObject.put("direccion" ,direccion);
-        jsonObject.put("audCreaDate" , audCreaDate);
-        jsonObject.put("audModDate" , audModDate);
-        jsonObject.put("audCreaProc" , audCreaProc);
-        jsonObject.put("audModProc" , audModProc);
-        jsonObject.put("audCreaUsu" , audCreaUsu);
-        jsonObject.put("audModUsu" , audModUsu);
-
-        return jsonObject.toString();
-
+    //method
+    @PrePersist
+    public void prePersist(){
+        audModDate =new Date();
     }
 }

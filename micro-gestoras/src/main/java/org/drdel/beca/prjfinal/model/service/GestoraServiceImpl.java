@@ -15,10 +15,10 @@ public class GestoraServiceImpl implements IGestoraService{
     public GestoraServiceImpl (){
         this.listaGestoras= Arrays.asList(
                 new GestoraDTO(1,"Primera Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_1","User_1"),
-                new GestoraDTO(2,"Segunda Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_1","User_2"),
-                new GestoraDTO(3,"Tercera Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_1","User_3"),
-                new GestoraDTO(4,"Cuarta Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_1","User_4"),
-                new GestoraDTO(5,"Quinta Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_1","User_5")
+                new GestoraDTO(2,"Segunda Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_2","User_2"),
+                new GestoraDTO(3,"Tercera Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_3","User_3"),
+                new GestoraDTO(4,"Cuarta Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_4","User_4"),
+                new GestoraDTO(5,"Quinta Gestora", new Date(2022,12,19),new Date(System.currentTimeMillis()),"Migracion","Migracion","User_5","User_5")
 
         );
     }
