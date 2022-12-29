@@ -40,11 +40,11 @@ public class DireccionGestoraDTO {
     public DireccionGestoraDTO() {
     }
 
-    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date AudCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
+    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
         this.idDireccion = idDireccion;
         this.idGestora = idGestora;
         this.direccion = direccion;
-        this.audCreaDate = AudCreaDate;
+        this.audCreaDate = audCreaDate;
         this.audModDate = audModDate;
         this.audCreaProc = audCreaProc;
         this.audModProc = audModProc;

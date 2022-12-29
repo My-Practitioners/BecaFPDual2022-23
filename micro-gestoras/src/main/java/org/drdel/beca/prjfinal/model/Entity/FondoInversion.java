@@ -33,24 +33,24 @@ public class FondoInversion implements Serializable {
 
 
     @Size(max = 10)
-    private Date aud_crea_date;
+    private Date audCreaDate;
 
 
     @Size(max = 20)
     @Temporal(TemporalType.DATE)
-    private Date aud_mod_date;
+    private Date audModDate;
 
     @Size(max = 20)
-    private String aud_crea_proc;
+    private String audCreaProc;
 
     @Size(max = 20)
-    private String aud_mod_proc;
+    private String audModProc;
 
     @Size(max = 20)
-    private String aud_crea_usu;
+    private String audCreaUsu;
 
     @Size(max = 20)
-    private String aud_mod_usu;
+    private String audModUsu;
 
 
 
@@ -137,58 +137,58 @@ public class FondoInversion implements Serializable {
         this.codSupervisor = codSupervisor;
     }
 
-    public Date getAud_crea_date() {
-        return aud_crea_date;
+    public Date getAudCreaDate() {
+        return audCreaDate;
     }
 
-    public void setAud_crea_date(Date aud_crea_date) {
-        this.aud_crea_date = aud_crea_date;
+    public void setAudCreaDate(Date audCreaDate) {
+        this.audCreaDate = audCreaDate;
     }
 
-    public Date getAud_mod_date() {
-        return aud_mod_date;
+    public Date getAudModDate() {
+        return audModDate;
     }
 
-    public void setAud_mod_date(Date aud_mod_date) {
-        this.aud_mod_date = aud_mod_date;
+    public void setAudModDate(Date audModDate) {
+        this.audModDate = audModDate;
     }
 
-    public String getAud_crea_proc() {
-        return aud_crea_proc;
+    public String getAudCreaProc() {
+        return audCreaProc;
     }
 
-    public void setAud_crea_proc(String aud_crea_proc) {
-        this.aud_crea_proc = aud_crea_proc;
+    public void setAudCreaProc(String audCreaProc) {
+        this.audCreaProc = audCreaProc;
     }
 
-    public String getAud_mod_proc() {
-        return aud_mod_proc;
+    public String getAudModProc() {
+        return audModProc;
     }
 
-    public void setAud_mod_proc(String aud_mod_proc) {
-        this.aud_mod_proc = aud_mod_proc;
+    public void setAudModProc(String audModProc) {
+        this.audModProc = audModProc;
     }
 
-    public String getAud_crea_usu() {
-        return aud_crea_usu;
+    public String getAudCreaUsu() {
+        return audCreaUsu;
     }
 
-    public void setAud_crea_usu(String aud_crea_usu) {
-        this.aud_crea_usu = aud_crea_usu;
+    public void setAudCreaUsu(String audCreaUsu) {
+        this.audCreaUsu = audCreaUsu;
     }
 
-    public String getAud_mod_usu() {
-        return aud_mod_usu;
+    public String getAudModUsu() {
+        return audModUsu;
     }
 
-    public void setAud_mod_usu(String aud_mod_usu) {
-        this.aud_mod_usu = aud_mod_usu;
+    public void setAudModUsu(String audModUsu) {
+        this.audModUsu = audModUsu;
     }
 
 
     //methods
     @PrePersist
     public void prePersist(){
-        aud_mod_date=new Date();
+        audModDate =new Date();
     }
 }
