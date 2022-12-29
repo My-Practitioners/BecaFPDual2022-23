@@ -6,20 +6,18 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "T_variabilidadCapital")
+@Table(name = "t_variabilidad_capital")
 public class VariabilidadCapital implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //TODO cambiar la identity
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codVariabilidadCapital;
 
     private String descripcion;
 
-
-
     @Size(max = 10)
     private Date audCreaDate;
-
 
     @Size(max = 20)
     @Temporal(TemporalType.DATE)
@@ -27,7 +25,6 @@ public class VariabilidadCapital implements Serializable {
 
     @Size(max = 20)
     private String audCreaProc;
-
 
     @Size(max = 20)
     private String audModProc;
@@ -38,12 +35,6 @@ public class VariabilidadCapital implements Serializable {
     @Size(max = 20)
     private String audModUsu;
 
-
-
-
-
-
-    //getter-setter
 
     public String getCodVariabilidadCapital() {
         return codVariabilidadCapital;
@@ -108,9 +99,6 @@ public class VariabilidadCapital implements Serializable {
     public void setAudModUsu(String audModUsu) {
         this.audModUsu = audModUsu;
     }
-
-
-    //methods
 
     //se usa para registrar campos que se actualizan,en este caso registra la ultima hora de modificacion
     @PrePersist
