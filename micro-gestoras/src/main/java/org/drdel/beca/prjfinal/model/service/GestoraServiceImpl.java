@@ -1,12 +1,14 @@
 package org.drdel.beca.prjfinal.model.service;
 
 import org.drdel.beca.prjfinal.model.domain.GestoraDTO;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class GestoraServiceImpl implements IGestoraService{
 
     private final List<GestoraDTO> listaGestoras;
