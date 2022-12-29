@@ -1,4 +1,4 @@
-package org.drdel.beca.prjfinal.model.Entity;
+package org.drdel.beca.prjfinal.model.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -10,29 +10,35 @@ import java.util.Date;
 public class VariabilidadCapital implements Serializable {
 
     @Id
-    //TODO cambiar la identity
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="cod_variabilidad_capital")
     private String codVariabilidadCapital;
 
+    @Column(name="descripcion")
     private String descripcion;
 
     @Size(max = 10)
+    @Column(name="aud_crea_date")
     private Date audCreaDate;
 
     @Size(max = 20)
     @Temporal(TemporalType.DATE)
+    @Column(name="aud_mod_date")
     private Date audModDate;
 
     @Size(max = 20)
+    @Column(name="aud_crea_proc")
     private String audCreaProc;
 
     @Size(max = 20)
+    @Column(name="aud_mod_proc")
     private String audModProc;
 
     @Size(max = 20)
+    @Column(name="aud_crea_usu")
     private String audCreaUsu;
 
     @Size(max = 20)
+    @Column(name="aud_mod_usu")
     private String audModUsu;
 
 
