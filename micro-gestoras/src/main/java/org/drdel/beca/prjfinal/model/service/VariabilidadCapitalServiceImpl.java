@@ -1,36 +1,27 @@
 package org.drdel.beca.prjfinal.model.service;
 
+import org.drdel.beca.prjfinal.model.dao.IVariabilidadCapitalDao;
 import org.drdel.beca.prjfinal.model.domain.VariabilidadCapitalDTO;
+import org.drdel.beca.prjfinal.model.dtomapper.VariabilidadCapitalDTOMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalService{
 
-    private final List<VariabilidadCapitalDTO> listaVariabilidadCapital;
-
-    //Constructor
-    public VariabilidadCapitalServiceImpl(){
-        this.listaVariabilidadCapital= Arrays.asList(
-                new VariabilidadCapitalDTO("capf","capital fijo"),
-                new VariabilidadCapitalDTO("capv","capital variable")
-        );
-    }
+    @Autowired
+    IVariabilidadCapitalDao variabilidadCapitalDao;
 
     @Override
     public VariabilidadCapitalDTO obtenerVariabilidadCapital(String code) {
-        Optional<VariabilidadCapitalDTO> selectedVariabilidadCapital = this.listaVariabilidadCapital.stream()
-                .filter(s -> code.equals(s.getCodVariabilidadCapital()))
-                .findFirst();
-        return selectedVariabilidadCapital.orElse(null);
+        var entity = variabilidadCapitalDao.findById(code).orElse(null);
+        return entity!=null ? VariabilidadCapitalDTOMapper.transformEntityToDTO(entity) : null;
     }
 
     @Override
     public List<VariabilidadCapitalDTO> obtenerTodosVariabilidadCapital() {
-        return listaVariabilidadCapital;
+        return VariabilidadCapitalDTOMapper.transformEntityListToDTOList(variabilidadCapitalDao.findAll());
     }
 
 }
