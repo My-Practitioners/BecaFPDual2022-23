@@ -10,11 +10,11 @@ import java.util.Optional;
 @Service
 public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalService{
 
-    private final List<VariabilidadCapitalDTO> listaVariabilidadcapital;
+    private final List<VariabilidadCapitalDTO> listaVariabilidadCapital;
 
     //Constructor
     public VariabilidadCapitalServiceImpl(){
-        this.listaVariabilidadcapital= Arrays.asList(
+        this.listaVariabilidadCapital= Arrays.asList(
                 new VariabilidadCapitalDTO("capf","capital fijo"),
                 new VariabilidadCapitalDTO("capv","capital variable")
         );
@@ -22,7 +22,7 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
 
     @Override
     public VariabilidadCapitalDTO obtenerVariabilidadCapital(String code) {
-        Optional<VariabilidadCapitalDTO> selectedVariabilidadCapital = this.listaVariabilidadcapital.stream()
+        Optional<VariabilidadCapitalDTO> selectedVariabilidadCapital = this.listaVariabilidadCapital.stream()
                 .filter(s -> code.equals(s.getCodVariabilidadCapital()))
                 .findFirst();
         return selectedVariabilidadCapital.orElse(null);
@@ -30,7 +30,7 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
 
     @Override
     public List<VariabilidadCapitalDTO> obtenerTodosVariabilidadCapital() {
-        return listaVariabilidadcapital;
+        return listaVariabilidadCapital;
     }
 
 }
