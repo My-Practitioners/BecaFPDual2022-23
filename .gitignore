@@ -34,6 +34,7 @@ hs_err_pid*
 
 #PRJ especific ignores
 **/test_database/
+swagger-spring.iml
 
 # maven related
 **/.mvn/
