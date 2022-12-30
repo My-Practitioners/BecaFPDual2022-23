@@ -38,15 +38,9 @@ import java.util.Date;
         public VariabilidadCapitalDTO() {
         }
 
-        public VariabilidadCapitalDTO(String codVariabilidadCapital, String descripcion, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
+        public VariabilidadCapitalDTO(String codVariabilidadCapital, String descripcion) {
             this.codVariabilidadCapital = codVariabilidadCapital;
             this.descripcion = descripcion;
-            this.audCreaDate = audCreaDate;
-            this.audModDate = audModDate;
-            this.audCreaProc = audCreaProc;
-            this.audModProc = audModProc;
-            this.audCreaUsu = audCreaUsu;
-            this.audModUsu = audModUsu;
         }
 
         public String getCodVariabilidadCapital() {
