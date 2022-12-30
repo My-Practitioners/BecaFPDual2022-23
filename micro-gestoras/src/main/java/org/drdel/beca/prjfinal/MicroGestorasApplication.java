@@ -9,30 +9,30 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @SpringBootApplication
 @EnableOpenApi
 @ComponentScan(basePackages = { "org.drdel.beca.prjfinal", "org.drdel.beca.prjfinal.api" , "org.drdel.beca.prjfinal.configuration"})
-public class Swagger2SpringBoot implements CommandLineRunner {
+public class MicroGestorasApplication implements CommandLineRunner {
 
     @Override
-    public void run(String... arg0) throws Exception {
+    public void run(String... arg0) {
         if (arg0.length > 0 && arg0[0].equals("exitcode")) {
             throw new ExitException();
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        new SpringApplication(Swagger2SpringBoot.class).run(args);
+    public static void main(String[] args) {
+        new SpringApplication(MicroGestorasApplication.class).run(args);
     }
 
     @Configuration
-    static class CustomDateConfig extends WebMvcConfigurerAdapter {
+    static class CustomDateConfig implements WebMvcConfigurer {
         @Override
         public void addFormatters(FormatterRegistry registry) {
             registry.addConverter(new LocalDateConverter("yyyy-MM-dd"));
@@ -40,7 +40,7 @@ public class Swagger2SpringBoot implements CommandLineRunner {
         }
     }
 
-    class ExitException extends RuntimeException implements ExitCodeGenerator {
+    static class ExitException extends RuntimeException implements ExitCodeGenerator {
         private static final long serialVersionUID = 1L;
 
         @Override

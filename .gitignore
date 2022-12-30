@@ -34,6 +34,7 @@ hs_err_pid*
 
 #PRJ especific ignores
 **/test_database/
+**/*.iml
 
 # maven related
 **/.mvn/
