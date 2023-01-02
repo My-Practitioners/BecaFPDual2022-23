@@ -12,13 +12,14 @@ public class GestoraDTOMapper {
 
     public static GestoraDTO transofrmEntityToDTO(Gestora entity){
         return new GestoraDTO(entity.getIdGestora(),
-                entity.getNombre())
+                entity.getNombre());
     }
 
     public static List<GestoraDTO> transformEntityToDTOList(Iterable<Gestora> entityIterable){
         List<GestoraDTO> dtoList=new ArrayList<>();
         entityIterable.forEach(pr ->
                 dtoList.add(transofrmEntityToDTO(pr)));
+        return dtoList;
     }
 
     public static Gestora transformDTOToEntity(GestoraDTO dto){

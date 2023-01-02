@@ -16,8 +16,8 @@ public class DireccionGestoraDTOMapper {
 
     public static DireccionGestoraDTO transformEntityToDTO(DireccionGestora entity){
         return new DireccionGestoraDTO(entity.getIdDireccion(),
-                entity.getIdGestora(),
-                entity.getDireccion()
+                entity.getIdGestora()
+                entity.getDireccion());
     }
 
     public static List<DireccionGestoraDTO> transformEntityToDTOList(Iterable<DireccionGestora> entityIterable){
