@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.drdel.beca.prjfinal.model.domain.builder.DireccionGestoraDTOBuilder;
 import org.json.JSONObject;
 
 import javax.validation.constraints.Size;
@@ -36,24 +37,22 @@ public class DireccionGestoraDTO {
     private String audModUsu;
 
 
-    //CONSTRUCTOR
     public DireccionGestoraDTO() {
     }
 
-    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
+    public DireccionGestoraDTO(Long idDireccion, Long idGestora, String direccion, DireccionGestoraDTOBuilder builder) {
         this.idDireccion = idDireccion;
         this.idGestora = idGestora;
         this.direccion = direccion;
-        this.audCreaDate = audCreaDate;
-        this.audModDate = audModDate;
-        this.audCreaProc = audCreaProc;
-        this.audModProc = audModProc;
-        this.audCreaUsu = audCreaUsu;
-        this.audModUsu = audModUsu;
+        builder.audCreaDate(audCreaDate);
+        builder.audModDate(audModDate);
+        builder.audCreaProc(audCreaProc);
+        builder.audModProc(audModProc);
+        builder.audCreaUsu(audCreaUsu);
+        builder.audModUsu(audModUsu);
     }
 
 
-    //SET-GET
     public Long getIdDireccion() {
         return idDireccion;
     }
@@ -128,15 +127,15 @@ public class DireccionGestoraDTO {
 
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("idDireccion" ,idDireccion);
-        jsonObject.put("idGestora" ,idGestora);
-        jsonObject.put("direccion" ,direccion);
-        jsonObject.put("audCreaDate" , audCreaDate);
-        jsonObject.put("audModDate" , audModDate);
-        jsonObject.put("audCreaProc" , audCreaProc);
-        jsonObject.put("audModProc" , audModProc);
-        jsonObject.put("audCreaUsu" , audCreaUsu);
-        jsonObject.put("audModUsu" , audModUsu);
+        jsonObject.put("idDireccion" ,getIdDireccion());
+        jsonObject.put("idGestora" ,getIdGestora());
+        jsonObject.put("direccion" ,getDireccion());
+        jsonObject.put("audCreaDate" , getAudCreaDate());
+        jsonObject.put("audModDate" , getAudModDate());
+        jsonObject.put("audCreaProc" , getAudCreaProc());
+        jsonObject.put("audModProc" , getAudModProc());
+        jsonObject.put("audCreaUsu" , getAudCreaUsu());
+        jsonObject.put("audModUsu" , getAudModUsu());
 
         return jsonObject.toString();
 

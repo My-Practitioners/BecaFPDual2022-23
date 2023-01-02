@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IGestoraService {
 
-    Long crearGestora (GestoraDTO gestora);
+
 
     GestoraDTO obtenerGestora (Long id);
 

@@ -1,11 +1,13 @@
 package org.drdel.beca.prjfinal.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.drdel.beca.prjfinal.model.domain.builder.GestoraDTOBuilder;
 import org.json.JSONObject;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
+
 
 public class GestoraDTO {
 
@@ -35,19 +37,23 @@ public class GestoraDTO {
     @Size(max = 20)
     private String audModUsu;
 
+
+
     public GestoraDTO() {
     }
 
-    public GestoraDTO(long idGestora, String nombre, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
-        this.idGestora = idGestora;
-        this.nombre = nombre;
-        this.audCreaDate = audCreaDate;
-        this.audModDate = audModDate;
-        this.audCreaProc = audCreaProc;
-        this.audModProc = audModProc;
-        this.audCreaUsu = audCreaUsu;
-        this.audModUsu = audModUsu;
+    public GestoraDTO(long idGestora, String nombre, GestoraDTOBuilder builder) {
+        this.idGestora=idGestora;
+        this.nombre=nombre;
+        builder.audCreaDate(audCreaDate);
+        builder.audModDate(audModDate);
+        builder.audCreaProc(audCreaProc);
+        builder.audModProc(audModProc);
+        builder.audCreaUsu(audCreaUsu);
+        builder.audModUsu(audModUsu);
     }
+
+
 
     public long getIdGestora() {
         return idGestora;
@@ -112,7 +118,6 @@ public class GestoraDTO {
     public void setAudModUsu(String audModUsu) {
         this.audModUsu = audModUsu;
     }
-
 
 
     public String toJSON() {
