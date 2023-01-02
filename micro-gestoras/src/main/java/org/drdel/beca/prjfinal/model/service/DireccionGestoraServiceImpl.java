@@ -16,7 +16,7 @@ public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
     @Override
     public DireccionGestoraDTO obtenerDireccionGestora(Long id) {
         var entity= direccionGestoraDAO.findById(id).orElse(null);
-        return entity!=null ? ;
+        return entity!=null ? DireccionGestoraDTOMapper.transformEntityToDTO(entity):null;
     }
 
     @Override

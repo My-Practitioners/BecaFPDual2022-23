@@ -20,7 +20,7 @@ class DireccionGestoraServiceImplTest {
 
     @ParameterizedTest
     @DisplayName("Obtencion de direccion gestora por id para verificar existencia")
-    @ValueSource(longs = {1,2})
+    @ValueSource(longs = {1L,2L})
     void testObtenerDireccionGestora(Long id){
 
         var dirGest= direccionGestoraService.obtenerDireccionGestora(id);
@@ -28,7 +28,7 @@ class DireccionGestoraServiceImplTest {
     }
     @Test
     @DisplayName("Obtencion de direccion gestora por id")
-    void testobtenerDireccionGestoa(){
+    void testobtenerDireccionGestora(){
         var dirGest= direccionGestoraService.obtenerDireccionGestora(1L);
         assertEquals("121,AVENUE DES CHAMPS ELYSÉES, 75008, PARIS",dirGest.getDireccion());
         dirGest= direccionGestoraService.obtenerDireccionGestora(2L);

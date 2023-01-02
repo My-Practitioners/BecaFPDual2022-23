@@ -18,7 +18,7 @@ public class GestoraServiceImpl implements IGestoraService{
     @Override
     public GestoraDTO obtenerGestora(Long id) {
         var entity=gestoraDAO.findById(id).orElse(null);
-        return entity!=null ? ;
+        return entity!=null ? GestoraDTOMapper.transofrmEntityToDTO(entity):null;
     }
 
     @Override
