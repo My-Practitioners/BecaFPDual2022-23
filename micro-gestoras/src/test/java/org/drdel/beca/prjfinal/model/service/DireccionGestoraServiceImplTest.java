@@ -30,8 +30,8 @@ class DireccionGestoraServiceImplTest {
     @DisplayName("Obtencion de direccion gestora por id")
     void testobtenerDireccionGestora(){
         var dirGest= direccionGestoraService.obtenerDireccionGestora(1L);
-        assertEquals("121,AVENUE DES CHAMPS ELYSÉES, 75008, PARIS",dirGest.getDireccion());
+        assertEquals("121, AVENUE DES CHAMPS ELYSÉES, 75008, PARIS",dirGest.getDireccion());
         dirGest= direccionGestoraService.obtenerDireccionGestora(2L);
-        assertEquals("32,RUE DE MONCEAU, 75008, PARIS",dirGest.getDireccion());
+        assertEquals("32, RUE DE MONCEAU, 75008, PARIS",dirGest.getDireccion());
     }
 }
