@@ -12,8 +12,9 @@ public interface IDireccionGestoraService {
 
     List<DireccionGestoraDTO>obtenerTodosDireccionGestora();
 
-    Long  crearDireccionGestora (DireccionGestoraDTO direccionGestoraDTO);
+    //Long  crearDireccionGestora (DireccionGestoraDTO direccionGestoraDTO);
 
-    void borrarDireccionGestora(Long idDireccion) throws IOException;
+    //void borrarDireccionGestora(Long idDireccion) throws IOException;
 
+    List<DireccionGestoraDTO> obtenerDireccionGestoraPorDireccion(String direccion);
 }

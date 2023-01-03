@@ -25,16 +25,23 @@ public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
         return DireccionGestoraDTOMapper.transformEntityToDTOList(direccionGestoraDAO.findAll());
     }
 
-    @Override
+
+
+    /*@Override
     public Long crearDireccionGestora(DireccionGestoraDTO direccionGestoraDTO) {
         var direccionGestoraSalvado=direccionGestoraDAO.save(DireccionGestoraDTOMapper.transformDTOToEntity(direccionGestoraDTO));
         return direccionGestoraSalvado.getIdDireccion();
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void borrarDireccionGestora(Long idDireccion) throws IOException {
         direccionGestoraDAO.deleteById(idDireccion);
-    }
+    }*/
 
+    @Override
+    public List<DireccionGestoraDTO> obtenerDireccionGestoraPorDireccion(String direccion) {
+        var listaDireccionGestora=direccionGestoraDAO.findByDireccion(direccion);
+        return DireccionGestoraDTOMapper.transformEntityToDTOList(listaDireccionGestora);
+    }
 
 }

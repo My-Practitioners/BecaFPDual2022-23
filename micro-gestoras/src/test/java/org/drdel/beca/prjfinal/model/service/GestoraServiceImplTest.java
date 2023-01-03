@@ -59,27 +59,8 @@ class GestoraServiceImplTest {
         assertEquals(237,gestoraService.obtenerTodasGestoras().size());
     }
 
-    /*
-    @Test
-    @DisplayName("Test Creacion de Gestora")
-    void crearGestora(GestoraDTO gestoraDTO){
-        gestoraDTO.setIdGestora(238);
-        gestoraDTO.setNombre("Gestora creada por el TEST");
-        iGestoraDAO.save(GestoraDTOMapper.transformDTOToEntity(gestoraDTO));
-        var gestoraAssert=gestoraService.obtenerGestora(238L);
-        assertNotNull(gestoraAssert);
 
-    }*/
-/*
-    @ParameterizedTest
 
-    @DisplayName("Test borrar gestora para saber si se elimino la existencia")
-    @ValueSource(longs = 1)
-    void testBorrarGestora(Long id) throws IOException {
-        gestoraService.borrarGestora(id);
-        assertNull(gestoraService.obtenerGestora(id));
-    }
-*/
     @ParameterizedTest
     @DisplayName("Obtencion del nombre de gestora para verificacion de existencia")
     @ValueSource(strings = "A&G FONDOS, SGIIC, SA")
@@ -91,5 +72,30 @@ class GestoraServiceImplTest {
         assertNotNull(gestora);
 
     }
+
+
+    /*
+    @Test
+    @DisplayName("Test Creacion de Gestora")
+    void crearGestora(GestoraDTO gestoraDTO){
+        gestoraDTO.setIdGestora(238);
+        gestoraDTO.setNombre("Gestora creada por el TEST");
+        iGestoraDAO.save(GestoraDTOMapper.transformDTOToEntity(gestoraDTO));
+        var gestoraAssert=gestoraService.obtenerGestora(238L);
+        assertNotNull(gestoraAssert);
+
+    }*/
+
+
+/*
+    @ParameterizedTest
+    @DisplayName("Test borrar gestora para saber si se elimino la existencia")
+    @ValueSource(longs = 1)
+    void testBorrarGestora(Long id) throws IOException {
+        gestoraService.borrarGestora(id);
+        assertNull(gestoraService.obtenerGestora(id));
+    }
+*/
+
 
 }

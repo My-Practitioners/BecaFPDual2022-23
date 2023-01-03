@@ -1,5 +1,7 @@
 package org.drdel.beca.prjfinal.model.service;
 
+import org.drdel.beca.prjfinal.model.dao.IDireccionGestoraDAO;
+import org.drdel.beca.prjfinal.model.dtomapper.DireccionGestoraDTOMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,9 +10,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -18,6 +17,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class DireccionGestoraServiceImplTest {
     @Autowired
     private DireccionGestoraServiceImpl direccionGestoraService;
+    @Autowired
+    private IDireccionGestoraDAO iDireccionGestoraDAO;
 
     @ParameterizedTest
     @DisplayName("Obtencion de direccion gestora por id para verificar existencia")
@@ -41,13 +42,27 @@ class DireccionGestoraServiceImplTest {
     void testObtenerTodasDireccionGestora(){
         assertEquals(569,direccionGestoraService.obtenerTodosDireccionGestora().size());
     }
-/*
+
+
+    @ParameterizedTest
+    @DisplayName("Obtencion del nombre de gestora para verificacion de existencia")
+    @ValueSource(strings = "A&G FONDOS, SGIIC, SA")
+    void testObtenerGestoraPorNombre(String direccion){
+        direccionGestoraService.obtenerDireccionGestoraPorDireccion(direccion);
+        var direccionGestora=iDireccionGestoraDAO.findByDireccion(direccion);
+        DireccionGestoraDTOMapper.transformEntityToDTOList(direccionGestora);
+
+        assertNotNull(direccionGestora);
+    }
+
+
+    /*
     @ParameterizedTest
     @DisplayName("Test borrar direccion gestora para saber si se elimino la existencia")
     @ValueSource(longs = 1)
     void testBorrarDireccionGestora(Long id)throws IOException {
         direccionGestoraService.borrarDireccionGestora(id);
         assertNull(direccionGestoraService.obtenerDireccionGestora(id));
-    }
-*/
+    }*/
+
 }

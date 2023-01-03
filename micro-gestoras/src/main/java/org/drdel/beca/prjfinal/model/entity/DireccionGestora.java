@@ -2,11 +2,12 @@ package org.drdel.beca.prjfinal.model.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "t_direccion_gestoras")
-public class DireccionGestora {
+public class DireccionGestora implements Serializable {
 
     @Id
     @Column(name = "id_direccion")
