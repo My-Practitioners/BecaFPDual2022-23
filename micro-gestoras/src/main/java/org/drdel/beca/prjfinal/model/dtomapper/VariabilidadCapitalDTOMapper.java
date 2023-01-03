@@ -14,7 +14,6 @@ public class VariabilidadCapitalDTOMapper {
 
         return new VariabilidadCapitalDTO(entity.getCodVariabilidadCapital(),
                 entity.getDescripcion());
-        //TODO completar con el patron builder de la issue
     }
 
     public static List<VariabilidadCapitalDTO> transformEntityListToDTOList(Iterable<VariabilidadCapital> entityIterable) {
@@ -30,9 +29,12 @@ public class VariabilidadCapitalDTOMapper {
 
         entity.setCodVariabilidadCapital(dto.getCodVariabilidadCapital());
         entity.setDescripcion(dto.getDescripcion());
-
-        //TODO completar con auditoria
-
+        entity.setAudCreaDate(dto.getAudCreaDate());
+        entity.setAudModDate(dto.getAudModDate());
+        entity.setAudCreaProc(dto.getAudCreaProc());
+        entity.setAudModProc(dto.getAudModProc());
+        entity.setAudCreaUsu(dto.getAudCreaUsu());
+        entity.setAudModUsu(dto.getAudModUsu());
         return entity;
 
     }

@@ -38,5 +38,11 @@ class VariabilidadCapitalServiceImplTest {
         assertEquals("capital variable", varCap.getDescripcion());
     }
 
+    @Test
+    @DisplayName("Obtencion de todos los tipos de Variabilidad de Capital")
+    void obtenerTodosVariabilidadCapital(){
+        assertEquals(2, variabilidadCapitalService.obtenerTodosVariabilidadCapital().size());
+    }
+
 
 }
