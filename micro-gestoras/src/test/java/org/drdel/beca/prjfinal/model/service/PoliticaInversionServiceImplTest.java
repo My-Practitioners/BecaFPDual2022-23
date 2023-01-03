@@ -2,6 +2,7 @@ package org.drdel.beca.prjfinal.model.service;
 
 import org.drdel.beca.prjfinal.model.dao.IPoliticaInversionDAO;
 import org.drdel.beca.prjfinal.model.domain.PoliticaInversionDTO;
+import org.drdel.beca.prjfinal.model.dtomapper.PoliticaInversionDTOMapper;
 import org.drdel.beca.prjfinal.model.entity.PoliticaInversion;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class PoliticaInversionServiceImplTest {
     @Autowired
     PoliticaInversionServiceImpl politicaInversionService;
 
-    @MockBean
+    @Autowired
     IPoliticaInversionDAO iPoliticaInversionDAO;
 
     @ParameterizedTest
@@ -52,16 +53,26 @@ class PoliticaInversionServiceImplTest {
         assertEquals(6, politicaInversionService.obtenerTodosPoliticaInversion().size());
     }
 
-    /*
-    @Test
+    @ParameterizedTest
+    @DisplayName("Obtencion de descripcion de Politica de Inversion para verificacion de existencia")
+    @ValueSource(strings = "obligaciones")
+    void testObtenerPoliticaInversionPorDescripcion(String descripcion){
+        politicaInversionService.obtenerPoliticaInversionPorDescripcion(descripcion);
+        var politicaInversion=iPoliticaInversionDAO.findByDescripcion(descripcion);
+        PoliticaInversionDTOMapper.transformEntityListToDTOList(politicaInversion);
+        assertNotNull(politicaInversion);
+    }
+
+    /*@Test
     @DisplayName("Test de creacion de nueva Politica de Inversion")
     void testcrearNuevaPoliticaInversion(){
         PoliticaInversionDTO politicaInversionDTO = new PoliticaInversionDTO("muya","muy arriesgada");
         doReturn(politicaInversionDTO).when(iPoliticaInversionDAO).save(any());
 
-        assertEquals(7, politicaInversionService.obtenerTodosPoliticaInversion().size());
+        var p1 = politicaInversionService.obtenerTodosPoliticaInversion().size();
+        assertEquals(7, p1);
 
-        /*var varPol = politicaInversionService.obtenerPoliticaInversion("muya");
+        var varPol = politicaInversionService.obtenerPoliticaInversion("muya");
         assertEquals("muy arriesgada", varPol.getDescripcion());
     }*/
 

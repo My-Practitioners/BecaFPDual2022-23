@@ -1,5 +1,8 @@
 package org.drdel.beca.prjfinal.model.service;
 
+import org.drdel.beca.prjfinal.model.dao.IFondoInversionDAO;
+import org.drdel.beca.prjfinal.model.dtomapper.FondoInversionDTOMapper;
+import org.drdel.beca.prjfinal.model.dtomapper.PoliticaInversionDTOMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class FondoInversionServiceImplTest {
     @Autowired
     private FondoInversionServiceImpl fondoInversionService;
+
+    @Autowired
+    private IFondoInversionDAO iFondoInversionDAO;
 
     @ParameterizedTest
     @DisplayName("Obtencion de Fondo de Inversion por codigo para verificar existencia")
@@ -41,6 +47,16 @@ class FondoInversionServiceImplTest {
     @DisplayName("Obtencion de todos los tipos de Fondo de Inversion")
     void obtenerTodosPoliticaInversion(){
         assertEquals(5334, fondoInversionService.obtenerTodosFondoInversion().size());
+    }
+
+    @ParameterizedTest
+    @DisplayName("Obtencion de nombre de Fondo de Inversion para verificacion de existencia")
+    @ValueSource(strings = "ALCO INVERSIONES FINANCIERAS, SICAV, S.A")
+    void testObtenerPoliticaInversionPorNombre(String nombre){
+        fondoInversionService.obtenerFondoInversionPorNombre(nombre);
+        var fondoInversion=iFondoInversionDAO.findByNombre(nombre);
+        FondoInversionDTOMapper.transformEntityListToDTOList(fondoInversion);
+        assertNotNull(fondoInversion);
     }
 }
 

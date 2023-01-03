@@ -35,4 +35,5 @@ public class PoliticaInversionDTOMapper {
         entity.setAudModUsu(dto.getAudModUsu());
         return entity;
     }
+
 }
