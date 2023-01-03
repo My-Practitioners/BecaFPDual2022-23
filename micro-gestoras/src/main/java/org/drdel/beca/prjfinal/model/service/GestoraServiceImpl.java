@@ -29,16 +29,17 @@ public class GestoraServiceImpl implements IGestoraService{
         return GestoraDTOMapper.transformEntityToDTOList(gestoraDAO.findAll());
     }
 
-    @Override
+   /* @Override
     public Long crearGestora(GestoraDTO gestoraDTO) {
         var gestoraSalvado=gestoraDAO.save(GestoraDTOMapper.transformDTOToEntity(gestoraDTO));
         return gestoraSalvado.getIdGestora();
     }
+    */
+
 
     @Override
     public void borrarGestora(Long idGestora) throws IOException {
         gestoraDAO.deleteById(idGestora);
-
 
     }
 

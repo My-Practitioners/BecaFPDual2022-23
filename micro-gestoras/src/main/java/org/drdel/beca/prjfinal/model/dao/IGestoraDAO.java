@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface IGestoraDAO extends CrudRepository<Gestora,Long> {
+public interface IGestoraDAO extends JpaRepository<Gestora,Long> {
     public List<Gestora> findByNombre(String nombreGestora);
 }

@@ -13,7 +13,7 @@ public interface IGestoraService {
 
     List<GestoraDTO> obtenerTodasGestoras();
 
-    Long crearGestora(GestoraDTO gestoraDTO);
+    //Long crearGestora(GestoraDTO gestoraDTO);
 
     void borrarGestora(Long idGestora) throws IOException;
 
