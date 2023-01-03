@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface IFondoInversionDAO extends JpaRepository<FondoInversion,String> {
-    public List<FondoInversion> findByNombre(String nombre);
+    public List<FondoInversion> findByNombreFondo(String nombreFondo);
 }

@@ -45,14 +45,11 @@ class DireccionGestoraServiceImplTest {
 
 
     @ParameterizedTest
-    @DisplayName("Obtencion del nombre de gestora para verificacion de existencia")
-    @ValueSource(strings = "A&G FONDOS, SGIIC, SA")
-    void testObtenerGestoraPorNombre(String direccion){
-        direccionGestoraService.obtenerDireccionGestoraPorDireccion(direccion);
-        var direccionGestora=iDireccionGestoraDAO.findByDireccion(direccion);
-        DireccionGestoraDTOMapper.transformEntityToDTOList(direccionGestora);
-
-        assertNotNull(direccionGestora);
+    @DisplayName("Obtencion de direcion gestora por nombre de direccion para verificacion de existencia")
+    @ValueSource(strings = "AV. DIAGONAL Nº 399, 08008, BARCELONA")
+    void testObtenerDireccionGestoraPorDireccion(String direccion){
+        var direccionGestora=direccionGestoraService.obtenerDireccionGestoraPorDireccion(direccion);
+        assertNotEquals(0,direccionGestora.size());
     }
 
 

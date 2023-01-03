@@ -34,7 +34,7 @@ public class FondoInversionServiceImpl implements IFondoInversionService{
 
     @Override
     public List<FondoInversionDTO> obtenerFondoInversionPorNombre(String nombre) {
-        var listaFondo=fondoInversionDAO.findByNombre(nombre);
+        var listaFondo=fondoInversionDAO.findByNombreFondo(nombre);
         return FondoInversionDTOMapper.transformEntityListToDTOList(listaFondo);
     }
 }

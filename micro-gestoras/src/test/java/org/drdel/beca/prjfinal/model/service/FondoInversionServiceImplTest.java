@@ -22,7 +22,7 @@ class FondoInversionServiceImplTest {
     private FondoInversionServiceImpl fondoInversionService;
 
     @Autowired
-    private IFondoInversionDAO iFondoInversionDAO;
+    private IFondoInversionDAO fondoInversionDAO;
 
     @ParameterizedTest
     @DisplayName("Obtencion de Fondo de Inversion por codigo para verificar existencia")
@@ -52,9 +52,9 @@ class FondoInversionServiceImplTest {
     @ParameterizedTest
     @DisplayName("Obtencion de nombre de Fondo de Inversion para verificacion de existencia")
     @ValueSource(strings = "ALCO INVERSIONES FINANCIERAS, SICAV, S.A")
-    void testObtenerPoliticaInversionPorNombre(String nombre){
+    void testObtenerFondoPorNombre(String nombre){
         fondoInversionService.obtenerFondoInversionPorNombre(nombre);
-        var fondoInversion=iFondoInversionDAO.findByNombre(nombre);
+        var fondoInversion=fondoInversionDAO.findByNombreFondo(nombre);
         FondoInversionDTOMapper.transformEntityListToDTOList(fondoInversion);
         assertNotNull(fondoInversion);
     }
