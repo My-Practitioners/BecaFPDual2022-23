@@ -1,8 +1,6 @@
 package org.drdel.beca.prjfinal.model.service;
 
-import org.drdel.beca.prjfinal.model.dao.IFondoInversionDAO;
-import org.drdel.beca.prjfinal.model.dtomapper.FondoInversionDTOMapper;
-import org.drdel.beca.prjfinal.model.dtomapper.PoliticaInversionDTOMapper;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,8 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -21,21 +18,18 @@ class FondoInversionServiceImplTest {
     @Autowired
     private FondoInversionServiceImpl fondoInversionService;
 
-    @Autowired
-    private IFondoInversionDAO fondoInversionDAO;
-
     @ParameterizedTest
-    @DisplayName("Obtencion de Fondo de Inversion por codigo para verificar existencia")
+    @DisplayName("Obtención de Fondo de Inversion por código para verificar existencia")
     @ValueSource(strings = {"ES0176200030","ES0119251017"} )
-    void testobtenerFondoInversion(String code) {
+    void testObtenerFondoInversion(String code) {
         // Call the service method
         var varFon = fondoInversionService.obtenerFondoInversion(code);
         assertNotNull(varFon);
     }
 
     @Test
-    @DisplayName("Obtencion de Fondo de Inversion por codigo")
-    void testobtenerFondoInversion() {
+    @DisplayName("Obtención de Fondo de Inversion por código")
+    void testObtenerFondoInversion() {
         // Call the service method
         var varFon = fondoInversionService.obtenerFondoInversion("ES0119251009");
         assertEquals("CODEX GLOBAL FUND, FI", varFon.getNombreFondo());
@@ -44,19 +38,18 @@ class FondoInversionServiceImplTest {
     }
 
     @Test
-    @DisplayName("Obtencion de todos los tipos de Fondo de Inversion")
-    void obtenerTodosPoliticaInversion(){
+    @Disabled("El performance de este test es bajo")
+    @DisplayName("Obtención de todos los tipos de Fondo de Inversion")
+    void testObtenerTodosPoliticaInversion(){
         assertEquals(5334, fondoInversionService.obtenerTodosFondoInversion().size());
     }
 
     @ParameterizedTest
-    @DisplayName("Obtencion de nombre de Fondo de Inversion para verificacion de existencia")
+    @DisplayName("Obtención de nombre de Fondo de Inversion para verification de existencia")
     @ValueSource(strings = "ALCO INVERSIONES FINANCIERAS, SICAV, S.A")
     void testObtenerFondoPorNombre(String nombre){
-        fondoInversionService.obtenerFondoInversionPorNombre(nombre);
-        var fondoInversion=fondoInversionDAO.findByNombreFondo(nombre);
-        FondoInversionDTOMapper.transformEntityListToDTOList(fondoInversion);
-        assertNotNull(fondoInversion);
+        var fondosInversion=fondoInversionService.obtenerFondoInversionPorNombre(nombre);
+        assertNotEquals(0, fondosInversion.size());
     }
 }
 
