@@ -1,7 +1,7 @@
 -- INSERCIÓN DE DATOS DE LA TABLA POLÍTICA DE INVERSIÓN
-insert into t_politica_inversion(cod_p_inversion, descripcion) values('arsg','alto riesgo');
-insert into t_politica_inversion(cod_p_inversion, descripcion) values('inm','inmobiliarios');
-insert into t_politica_inversion(cod_p_inversion, descripcion) values('mix','mixtos');
-insert into t_politica_inversion(cod_p_inversion, descripcion) values('obl','obligaciones');
-insert into t_politica_inversion(cod_p_inversion, descripcion) values('otr','otr');
-insert into t_politica_inversion(cod_p_inversion, descripcion) values('par','participaciones');
+insert into t_politica_inversion(cod_p_inversion, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) values('arsg','alto riesgo', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');
+insert into t_politica_inversion(cod_p_inversion, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) values('inm','inmobiliarios', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');
+insert into t_politica_inversion(cod_p_inversion, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) values('mix','mixtos', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');
+insert into t_politica_inversion(cod_p_inversion, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) values('obl','obligaciones', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');
+insert into t_politica_inversion(cod_p_inversion, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) values('otr','otr', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');
+insert into t_politica_inversion(cod_p_inversion, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) values('par','participaciones', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');

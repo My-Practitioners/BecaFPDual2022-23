@@ -1,0 +1,33 @@
+package org.drdel.beca.prjfinal.model.service;
+
+import org.drdel.beca.prjfinal.model.dao.IPoliticaInversionDAO;
+import org.drdel.beca.prjfinal.model.domain.PoliticaInversionDTO;
+import org.drdel.beca.prjfinal.model.dtomapper.PoliticaInversionDTOMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class PoliticaInversionServiceImpl implements IPoliticaInversionService{
+
+    @Autowired
+    IPoliticaInversionDAO politicaInversionDAO;
+
+    @Override
+    public PoliticaInversionDTO obtenerPoliticaInversion(String code) {
+        var entity = politicaInversionDAO.findById(code).orElse(null);
+        return entity!=null ? PoliticaInversionDTOMapper.transformEntityToDTO(entity) : null;
+    }
+
+    @Override
+    public List<PoliticaInversionDTO> obtenerTodosPoliticaInversion() {
+        return PoliticaInversionDTOMapper.transformEntityListToDTOList(politicaInversionDAO.findAll());
+    }
+
+    @Override
+    public String crearPoliticaInversion(PoliticaInversionDTO politicaInversion) {
+        var nuevaPoliticaInversion = politicaInversionDAO.save(PoliticaInversionDTOMapper.transformDTOToEntity(politicaInversion));
+        return nuevaPoliticaInversion.getCodPinversion();
+    }
+}
