@@ -9,8 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -30,8 +31,23 @@ class DireccionGestoraServiceImplTest {
     @DisplayName("Obtencion de direccion gestora por id")
     void testobtenerDireccionGestora(){
         var dirGest= direccionGestoraService.obtenerDireccionGestora(1L);
-        assertEquals("121, AVENUE DES CHAMPS ELYSÉES, 75008, PARIS",dirGest.getDireccion());
+        assertEquals("121, AVENUE DES CHAMPS ELYSEES, 75008, PARIS",dirGest.getDireccion());
         dirGest= direccionGestoraService.obtenerDireccionGestora(2L);
         assertEquals("32, RUE DE MONCEAU, 75008, PARIS",dirGest.getDireccion());
     }
+
+    @Test
+    @DisplayName("Obtencion de todas las direcciones gestora")
+    void testObtenerTodasDireccionGestora(){
+        assertEquals(569,direccionGestoraService.obtenerTodosDireccionGestora().size());
+    }
+/*
+    @ParameterizedTest
+    @DisplayName("Test borrar direccion gestora para saber si se elimino la existencia")
+    @ValueSource(longs = 1)
+    void testBorrarDireccionGestora(Long id)throws IOException {
+        direccionGestoraService.borrarDireccionGestora(id);
+        assertNull(direccionGestoraService.obtenerDireccionGestora(id));
+    }
+*/
 }

@@ -6,6 +6,7 @@ import org.drdel.beca.prjfinal.model.dtomapper.DireccionGestoraDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 @Service
 public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
@@ -23,4 +24,17 @@ public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
     public List<DireccionGestoraDTO> obtenerTodosDireccionGestora() {
         return DireccionGestoraDTOMapper.transformEntityToDTOList(direccionGestoraDAO.findAll());
     }
+
+    @Override
+    public Long crearDireccionGestora(DireccionGestoraDTO direccionGestoraDTO) {
+        var direccionGestoraSalvado=direccionGestoraDAO.save(DireccionGestoraDTOMapper.transformDTOToEntity(direccionGestoraDTO));
+        return direccionGestoraSalvado.getIdDireccion();
+    }
+
+    @Override
+    public void borrarDireccionGestora(Long idDireccion) throws IOException {
+        direccionGestoraDAO.deleteById(idDireccion);
+    }
+
+
 }
