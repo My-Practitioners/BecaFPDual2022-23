@@ -13,7 +13,6 @@ public interface IPoliticaInversionService {
 
     String crearPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
 
-    void borrarPoliticaInversion(String codPInversion);
 
     List<PoliticaInversionDTO> obtenerPoliticaInversionPorDescripcion(String descripcion);
 

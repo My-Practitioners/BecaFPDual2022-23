@@ -38,7 +38,6 @@ class FondoInversionServiceImplTest {
     }
 
     @Test
-    @Disabled("El performance de este test es bajo")
     @DisplayName("Obtención de todos los tipos de Fondo de Inversion")
     void testObtenerTodosPoliticaInversion(){
         assertEquals(5334, fondoInversionService.obtenerTodosFondoInversion().size());

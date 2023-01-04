@@ -33,10 +33,6 @@ public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
         return direccionGestoraSalvado.getIdDireccion();
     }*/
 
-    /*@Override
-    public void borrarDireccionGestora(Long idDireccion) throws IOException {
-        direccionGestoraDAO.deleteById(idDireccion);
-    }*/
 
     @Override
     public List<DireccionGestoraDTO> obtenerDireccionGestoraPorDireccion(String direccion) {

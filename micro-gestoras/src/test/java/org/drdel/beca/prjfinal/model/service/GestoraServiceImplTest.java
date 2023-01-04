@@ -16,12 +16,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class GestoraServiceImplTest {
-
     @Autowired
     private GestoraServiceImpl gestoraService;
 
     @ParameterizedTest
-    @Order(1)
     @DisplayName("Obtención de gestora por id para verificar existencia")
     @ValueSource(longs = {1,2})
     void testObtenerGestora(Long id){
@@ -30,24 +28,19 @@ class GestoraServiceImplTest {
     }
 
     @Test
-    @Order(2)
     @DisplayName("Obtención de gestora por id")
     void testObtenerGestora(){
         var gestora=gestoraService.obtenerGestora(1L);
         assertEquals("360 CORA SGIIC, S.A.",gestora.getNombre());
         gestora= gestoraService.obtenerGestora(2L);
         assertEquals("4FOUNDERS CAPITAL SGEIC, S.A.",gestora.getNombre());
-
     }
 
-    @Order(3)
     @Test
-    @Disabled("Test de bajo performance")
     @DisplayName("Obtención de todas las gestoras")
     void testObtenerTodasGestora(){
         assertEquals(237,gestoraService.obtenerTodasGestoras().size());
     }
-
 
 
     @ParameterizedTest
@@ -72,15 +65,6 @@ class GestoraServiceImplTest {
     }*/
 
 
-/*
-    @ParameterizedTest
-    @DisplayName("Test borrar gestora para saber si se elimino la existencia")
-    @ValueSource(longs = 1)
-    void testBorrarGestora(Long id) throws IOException {
-        gestoraService.borrarGestora(id);
-        assertNull(gestoraService.obtenerGestora(id));
-    }
-*/
 
 
 }

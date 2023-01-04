@@ -34,11 +34,6 @@ public class PoliticaInversionServiceImpl implements IPoliticaInversionService{
     }
 
     @Override
-    public void borrarPoliticaInversion(String codPInversion) {
-        politicaInversionDAO.deleteById(codPInversion);
-    }
-
-    @Override
     public List<PoliticaInversionDTO> obtenerPoliticaInversionPorDescripcion(String descripcion) {
         var listaPolitica=politicaInversionDAO.findByDescripcion(descripcion);
         return PoliticaInversionDTOMapper.transformEntityListToDTOList(listaPolitica);

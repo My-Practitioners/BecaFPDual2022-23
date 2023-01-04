@@ -15,7 +15,6 @@ public interface IGestoraService {
 
     //Long crearGestora(GestoraDTO gestoraDTO);
 
-    void borrarGestora(Long idGestora) throws IOException;
 
     List<GestoraDTO> obtenerGestoraPorNombre(String nombreDTO);
 }

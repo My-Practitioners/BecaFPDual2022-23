@@ -36,13 +36,6 @@ public class GestoraServiceImpl implements IGestoraService{
     }
     */
 
-
-    @Override
-    public void borrarGestora(Long idGestora) throws IOException {
-        gestoraDAO.deleteById(idGestora);
-
-    }
-
     @Override
     public List<GestoraDTO> obtenerGestoraPorNombre(String nombreDTO) {
         var listaGestora=gestoraDAO.findByNombre(nombreDTO);
