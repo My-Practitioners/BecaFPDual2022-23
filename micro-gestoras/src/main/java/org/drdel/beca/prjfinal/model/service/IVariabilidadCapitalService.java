@@ -8,5 +8,7 @@ public interface IVariabilidadCapitalService {
     VariabilidadCapitalDTO obtenerVariabilidadCapital (String code);
 
     List<VariabilidadCapitalDTO> obtenerTodosVariabilidadCapital();
+
+    List<VariabilidadCapitalDTO> obtenerVariabilidadPorDescripcion(String decripcion);
 }
 

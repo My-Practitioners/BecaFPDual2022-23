@@ -24,4 +24,10 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
         return VariabilidadCapitalDTOMapper.transformEntityListToDTOList(variabilidadCapitalDao.findAll());
     }
 
+    @Override
+    public List<VariabilidadCapitalDTO> obtenerVariabilidadPorDescripcion(String descripcion) {
+        var listaVariabilidadCapital=variabilidadCapitalDao.findByDescripcion(descripcion);
+        return VariabilidadCapitalDTOMapper.transformEntityListToDTOList(listaVariabilidadCapital);
+    }
+
 }

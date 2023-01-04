@@ -9,8 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -42,6 +41,14 @@ class VariabilidadCapitalServiceImplTest {
     @DisplayName("Obtencion de todos los tipos de Variabilidad de Capital")
     void obtenerTodosVariabilidadCapital(){
         assertEquals(2, variabilidadCapitalService.obtenerTodosVariabilidadCapital().size());
+    }
+
+    @ParameterizedTest
+    @DisplayName("Obtención del nombre de gestora para verification de existencia")
+    @ValueSource(strings = "capital fijo")
+    void testObtenerGestoraPorDescripcion(String descripcion){
+        var variabilidadCapital=variabilidadCapitalService.obtenerVariabilidadPorDescripcion(descripcion);
+        assertNotEquals(0,variabilidadCapital.size());
     }
 
 
