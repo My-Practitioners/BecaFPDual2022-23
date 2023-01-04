@@ -1,5 +1,6 @@
 package org.drdel.beca.prjfinal.model.service;
 
+import org.drdel.beca.prjfinal.model.domain.VariabilidadCapitalDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VariabilidadCapitalServiceImplTest {
 
     @Autowired
-    private VariabilidadCapitalServiceImpl variabilidadCapitalService;
+    VariabilidadCapitalServiceImpl variabilidadCapitalService;
 
     @ParameterizedTest
     @DisplayName("Obtencion de Variabilidad de Capital por codigo para verificar existencia")
@@ -44,12 +45,19 @@ class VariabilidadCapitalServiceImplTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Obtención del nombre de gestora para verification de existencia")
+    @DisplayName("Obtención de Variabilidad Capital por descripcion para verificacion de existencia")
     @ValueSource(strings = "capital fijo")
     void testObtenerGestoraPorDescripcion(String descripcion){
         var variabilidadCapital=variabilidadCapitalService.obtenerVariabilidadPorDescripcion(descripcion);
         assertNotEquals(0,variabilidadCapital.size());
     }
 
+    @Test
+    @DisplayName("Creacion de nueva Variabilidad Capital")
+    void testCrearVariabilidadCapital(){
+        VariabilidadCapitalDTO dto = new VariabilidadCapitalDTO("capm","capital mixto");
+        var variabilidadCapital = variabilidadCapitalService.crearVariabilidadCapital(dto);
+        assertEquals("capital mixto",dto.getDescripcion());
+    }
 
 }

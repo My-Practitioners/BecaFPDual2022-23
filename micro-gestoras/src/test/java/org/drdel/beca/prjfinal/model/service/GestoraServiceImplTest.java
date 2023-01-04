@@ -1,8 +1,7 @@
 package org.drdel.beca.prjfinal.model.service;
 
-import org.junit.jupiter.api.Disabled;
+import org.drdel.beca.prjfinal.model.domain.GestoraDTO;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class GestoraServiceImplTest {
+
     @Autowired
     private GestoraServiceImpl gestoraService;
 
@@ -28,7 +28,7 @@ class GestoraServiceImplTest {
     }
 
     @Test
-    @DisplayName("Obtención de gestora por id")
+    @DisplayName("Obtención de Gestora por id")
     void testObtenerGestora(){
         var gestora=gestoraService.obtenerGestora(1L);
         assertEquals("360 CORA SGIIC, S.A.",gestora.getNombre());
@@ -37,34 +37,25 @@ class GestoraServiceImplTest {
     }
 
     @Test
-    @DisplayName("Obtención de todas las gestoras")
+    @DisplayName("Obtención de todas las Gestoras")
     void testObtenerTodasGestora(){
         assertEquals(237,gestoraService.obtenerTodasGestoras().size());
     }
 
-
     @ParameterizedTest
-    @DisplayName("Obtención del nombre de gestora para verification de existencia")
+    @DisplayName("Obtención del nombre de Gestora para verification de existencia")
     @ValueSource(strings = "A&G FONDOS, SGIIC, SA")
     void testObtenerGestoraPorNombre(String nombre){
         var gestoras=gestoraService.obtenerGestoraPorNombre(nombre);
         assertNotEquals(0, gestoras.size());
     }
 
-
-    /*
     @Test
-    @DisplayName("Test Creación de Gestora")
-    void crearGestora(GestoraDTO gestoraDTO){
-        gestoraDTO.setIdGestora(238);
-        gestoraDTO.setNombre("Gestora creada por el TEST");
-        iGestoraDAO.save(GestoraDTOMapper.transformDTOToEntity(gestoraDTO));
-        var gestoraAssert=gestoraService.obtenerGestora(238L);
-        assertNotNull(gestoraAssert);
-
-    }*/
-
-
-
+    @DisplayName("Creacion de nueva Gestora")
+    void testCrearGestora(){
+        GestoraDTO dto = new GestoraDTO(900L, "GESTORAX");
+        var gestora = gestoraService.crearGestora(dto);
+        assertEquals("GESTORAX",dto.getNombre());
+    }
 
 }

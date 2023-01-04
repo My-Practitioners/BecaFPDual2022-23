@@ -6,8 +6,8 @@ import org.drdel.beca.prjfinal.model.dtomapper.DireccionGestoraDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
 import java.util.List;
+
 @Service
 public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
 
@@ -22,22 +22,19 @@ public class DireccionGestoraServiceImpl implements IDireccionGestoraService{
 
     @Override
     public List<DireccionGestoraDTO> obtenerTodosDireccionGestora() {
-        return DireccionGestoraDTOMapper.transformEntityToDTOList(direccionGestoraDAO.findAll());
+        return DireccionGestoraDTOMapper.transformEntityListToDTOList(direccionGestoraDAO.findAll());
     }
-
-
-
-    /*@Override
-    public Long crearDireccionGestora(DireccionGestoraDTO direccionGestoraDTO) {
-        var direccionGestoraSalvado=direccionGestoraDAO.save(DireccionGestoraDTOMapper.transformDTOToEntity(direccionGestoraDTO));
-        return direccionGestoraSalvado.getIdDireccion();
-    }*/
-
 
     @Override
     public List<DireccionGestoraDTO> obtenerDireccionGestoraPorDireccion(String direccion) {
         var listaDireccionGestora=direccionGestoraDAO.findByDireccion(direccion);
-        return DireccionGestoraDTOMapper.transformEntityToDTOList(listaDireccionGestora);
+        return DireccionGestoraDTOMapper.transformEntityListToDTOList(listaDireccionGestora);
+    }
+
+    @Override
+    public Long crearDireccionGestora(DireccionGestoraDTO direccionGestoraDTO) {
+        var direccionGuardada = direccionGestoraDAO.save(DireccionGestoraDTOMapper.transformDTOToEntity(direccionGestoraDTO));
+        return direccionGuardada.getIdDireccion();
     }
 
 }

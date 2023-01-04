@@ -40,7 +40,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
-                    <!--argLine>${surefireArgLine}</argLine-->
+                    <argLine>${surefireArgLine}</argLine>
                 </configuration>
             </plugin>
             <plugin>

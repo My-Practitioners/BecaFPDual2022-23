@@ -11,7 +11,9 @@ public interface IFondoInversionService {
 
     List<FondoInversionDTO> obtenerTodosFondoInversion();
 
+    List<FondoInversionDTO> obtenerFondoInversionPorNombre(String nombre);
+
     String crearFondoInversion(FondoInversionDTO fondoInversion);
 
-    List<FondoInversionDTO> obtenerFondoInversionPorNombre(String nombre);
+
 }

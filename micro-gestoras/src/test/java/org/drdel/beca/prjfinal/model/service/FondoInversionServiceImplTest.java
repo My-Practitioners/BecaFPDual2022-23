@@ -1,5 +1,7 @@
 package org.drdel.beca.prjfinal.model.service;
 
+import org.drdel.beca.prjfinal.model.domain.DireccionGestoraDTO;
+import org.drdel.beca.prjfinal.model.domain.FondoInversionDTO;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,6 +51,14 @@ class FondoInversionServiceImplTest {
     void testObtenerFondoPorNombre(String nombre){
         var fondosInversion=fondoInversionService.obtenerFondoInversionPorNombre(nombre);
         assertNotEquals(0, fondosInversion.size());
+    }
+
+    @Test
+    @DisplayName("Creacion de nuevo Fondo de Inversion")
+    void testCrearFondoInversion(){
+        FondoInversionDTO dto = new FondoInversionDTO("ES111111111", "ES22222222", "JDUIBNCS88NHFDSI", "FONDOX", 6L, 8L, "arsg", "capv", "no", "SICA90");
+        var fondoInversion = fondoInversionService.crearFondoInversion(dto);
+        assertEquals("FONDOX",dto.getNombreFondo());
     }
 }
 

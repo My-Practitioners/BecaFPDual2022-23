@@ -8,9 +8,11 @@ public interface IDireccionGestoraService {
 
     DireccionGestoraDTO obtenerDireccionGestora (Long id);
 
-    List<DireccionGestoraDTO>obtenerTodosDireccionGestora();
-
-    //Long  crearDireccionGestora (DireccionGestoraDTO direccionGestoraDTO);
+    List<DireccionGestoraDTO> obtenerTodosDireccionGestora();
 
     List<DireccionGestoraDTO> obtenerDireccionGestoraPorDireccion(String direccion);
+
+    Long crearDireccionGestora(DireccionGestoraDTO direccionGestoraDTO);
+
+
 }

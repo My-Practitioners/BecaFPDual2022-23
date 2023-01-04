@@ -1,6 +1,5 @@
 package org.drdel.beca.prjfinal.model.service;
 
-import org.drdel.beca.prjfinal.model.domain.GestoraDTO;
 import org.drdel.beca.prjfinal.model.domain.PoliticaInversionDTO;
 
 import java.util.List;
@@ -11,9 +10,7 @@ public interface IPoliticaInversionService {
 
     List<PoliticaInversionDTO> obtenerTodosPoliticaInversion();
 
-    String crearPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
-
-
     List<PoliticaInversionDTO> obtenerPoliticaInversionPorDescripcion(String descripcion);
 
+    String crearPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
 }

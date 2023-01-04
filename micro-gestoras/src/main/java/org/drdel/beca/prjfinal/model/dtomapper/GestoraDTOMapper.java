@@ -15,7 +15,7 @@ public class GestoraDTOMapper {
                 entity.getNombre());
     }
 
-    public static List<GestoraDTO> transformEntityToDTOList(Iterable<Gestora> entityIterable){
+    public static List<GestoraDTO> transformEntityListToDTOList(Iterable<Gestora> entityIterable){
         List<GestoraDTO> dtoList=new ArrayList<>();
         entityIterable.forEach(pr ->
                 dtoList.add(transofrmEntityToDTO(pr)));

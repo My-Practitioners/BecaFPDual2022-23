@@ -15,7 +15,7 @@ public class DireccionGestoraDTOMapper {
                 entity.getDireccion());
     }
 
-    public static List<DireccionGestoraDTO> transformEntityToDTOList(Iterable<DireccionGestora> entityIterable){
+    public static List<DireccionGestoraDTO> transformEntityListToDTOList(Iterable<DireccionGestora> entityIterable){
         List<DireccionGestoraDTO> dtoList=new ArrayList<>();
         entityIterable.forEach(pr ->
                 dtoList.add(transformEntityToDTO(pr)));
