@@ -1,7 +1,8 @@
 package org.drdel.beca.prjfinal.model.service;
 
-import org.drdel.beca.prjfinal.model.domain.DireccionGestoraDTO;
 import org.drdel.beca.prjfinal.model.domain.VariabilidadCapitalDTO;
+import org.drdel.beca.prjfinal.model.entity.VariabilidadCapital;
+
 import java.util.List;
 
 public interface IVariabilidadCapitalService {
@@ -12,6 +13,6 @@ public interface IVariabilidadCapitalService {
 
     List<VariabilidadCapitalDTO> obtenerVariabilidadPorDescripcion(String decripcion);
 
-    String crearVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDTO);
+    VariabilidadCapital crearVariabilidadCapital(String codPInversion, String descripcion);
 }
 

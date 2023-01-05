@@ -37,4 +37,5 @@ public class PoliticaInversionServiceImpl implements IPoliticaInversionService{
         return politicaGuardada.getCodPinversion();
     }
 
+
 }

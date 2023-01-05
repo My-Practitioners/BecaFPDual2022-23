@@ -3,6 +3,7 @@ package org.drdel.beca.prjfinal.model.service;
 import org.drdel.beca.prjfinal.model.dao.IVariabilidadCapitalDao;
 import org.drdel.beca.prjfinal.model.domain.VariabilidadCapitalDTO;
 import org.drdel.beca.prjfinal.model.dtomapper.VariabilidadCapitalDTOMapper;
+import org.drdel.beca.prjfinal.model.entity.VariabilidadCapital;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +32,9 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
     }
 
     @Override
-    public String crearVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDTO) {
-        var variabilidadGuardada = variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDTO));
-        return variabilidadGuardada.getCodVariabilidadCapital();
+    public VariabilidadCapital crearVariabilidadCapital(String codPInversion, String descripcion) {
+        VariabilidadCapitalDTO variabilidadCapitalDTO= new VariabilidadCapitalDTO(codPInversion,descripcion);
+        return variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDTO));
     }
 
 }

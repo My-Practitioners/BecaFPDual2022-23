@@ -13,4 +13,5 @@ public interface IPoliticaInversionService {
     List<PoliticaInversionDTO> obtenerPoliticaInversionPorDescripcion(String descripcion);
 
     String crearPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
+
 }

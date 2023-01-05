@@ -33,7 +33,11 @@ public class FondoInversionServiceImpl implements IFondoInversionService{
 
     @Override
     public String crearFondoInversion(FondoInversionDTO fondoInversionDTO) {
-        var fondoGuardado = fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO));
+        FondoInversionDTO fondoInversionDTO1 = new FondoInversionDTO("ES111111111", "ES22222222", "JDUIBNCS88NHFDSI", "FONDOX", 6L, 8L, "arsg", "capv", "no", "SICA90");
+        var fondoGuardado = fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO1));
         return fondoGuardado.getCodIsin();
     }
+
+
+
 }

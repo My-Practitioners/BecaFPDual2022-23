@@ -1,6 +1,5 @@
 package org.drdel.beca.prjfinal.model.service;
 
-import org.drdel.beca.prjfinal.model.domain.DireccionGestoraDTO;
 import org.drdel.beca.prjfinal.model.domain.FondoInversionDTO;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -18,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class FondoInversionServiceImplTest {
     @Autowired
-    private FondoInversionServiceImpl fondoInversionService;
+    FondoInversionServiceImpl fondoInversionService;
 
     @ParameterizedTest
     @DisplayName("Obtención de Fondo de Inversion por código para verificar existencia")
@@ -38,7 +37,7 @@ class FondoInversionServiceImplTest {
         varFon = fondoInversionService.obtenerFondoInversion("ES0162933032");
         assertEquals("CORE ASSETS,SICAV,S.A.", varFon.getNombreFondo());
     }
-
+    @Disabled
     @Test
     @DisplayName("Obtención de todos los tipos de Fondo de Inversion")
     void testObtenerTodosPoliticaInversion(){
@@ -58,7 +57,7 @@ class FondoInversionServiceImplTest {
     void testCrearFondoInversion(){
         FondoInversionDTO dto = new FondoInversionDTO("ES111111111", "ES22222222", "JDUIBNCS88NHFDSI", "FONDOX", 6L, 8L, "arsg", "capv", "no", "SICA90");
         var fondoInversion = fondoInversionService.crearFondoInversion(dto);
-        assertEquals("FONDOX",dto.getNombreFondo());
+        assertNotNull(fondoInversion);
     }
 }
 

@@ -64,6 +64,7 @@ class PoliticaInversionServiceImplTest {
     void testCrearPoliticaInversion(){
         PoliticaInversionDTO dto = new PoliticaInversionDTO("muy", "muy arriesgada");
         var politicaInversion = politicaInversionService.crearPoliticaInversion(dto);
-        assertEquals("muy arriesgada",dto.getDescripcion());
+        assertNotNull(politicaInversion);
     }
+
 }
