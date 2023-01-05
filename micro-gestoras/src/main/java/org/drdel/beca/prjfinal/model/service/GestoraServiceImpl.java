@@ -3,9 +3,11 @@ package org.drdel.beca.prjfinal.model.service;
 import org.drdel.beca.prjfinal.model.dao.IGestoraDAO;
 import org.drdel.beca.prjfinal.model.domain.GestoraDTO;
 import org.drdel.beca.prjfinal.model.dtomapper.GestoraDTOMapper;
+import org.drdel.beca.prjfinal.model.entity.Gestora;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -36,5 +38,21 @@ public class GestoraServiceImpl implements IGestoraService{
         var gestoraGuardada = gestoraDAO.save(GestoraDTOMapper.transformDTOToEntity(gestoraDTO));
         return gestoraGuardada.getIdGestora();
     }
+
+    @Override
+    public Gestora crearGestora2(Long idGestora, String nombre) {
+        GestoraDTO gestoraDTO= new GestoraDTO(idGestora,nombre);
+        return gestoraDAO.save(GestoraDTOMapper.transformDTOToEntity(gestoraDTO));
+    }
+
+
+
+    /*@Override
+    public void borrarGestora(Long idGestora) throws IOException {
+        gestoraDAO.deleteById(idGestora);
+
+    }
+
+     */
 
 }

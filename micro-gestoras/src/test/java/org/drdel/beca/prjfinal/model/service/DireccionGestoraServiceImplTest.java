@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -54,7 +53,6 @@ class DireccionGestoraServiceImplTest {
     void testCrearDireccionGestora(){
         DireccionGestoraDTO dto = new DireccionGestoraDTO(900L, 900L, "Avenida 9032dsvd");
         var direccionGestora = direccionGestoraService.crearDireccionGestora(dto);
-        assertEquals("Avenida 9032dsvd",dto.getDireccion());
+        assertNotNull(direccionGestora);
     }
-
 }

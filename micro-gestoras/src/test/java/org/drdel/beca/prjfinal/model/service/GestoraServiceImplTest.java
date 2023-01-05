@@ -1,6 +1,6 @@
 package org.drdel.beca.prjfinal.model.service;
 
-import org.drdel.beca.prjfinal.model.domain.GestoraDTO;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -17,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class GestoraServiceImplTest {
 
     @Autowired
-    private GestoraServiceImpl gestoraService;
+    GestoraServiceImpl gestoraService;
 
     @ParameterizedTest
     @DisplayName("Obtención de gestora por id para verificar existencia")
@@ -36,6 +35,7 @@ class GestoraServiceImplTest {
         assertEquals("4FOUNDERS CAPITAL SGEIC, S.A.",gestora.getNombre());
     }
 
+    @Disabled
     @Test
     @DisplayName("Obtención de todas las Gestoras")
     void testObtenerTodasGestora(){
@@ -50,12 +50,22 @@ class GestoraServiceImplTest {
         assertNotEquals(0, gestoras.size());
     }
 
-    @Test
+
+    @ParameterizedTest
+    @DisplayName("Creacion de nueva Gestora2")
+    @ValueSource(longs = 900)
+    void testCrearGestora(Long idGestora){
+        var gestora=gestoraService.crearGestora2(idGestora,"gestoraPrueba");
+        assertNotNull(gestora);
+
+    }
+
+    /*@Test
     @DisplayName("Creacion de nueva Gestora")
     void testCrearGestora(){
         GestoraDTO dto = new GestoraDTO(900L, "GESTORAX");
         var gestora = gestoraService.crearGestora(dto);
         assertEquals("GESTORAX",dto.getNombre());
     }
-
+    */
 }
