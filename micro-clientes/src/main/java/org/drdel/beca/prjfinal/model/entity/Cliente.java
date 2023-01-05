@@ -48,13 +48,13 @@ public class Cliente implements Serializable {
     @Column(name = "foto",nullable = true )
     private String foto;
 
-    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    /*@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Factura> facturas;
 
 
     public Cliente() {
         facturas = new ArrayList<>();
-    }
+    }*/
 
     @PrePersist
     public void prePersist() {
@@ -117,7 +117,7 @@ public class Cliente implements Serializable {
         this.foto = foto;
     }
 
-    public List<Factura> getFacturas() {
+    /*public List<Factura> getFacturas() {
         return facturas;
     }
 
@@ -127,7 +127,7 @@ public class Cliente implements Serializable {
 
     public void addFactura(Factura factura) {
         this.facturas.add(factura);
-    }
+    }*/
 
     public static long getSerialversionuid() {
         return serialVersionUID;

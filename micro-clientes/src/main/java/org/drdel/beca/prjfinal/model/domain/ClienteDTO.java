@@ -35,9 +35,9 @@ public class ClienteDTO implements Serializable {
 
     private String foto;
 
-    @JsonIgnore
+    /*@JsonIgnore
     private List<FacturaDTO> facturas;
-
+*/
     public ClienteDTO() {
         super();
     }
@@ -110,10 +110,12 @@ public class ClienteDTO implements Serializable {
         this.foto = foto;
     }
 
-    public List<FacturaDTO> getFacturas() {
+
+    /*public List<FacturaDTO> getFacturas() {
         return facturas;
     }
 
     public void setFacturas(List<FacturaDTO> facturas) {
         this.facturas = facturas;
-    }
+    }*/
+}
