@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class ClienteDTO implements Serializable {
 
@@ -35,9 +36,9 @@ public class ClienteDTO implements Serializable {
 
     private String foto;
 
-    /*@JsonIgnore
-    private List<FacturaDTO> facturas;
-*/
+    @JsonIgnore
+    private List<FondoInversionDTO> fondos;
+
     public ClienteDTO() {
         super();
     }
@@ -111,11 +112,11 @@ public class ClienteDTO implements Serializable {
     }
 
 
-    /*public List<FacturaDTO> getFacturas() {
-        return facturas;
+    public List<FondoInversionDTO> getFondos() {
+        return fondos;
     }
 
-    public void setFacturas(List<FacturaDTO> facturas) {
-        this.facturas = facturas;
-    }*/
+    public void setFondos(List<FondoInversionDTO> fondos) {
+        this.fondos = fondos;
+    }
 }
