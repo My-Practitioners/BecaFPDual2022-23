@@ -12,7 +12,7 @@ public interface IClienteService {
 
     public Long crearCliente(ClienteDTO cliente);
 
-    public List<ClienteDTO> obtenerClientePorNombre(String nombre);
+    public List<ClienteDTO> obtenerClientePorApellido(String apellido);
 
     /*public ClienteDTO obtenerClienteConFondo(Long id);*/
 }

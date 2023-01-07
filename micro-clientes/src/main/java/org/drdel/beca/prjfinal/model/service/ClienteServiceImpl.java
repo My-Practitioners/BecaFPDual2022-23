@@ -4,18 +4,18 @@ import org.drdel.beca.prjfinal.model.dao.IClienteDao;
 import org.drdel.beca.prjfinal.model.dao.IFondoInversionDAO;
 import org.drdel.beca.prjfinal.model.domain.ClienteDTO;
 import org.drdel.beca.prjfinal.model.dtomapper.ClienteDTOMapper;
-import org.drdel.beca.prjfinal.model.dtomapper.FondoInversionDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ClienteServiceImpl implements IClienteService{
 
     @Autowired
     IClienteDao clienteDao;
 
-    @Autowired
-    IFondoInversionDAO fondoInversionDAO;
+    /*@Autowired
+    IFondoInversionDAO fondoInversionDAO;*/
 
     @Override
     public ClienteDTO obtenerCliente(Long id) {
@@ -29,8 +29,8 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public List<ClienteDTO> obtenerClientePorNombre(String nombre) {
-        var listaCliente=clienteDao.findByNombre(nombre);
+    public List<ClienteDTO> obtenerClientePorApellido(String apellido) {
+        var listaCliente=clienteDao.findByApellido(apellido);
         return ClienteDTOMapper.transformEntityListToDTOList(listaCliente);
     }
 

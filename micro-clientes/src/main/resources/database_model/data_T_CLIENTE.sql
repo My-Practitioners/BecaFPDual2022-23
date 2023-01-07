@@ -1,4 +1,4 @@
-/*populate table clientes*/
+--INSERCIÓN DE DATOS TABLA CLIENTES
 INSERT INTO clientes (id, nombre, apellido, email, born_at, foto, create_at) VALUES (1,'Chadwick','Gibbs','risus@mifelisadipiscing.ca','2021-02-15', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, nombre, apellido, email, born_at, foto, create_at) VALUES (2, 'Nehru','Moss','lamia.eu.lacus@eratVivamusnisi.co.uk','2021-05-03', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, nombre, apellido, email, born_at, foto, create_at) VALUES (3 ,'Zeus','Dillon','et@sempereratin.ca','2020-08-26', null, CURRENT_TIMESTAMP());
