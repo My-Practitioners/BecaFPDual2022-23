@@ -2,11 +2,11 @@ package org.drdel.beca.prjfinal.micro.clientes.api;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.ArrayGestoraRequest;
 import org.drdel.beca.prjfinal.micro.clientes.model.SaveGestoraRequest;
-import org.drdel.beca.prjfinal.micro.clientes.model.service.IGestoraService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.drdel.beca.prjfinal.micro.clientes.model.service.IClienteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,7 @@ import java.io.IOException;
 public class GestorasApiController implements GestorasApi {
 
     @Autowired
-    private IGestoraService gestoraService;
-
+    private IClienteService clienteService;
 
     private static final Logger log = LoggerFactory.getLogger(GestorasApiController.class);
 

@@ -17,7 +17,7 @@ import org.springframework.format.FormatterRegistry;
 
 @SpringBootApplication
 @EnableOpenApi
-@ComponentScan(basePackages = { "org.drdel.beca.prjfinal", "org.drdel.beca.prjfinal.api" , "org.drdel.beca.prjfinal.configuration"})
+@ComponentScan(basePackages = { "org.drdel.beca.prjfinal.micro.clientes", "org.drdel.beca.prjfinal.micro.clientes.api" , "org.drdel.beca.prjfinal.micro.clientes.configuration"})
 public class MicroGestorasApplication implements CommandLineRunner {
 
     @Override

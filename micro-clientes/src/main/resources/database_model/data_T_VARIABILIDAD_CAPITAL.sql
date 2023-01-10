@@ -1,3 +1,0 @@
---INSERCIÓN DE DATOS TABLA VARIABILIDAD DEL CAPITAL
-INSERT INTO t_variabilidad_capital (cod_variabilidad_capital, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) VALUES ('capf', 'capital fijo', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');
-INSERT INTO t_variabilidad_capital (cod_variabilidad_capital, descripcion, AUD_CREA_DATE, AUD_MOD_DATE, AUD_CREA_PROC, AUD_MOD_PROC, AUD_CREA_USU, AUD_MOD_USU) VALUES ('capv', 'capital variable', '2022-11-30', '2022-11-30', 'MIGRACION', 'MIGRACION', 'SCRIPT_USER', 'SCRIPT_USER');

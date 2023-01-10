@@ -34,6 +34,11 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
+    public void borrarCliente(Long id) {
+        //TODO crear el metodo
+    }
+
+    @Override
     public Long crearCliente(ClienteDTO cliente) {
         var clienteSalvado = clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
         return clienteSalvado.getId();

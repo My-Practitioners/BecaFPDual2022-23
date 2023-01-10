@@ -1,12 +1,10 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 public class ClienteDTO implements Serializable {
 
@@ -35,9 +33,6 @@ public class ClienteDTO implements Serializable {
     private Date createAt;
 
     private String foto;
-
-    @JsonIgnore
-    private List<FondoInversionDTO> fondos;
 
     public ClienteDTO() {
         super();
@@ -119,12 +114,4 @@ public class ClienteDTO implements Serializable {
         this.foto = foto;
     }
 
-
-    public List<FondoInversionDTO> getFondos() {
-        return fondos;
-    }
-
-    public void setFondos(List<FondoInversionDTO> fondos) {
-        this.fondos = fondos;
-    }
 }

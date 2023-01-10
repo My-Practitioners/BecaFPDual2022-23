@@ -2,6 +2,7 @@ package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface IClienteService {
@@ -14,5 +15,6 @@ public interface IClienteService {
 
     public List<ClienteDTO> obtenerClientePorApellido(String apellido);
 
-    /*public ClienteDTO obtenerClienteConFondo(Long id);*/
+    public void borrarCliente(Long id);
+
 }
