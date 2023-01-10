@@ -44,7 +44,7 @@ public class GestorasApiController implements GestorasApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                gestoraService.obtenerTodasGestoras();
+                /*gestoraService.obtenerTodasGestoras();*/
                 return new ResponseEntity<ArrayGestoraRequest>(objectMapper.readValue("[ {\n  \"id_gestora\" : 1,\n  \"nombre\" : \"gestora1\"\n}, {\n  \"id_gestora\" : 2,\n  \"nombre\" : \"gestora2\"\n} ]", ArrayGestoraRequest.class), HttpStatus.OK);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);

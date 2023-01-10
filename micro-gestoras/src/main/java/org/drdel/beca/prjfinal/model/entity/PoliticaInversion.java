@@ -42,7 +42,6 @@ public class PoliticaInversion implements Serializable {
     private String audModUsu;
 
 
-    //GETER-SETTER
 
     public String getCodPinversion() {
         return codPinversion;
@@ -109,7 +108,6 @@ public class PoliticaInversion implements Serializable {
     }
 
 
-    //METHODS
     @PrePersist
     public void prePersist(){
         audModDate =new Date();

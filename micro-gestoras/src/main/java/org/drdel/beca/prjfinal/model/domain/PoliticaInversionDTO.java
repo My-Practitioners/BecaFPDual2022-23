@@ -11,7 +11,6 @@ public class PoliticaInversionDTO implements Serializable {
 
     private String codPinversion;
 
-
     private String descripcion;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -35,21 +34,22 @@ public class PoliticaInversionDTO implements Serializable {
     @Size(max = 20)
     private String audModUsu;
 
-    public PoliticaInversionDTO() {
 
-    }
-
-    public PoliticaInversionDTO(String codPinversion, String descripcion, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
+    public PoliticaInversionDTO(String codPinversion, String descripcion) {
         this.codPinversion = codPinversion;
         this.descripcion = descripcion;
-        this.audCreaDate = audCreaDate;
-        this.audModDate = audModDate;
-        this.audCreaProc = audCreaProc;
-        this.audModProc = audModProc;
-        this.audCreaUsu = audCreaUsu;
-        this.audModUsu = audModUsu;
     }
 
+    public PoliticaInversionDTO(PoliticaInversionDTOBuilder builder) {
+        this.codPinversion=builder.codPinversion;
+        this.descripcion=builder.descripcion;
+        builder.audCreaDate(audCreaDate);
+        builder.audModDate(audModDate);
+        builder.audCreaProc(audCreaProc);
+        builder.audModProc(audModProc);
+        builder.audCreaUsu(audCreaUsu);
+        builder.audModUsu(audModUsu);
+    }
 
     public String getCodPinversion() {
         return codPinversion;
@@ -130,4 +130,62 @@ public class PoliticaInversionDTO implements Serializable {
 
         return jsonObject.toString();
     }
+
+    public class PoliticaInversionDTOBuilder {
+        private String codPinversion;
+        private String descripcion;
+        @JsonFormat(pattern = "yyyy-MM-dd")
+        @Size(max = 10)
+        private Date audCreaDate;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @Size(max = 20)
+        private Date audModDate;
+        @Size(max = 20)
+        private String audCreaProc;
+        @Size(max = 20)
+        private String audModProc;
+        @Size(max = 20)
+        private String audCreaUsu;
+        @Size(max = 20)
+        private String audModUsu;
+
+        public PoliticaInversionDTOBuilder(String codPinversion, String descripcion) {
+            this.codPinversion = codPinversion;
+            this.descripcion = descripcion;
+        }
+
+        public PoliticaInversionDTO.PoliticaInversionDTOBuilder audCreaDate(Date audCreaDate) {
+            this.audCreaDate = audCreaDate;
+            return this;
+        }
+
+        public PoliticaInversionDTO.PoliticaInversionDTOBuilder audModDate(Date audModDate) {
+            this.audModDate = audModDate;
+            return this;
+        }
+
+        public PoliticaInversionDTO.PoliticaInversionDTOBuilder audCreaProc(String audCreaProc) {
+            this.audCreaProc = audCreaProc;
+            return this;
+        }
+
+        public PoliticaInversionDTO.PoliticaInversionDTOBuilder audModProc(String audModProc) {
+            this.audModProc = audModProc;
+            return this;
+        }
+
+        public PoliticaInversionDTO.PoliticaInversionDTOBuilder audCreaUsu(String audCreaUsu) {
+            this.audCreaUsu = audCreaUsu;
+            return this;
+        }
+
+        public PoliticaInversionDTO.PoliticaInversionDTOBuilder audModUsu(String audModUsu) {
+            this.audModUsu = audModUsu;
+            return this;
+        }
+
+        public PoliticaInversionDTO build() {return new PoliticaInversionDTO(this);}
+
+    }
+
 }

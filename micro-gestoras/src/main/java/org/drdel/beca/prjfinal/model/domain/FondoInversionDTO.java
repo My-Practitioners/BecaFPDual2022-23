@@ -49,14 +49,7 @@ public class FondoInversionDTO {
     @Size(max = 20)
     private String audModUsu;
 
-
-
-    //CONSTRUCTOR
-
-    public FondoInversionDTO() {
-    }
-
-    public FondoInversionDTO(String codIsin, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor, Date audCreaDate, Date audModDate, String audCreaProc, String audModProc, String audCreaUsu, String audModUsu) {
+    public FondoInversionDTO(String codIsin, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor) {
         this.codIsin = codIsin;
         this.codEuropeo = codEuropeo;
         this.codLei = codLei;
@@ -67,16 +60,26 @@ public class FondoInversionDTO {
         this.codVariabilidadCapital = codVariabilidadCapital;
         this.subFondo = subFondo;
         this.codSupervisor = codSupervisor;
-        this.audCreaDate = audCreaDate;
-        this.audModDate = audModDate;
-        this.audCreaProc = audCreaProc;
-        this.audModProc = audModProc;
-        this.audCreaUsu = audCreaUsu;
-        this.audModUsu = audModUsu;
     }
 
-
-    //SET-GET
+    public FondoInversionDTO(FondoInversionDTOBuilder builder) {
+        this.codIsin = codIsin;
+        this.codEuropeo = codEuropeo;
+        this.codLei = codLei;
+        this.nombreFondo = nombreFondo;
+        this.subFondo = subFondo;
+        this.codSupervisor = codSupervisor;
+        this.idGestora = idGestora;
+        this.idDireccion = idDireccion;
+        this.codPInversion = codPInversion;
+        this.codVariabilidadCapital = codVariabilidadCapital;
+        builder.audCreaDate(audCreaDate);
+        builder.audModDate(audModDate);
+        builder.audCreaProc(audCreaProc);
+        builder.audModProc(audModProc);
+        builder.audCreaUsu(audCreaUsu);
+        builder.audModUsu(audModUsu);
+    }
 
 
     public String getCodIsin() {
@@ -227,4 +230,87 @@ public class FondoInversionDTO {
         return jsonObject.toString();
     }
 
+    public class FondoInversionDTOBuilder {
+
+        private String codIsin;
+
+        private String codEuropeo;
+
+        private String codLei;
+
+        private String nombreFondo;
+
+        private Long idGestora;
+
+        private Long idDireccion;
+
+        private String codPInversion;
+
+        private String codVariabilidadCapital;
+
+        private String subFondo;
+
+        private String codSupervisor;
+        @JsonFormat(pattern = "yyyy-MM-dd")
+        @Size(max = 10)
+        private Date audCreaDate;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @Size(max = 20)
+        private Date audModDate;
+        @Size(max = 20)
+        private String audCreaProc;
+        @Size(max = 20)
+        private String audModProc;
+        @Size(max = 20)
+        private String audCreaUsu;
+        @Size(max = 20)
+        private String audModUsu;
+
+        public FondoInversionDTOBuilder(String codIsin, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor) {
+            this.codIsin = codIsin;
+            this.codEuropeo = codEuropeo;
+            this.codLei = codLei;
+            this.nombreFondo = nombreFondo;
+            this.idGestora = idGestora;
+            this.idDireccion = idDireccion;
+            this.codPInversion = codPInversion;
+            this.codVariabilidadCapital = codVariabilidadCapital;
+            this.subFondo = subFondo;
+            this.codSupervisor = codSupervisor;
+        }
+
+
+        public FondoInversionDTO.FondoInversionDTOBuilder audCreaDate(Date audCreaDate) {
+            this.audCreaDate = audCreaDate;
+            return this;
+        }
+
+        public FondoInversionDTO.FondoInversionDTOBuilder audModDate(Date audModDate) {
+            this.audModDate = audModDate;
+            return this;
+        }
+
+        public FondoInversionDTO.FondoInversionDTOBuilder audCreaProc(String audCreaProc) {
+            this.audCreaProc = audCreaProc;
+            return this;
+        }
+
+        public FondoInversionDTO.FondoInversionDTOBuilder audModProc(String audModProc) {
+            this.audModProc = audModProc;
+            return this;
+        }
+
+        public FondoInversionDTO.FondoInversionDTOBuilder audCreaUsu(String audCreaUsu) {
+            this.audCreaUsu = audCreaUsu;
+            return this;
+        }
+
+        public FondoInversionDTO.FondoInversionDTOBuilder audModUsu(String audModUsu) {
+            this.audModUsu = audModUsu;
+            return this;
+        }
+
+        public FondoInversionDTO build() {return new FondoInversionDTO(this);}
+
+    }
 }

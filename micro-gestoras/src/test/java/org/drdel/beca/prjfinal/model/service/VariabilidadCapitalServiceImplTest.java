@@ -9,15 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 class VariabilidadCapitalServiceImplTest {
 
     @Autowired
-    private VariabilidadCapitalServiceImpl variabilidadCapitalService;
+    VariabilidadCapitalServiceImpl variabilidadCapitalService;
 
     @ParameterizedTest
     @DisplayName("Obtencion de Variabilidad de Capital por codigo para verificar existencia")
@@ -38,5 +37,26 @@ class VariabilidadCapitalServiceImplTest {
         assertEquals("capital variable", varCap.getDescripcion());
     }
 
+    @Test
+    @DisplayName("Obtencion de todos los tipos de Variabilidad de Capital")
+    void obtenerTodosVariabilidadCapital(){
+        assertEquals(2, variabilidadCapitalService.obtenerTodosVariabilidadCapital().size());
+    }
+
+    @ParameterizedTest
+    @DisplayName("Obtención de Variabilidad Capital por descripcion para verificacion de existencia")
+    @ValueSource(strings = "capital fijo")
+    void testObtenerGestoraPorDescripcion(String descripcion){
+        var variabilidadCapital=variabilidadCapitalService.obtenerVariabilidadPorDescripcion(descripcion);
+        assertNotEquals(0,variabilidadCapital.size());
+    }
+
+    @ParameterizedTest
+    @DisplayName("Creacion de nueva Variabilidad Capital")
+    @ValueSource(strings = "capm")
+    void testCrearVariabilidadCapital(String codPInversion){
+        var variabilidad=variabilidadCapitalService.crearVariabilidadCapital(codPInversion,"capital mixto");
+        assertNotNull(variabilidad);
+    }
 
 }
