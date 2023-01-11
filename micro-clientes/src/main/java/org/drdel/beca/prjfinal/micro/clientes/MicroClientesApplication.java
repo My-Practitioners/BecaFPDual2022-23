@@ -18,7 +18,7 @@ import org.springframework.format.FormatterRegistry;
 @SpringBootApplication
 @EnableOpenApi
 @ComponentScan(basePackages = { "org.drdel.beca.prjfinal.micro.clientes", "org.drdel.beca.prjfinal.micro.clientes.api" , "org.drdel.beca.prjfinal.micro.clientes.configuration"})
-public class MicroGestorasApplication implements CommandLineRunner {
+public class MicroClientesApplication implements CommandLineRunner {
 
     @Override
     public void run(String... arg0) {
@@ -28,7 +28,7 @@ public class MicroGestorasApplication implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        new SpringApplication(MicroGestorasApplication.class).run(args);
+        new SpringApplication(MicroClientesApplication.class).run(args);
     }
 
     @Configuration

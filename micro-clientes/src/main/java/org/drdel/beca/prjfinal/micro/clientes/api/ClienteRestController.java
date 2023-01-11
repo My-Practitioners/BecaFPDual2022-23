@@ -14,13 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -89,6 +83,30 @@ public class ClienteRestController extends AppController {
 
     }
 
+    @PutMapping("/clientes/{id}")
+    public ResponseEntity<Map<String, Object>> update(@PathVariable Long id,
+                                                      @Valid @RequestBody ClienteDTO cliente,
+                                                      BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida("Cliente no válido", result);
+        }
+
+        ClienteDTO clienteGuardado = null;
+
+        try {
+            clienteService.actualizarCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                "Cliente actualizado con éxito",
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
 
     @DeleteMapping("/clientes/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {

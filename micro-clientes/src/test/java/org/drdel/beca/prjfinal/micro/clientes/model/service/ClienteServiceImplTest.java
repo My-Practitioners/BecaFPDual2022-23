@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Date;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -45,10 +47,27 @@ public class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Creacion de nuevo Cliente")
-    void testCrearDireccionGestora(){
+    void testCrearCliente(){
         Date fecha = new Date(121, 6, 2);
         ClienteDTO dto = new ClienteDTO(900L, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", fecha);
         var cliente = clienteService.crearCliente(dto);
+        assertNotNull(cliente);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Eliminar cliente por id")
+    @ValueSource(longs = {10})
+    void testBorrarCliente(Long id){
+        long clienteBorrado = clienteService.borrarCliente(id);
+        assertThat(clienteBorrado).isEqualTo(10);
+    }
+
+    @Test
+    @DisplayName("Actualizar cliente")
+    void testActualizarCliente(){
+        Date fecha = new Date(120, 4, 13);
+        ClienteDTO dto = new ClienteDTO(1L, "María", "Rivera", "mariarivera@gmail.com", fecha);
+        var cliente = clienteService.actualizarCliente(dto);
         assertNotNull(cliente);
     }
 }

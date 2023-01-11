@@ -34,29 +34,22 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public void borrarCliente(Long id) {
-        //TODO crear el metodo
-    }
-
-    @Override
     public Long crearCliente(ClienteDTO cliente) {
         var clienteSalvado = clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
         return clienteSalvado.getId();
     }
 
-    /*@Override
-    public ClienteDTO obtenerClienteConFondo(Long id) {
-
+    @Override
+    public Long borrarCliente(Long id) {
         var clienteEntity = clienteDao.findById(id).orElse(null);
-        ClienteDTO clienteDto = null;
+        clienteDao.deleteById(id);
+        return clienteEntity.getId();
+    }
 
-        if (clienteEntity != null) {
-            clienteDto = ClienteDTOMapper.transformEntityToDTO(clienteEntity);
-            var listaFondosEntity = fondoInversionDAO.findByClienteId(id);
-            if (listaFondosEntity != null)
-                clienteDto.setFondos(FondoInversionDTOMapper.transformEntityListToDTOList(listaFondosEntity));
-        }
-        return clienteDto;
-    }*/
+    @Override
+    public Long actualizarCliente(ClienteDTO cliente) {
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
+        return cliente.getId();
+    }
 
 }
