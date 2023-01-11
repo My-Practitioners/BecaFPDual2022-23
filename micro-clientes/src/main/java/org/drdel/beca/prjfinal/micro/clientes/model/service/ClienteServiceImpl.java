@@ -13,8 +13,7 @@ public class ClienteServiceImpl implements IClienteService{
     @Autowired
     IClienteDao clienteDao;
 
-    /*@Autowired
-    IFondoInversionDAO fondoInversionDAO;*/
+
 
     @Override
     public ClienteDTO obtenerCliente(Long id) {

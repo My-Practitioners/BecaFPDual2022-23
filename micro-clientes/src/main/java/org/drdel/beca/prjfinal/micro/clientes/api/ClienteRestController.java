@@ -92,7 +92,7 @@ public class ClienteRestController extends AppController {
             return gestionarResponseNoValida("Cliente no válido", result);
         }
 
-        ClienteDTO clienteGuardado = null;
+        ClienteDTO clienteGuardado;
 
         try {
             clienteService.actualizarCliente(cliente);
