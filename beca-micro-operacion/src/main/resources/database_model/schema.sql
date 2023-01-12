@@ -1,6 +1,6 @@
 -- ESTADOCONTRATACION
-drop table if exists t_estado_contratacion;
-create table estado_contratacion (cod_estado_contratacion varchar(255), descripcion varchar(255));
+drop table if exists t_estados_contratacion;
+create table estados_contratacion (cod_estados_contratacion varchar(255), descripcion varchar(255));
 
 -- OPERACIONESCONTRATACION
 drop table if exists t_operaciones_contratacion;
@@ -16,6 +16,6 @@ fecha_contratacion date not null);
 -- FONDOS-CLIENTE-HISTORY
 drop table if exists t_fondos_cliente_history;
 create fondos_cliente_history (id_fondos_cliente bigint,
-estado_contratacion varchar(255),
+estados_contratacion varchar(255),
 fecha_cambio_estado date,
 importe double);
