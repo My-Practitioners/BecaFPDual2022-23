@@ -26,10 +26,10 @@ public class FondosClienteDTOMapper {
 
     public static FondosCliente transformDTOToEntity(FondosClienteDTO dto){
         var entity = new FondosCliente();
-        entity.setIdFondosCliente(entity.getIdFondosCliente());
-        entity.setCodIsin(entity.getCodIsin());
-        entity.setIdClientes(entity.getIdClientes());
-        entity.setFechaContratacion(entity.getFechaContratacion());
+        entity.setIdFondosCliente(dto.getIdFondosCliente());
+        entity.setCodIsin(dto.getCodIsin());
+        entity.setIdClientes(dto.getIdClientes());
+        entity.setFechaContratacion(dto.getFechaContratacion());
         return entity;
     }
 }

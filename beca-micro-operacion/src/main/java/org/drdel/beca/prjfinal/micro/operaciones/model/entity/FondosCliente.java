@@ -2,11 +2,12 @@ package org.drdel.beca.prjfinal.micro.operaciones.model.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "t_fondos_cliente")
-public class FondosCliente {
+public class FondosCliente implements Serializable {
 
     @Id
     @Column(name = "id_fondos_cliente")

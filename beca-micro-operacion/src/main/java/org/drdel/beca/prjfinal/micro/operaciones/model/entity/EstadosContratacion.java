@@ -10,7 +10,6 @@ public class EstadosContratacion implements Serializable {
 
     @Id
     @Column(name = "cod_estados_contratacion")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String codEstadosContratacion;
 
     @Column(name = "descripcion")
