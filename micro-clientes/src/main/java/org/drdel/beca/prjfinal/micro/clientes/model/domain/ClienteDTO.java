@@ -12,6 +12,8 @@ public class ClienteDTO implements Serializable {
 
     private Long id;
 
+    private Long idEstadoCliente;
+
     @NotBlank
     @Size(min=4, max=30)
     private String nombre;
@@ -38,17 +40,19 @@ public class ClienteDTO implements Serializable {
         super();
     }
 
-    public ClienteDTO(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email, Date bornAt){
+    public ClienteDTO(Long id, Long idEstadoCliente, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email, Date bornAt){
         this.id = id;
+        this.idEstadoCliente = idEstadoCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.bornAt = bornAt;
     }
 
-    public ClienteDTO(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email,
+    public ClienteDTO(Long id, Long idEstadoCliente, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email,
                       Date bornAt, Date createAt, String foto) {
         this.id = id;
+        this.idEstadoCliente = idEstadoCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -65,6 +69,10 @@ public class ClienteDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Long getIdEstadoCliente() {return idEstadoCliente;}
+
+    public void setIdEstadoCliente(Long idEstadoCliente) {this.idEstadoCliente = idEstadoCliente;}
 
     public String getNombre() {
         return nombre;

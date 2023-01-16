@@ -12,11 +12,12 @@ import java.util.Date;
 @Table(name = "clientes")
 public class Cliente implements Serializable {
 
-    private static final long serialVersionUID = 1230791196947869605L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    private Long idEstadoCliente;
 
     @NotEmpty
     @NotNull
@@ -47,14 +48,6 @@ public class Cliente implements Serializable {
     @Column(name = "foto",nullable = true )
     private String foto;
 
-    /*@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Factura> facturas;
-
-
-    public Cliente() {
-        facturas = new ArrayList<>();
-    }*/
-
     @PrePersist
     public void prePersist() {
         createAt =  new Date();
@@ -66,6 +59,12 @@ public class Cliente implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIdEstadoCliente() {return idEstadoCliente;}
+
+    public void setIdEstadoCliente(Long idEstadoCliente) {
+        this.idEstadoCliente = idEstadoCliente;
     }
 
     public String getNombre() {
@@ -116,20 +115,5 @@ public class Cliente implements Serializable {
         this.foto = foto;
     }
 
-    /*public List<Factura> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(List<Factura> facturas) {
-        this.facturas = facturas;
-    }
-
-    public void addFactura(Factura factura) {
-        this.facturas.add(factura);
-    }*/
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
 
 }
