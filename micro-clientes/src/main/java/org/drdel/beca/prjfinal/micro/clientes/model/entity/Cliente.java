@@ -17,7 +17,7 @@ public class Cliente implements Serializable {
     private Long id;
 
     @NotNull
-    private Long idEstadoCliente;
+    private int idEstadoCliente;
 
     @NotEmpty
     @NotNull
@@ -61,9 +61,9 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public Long getIdEstadoCliente() {return idEstadoCliente;}
+    public int getIdEstadoCliente() {return idEstadoCliente;}
 
-    public void setIdEstadoCliente(Long idEstadoCliente) {
+    public void setIdEstadoCliente(int idEstadoCliente) {
         this.idEstadoCliente = idEstadoCliente;
     }
 

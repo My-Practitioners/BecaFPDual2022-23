@@ -3,6 +3,9 @@ package org.drdel.beca.prjfinal.micro.clientes.model.service;
 import org.drdel.beca.prjfinal.micro.clientes.model.dtomapper.ClienteDTOMapper;
 import org.drdel.beca.prjfinal.micro.clientes.model.dao.IClienteDao;
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
+import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
+import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClienteEstadoEnum;
+import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClientesRules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +15,11 @@ public class ClienteServiceImpl implements IClienteService{
 
     @Autowired
     IClienteDao clienteDao;
+
+    @Autowired
+    ClientesRules clientesRules;
+
+
 
 
 
@@ -33,7 +41,8 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public Long crearCliente(ClienteDTO cliente) {
+    public Long crearCliente(ClienteDTO cliente) throws ClienteException {
+        clientesRules.crearEstado(cliente, ClienteEstadoEnum.DRAFT);
         var clienteSalvado = clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
         return clienteSalvado.getId();
     }

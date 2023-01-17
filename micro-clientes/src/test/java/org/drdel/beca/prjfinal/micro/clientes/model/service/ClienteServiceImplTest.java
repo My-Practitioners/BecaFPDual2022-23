@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
+import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -46,8 +47,8 @@ public class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Creacion de nuevo Cliente")
-    void testCrearCliente(){
-        ClienteDTO dto = new ClienteDTO(900L, 4L, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
+    void testCrearCliente() throws ClienteException {
+        ClienteDTO dto = new ClienteDTO(900L, 4, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
         var cliente = clienteService.crearCliente(dto);
         assertNotNull(cliente);
     }
@@ -63,7 +64,7 @@ public class ClienteServiceImplTest {
     @Test
     @DisplayName("Actualizar cliente")
     void testActualizarCliente(){
-        ClienteDTO dto = new ClienteDTO(1L, 3L, "María", "Rivera", "mariarivera@gmail.com", new Date(120, 4, 13));
+        ClienteDTO dto = new ClienteDTO(1L, 3, "María", "Rivera", "mariarivera@gmail.com", new Date(120, 4, 13));
         var cliente = clienteService.actualizarCliente(dto);
         assertNotNull(cliente);
     }
