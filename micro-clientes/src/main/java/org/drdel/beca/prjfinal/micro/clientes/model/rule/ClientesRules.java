@@ -2,12 +2,14 @@ package org.drdel.beca.prjfinal.micro.clientes.model.rule;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
 import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
+import org.drdel.beca.prjfinal.micro.clientes.model.service.ClienteServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class ClientesRules {
-
-
+    @Autowired
+    ClienteServiceImpl clienteService;
 
 
     public ClienteDTO activarEstado(ClienteDTO clienteDto)  {
@@ -75,6 +77,27 @@ public class ClientesRules {
 
 
         return clienteDto;
+    }
+
+    public Long checkBorrarEstado(Long id){
+
+        boolean igualdad=false;
+
+        var clienteDto=clienteService.obtenerCliente(id).getIdEstadoCliente();
+        int estadoDraft=ClienteEstadoEnum.DRAFT.getEstadoEnum();
+        if (clienteDto==estadoDraft){
+            igualdad=true;
+        }
+        if (igualdad){
+            return id;
+        }else {
+            try {
+                ClienteException.borrarCliente();
+            }catch (ClienteException e){
+                throw new RuntimeException(e);
+            }
+        }
+        return id;
     }
 
 

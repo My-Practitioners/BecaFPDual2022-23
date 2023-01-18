@@ -48,6 +48,7 @@ public class ClienteServiceImpl implements IClienteService{
 
     @Override
     public Long borrarCliente(Long id) {
+        clientesRules.checkBorrarEstado(id);
         var clienteEntity = clienteDao.findById(id).orElse(null);
         clienteDao.deleteById(id);
         return clienteEntity.getId();

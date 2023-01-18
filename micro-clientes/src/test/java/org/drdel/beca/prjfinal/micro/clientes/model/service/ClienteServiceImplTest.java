@@ -1,7 +1,6 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
-import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -54,11 +53,13 @@ public class ClienteServiceImplTest {
     }
 
     @ParameterizedTest
-    @DisplayName("Eliminar cliente por id")
-    @ValueSource(longs = {10})
+    @DisplayName("Borrar cliente por id")
+    @ValueSource(longs = {1L})
     void testBorrarCliente(Long id){
         long clienteBorrado = clienteService.borrarCliente(id);
-        assertThat(clienteBorrado).isEqualTo(10);
+        var cliente=clienteService.obtenerCliente(id);
+        assertNull(cliente);
+        assertThat(clienteBorrado).isEqualTo(1L);
     }
 
     @Test
