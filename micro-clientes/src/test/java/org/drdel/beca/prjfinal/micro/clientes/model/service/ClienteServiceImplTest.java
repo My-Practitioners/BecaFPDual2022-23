@@ -1,7 +1,6 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
-import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,18 +46,20 @@ public class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Creacion de nuevo Cliente")
-    void testCrearCliente() throws ClienteException {
-        ClienteDTO dto = new ClienteDTO(900L, 3, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
+    void testCrearCliente()  {
+        ClienteDTO dto = new ClienteDTO(900L, 5, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
         var cliente = clienteService.crearCliente(dto);
         assertNotNull(cliente);
     }
 
     @ParameterizedTest
-    @DisplayName("Eliminar cliente por id")
-    @ValueSource(longs = {10})
+    @DisplayName("Borrar cliente por id")
+    @ValueSource(longs = {1L})
     void testBorrarCliente(Long id){
         long clienteBorrado = clienteService.borrarCliente(id);
-        assertThat(clienteBorrado).isEqualTo(10);
+        var cliente=clienteService.obtenerCliente(id);
+        assertNull(cliente);
+        assertThat(clienteBorrado).isEqualTo(1L);
     }
 
     @Test
@@ -68,4 +69,16 @@ public class ClienteServiceImplTest {
         var cliente = clienteService.actualizarCliente(dto);
         assertNotNull(cliente);
     }
+
+    @Test
+    @DisplayName("Activar cliente")
+    void testActivarCliente(){
+        var clienteDraft=clienteService.obtenerCliente(1l);
+        System.out.println(clienteDraft.getIdEstadoCliente()+"antes");
+        clienteService.activarCliente(clienteDraft);
+        System.out.println(clienteDraft.getIdEstadoCliente()+"despues");
+        assertThat(clienteDraft.getIdEstadoCliente()).isEqualTo(1);
+    }
+
+
 }
