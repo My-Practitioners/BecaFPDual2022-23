@@ -7,15 +7,17 @@ import java.util.List;
 
 public interface IClienteService {
 
-    public ClienteDTO obtenerCliente(Long id);
+    ClienteDTO obtenerCliente(Long id);
 
-    public List<ClienteDTO> obtenerTodosClientes();
+     List<ClienteDTO> obtenerTodosClientes();
 
-    public Long crearCliente(ClienteDTO cliente) throws ClienteException;
+     Long crearCliente(ClienteDTO clienteDTO) throws ClienteException;
 
-    public List<ClienteDTO> obtenerClientePorApellido(String apellido);
+     List<ClienteDTO> obtenerClientePorApellido(String apellido);
 
-    public Long borrarCliente(Long id);
+     Long borrarCliente(Long id);
 
-    public Long actualizarCliente(ClienteDTO cliente);
+     Long actualizarCliente(ClienteDTO clienteDTO);
+
+    Long activarCliente(ClienteDTO clienteDTO);
 }

@@ -1,16 +1,12 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.exception;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class ClienteException extends Exception{
 
     public ClienteException(String mensaje){
         super(mensaje);
     }
-
-    private static final Logger log = LoggerFactory.getLogger(ClienteException.class);
 
     public static void crearCliente() throws ClienteException {
         throw new ClienteException("Para crear el cliente, su estado debe ser DRAFT(4)");

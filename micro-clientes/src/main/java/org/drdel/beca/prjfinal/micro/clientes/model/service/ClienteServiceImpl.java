@@ -3,7 +3,6 @@ package org.drdel.beca.prjfinal.micro.clientes.model.service;
 import org.drdel.beca.prjfinal.micro.clientes.model.dtomapper.ClienteDTOMapper;
 import org.drdel.beca.prjfinal.micro.clientes.model.dao.IClienteDao;
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
-import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClienteEstadoEnum;
 import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClientesRules;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +40,10 @@ public class ClienteServiceImpl implements IClienteService{
     }
 
     @Override
-    public Long crearCliente(ClienteDTO cliente) throws ClienteException {
-        var clienteDraft=clientesRules.crearEstado(cliente, ClienteEstadoEnum.DRAFT);
-        var clienteSave = clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDraft));
-        return clienteSave.getId();
+    public Long crearCliente(ClienteDTO cliente) {
+        clientesRules.checkCrearEstado(cliente, ClienteEstadoEnum.DRAFT);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
+        return cliente.getId();
     }
 
     @Override
@@ -58,6 +57,13 @@ public class ClienteServiceImpl implements IClienteService{
     public Long actualizarCliente(ClienteDTO cliente) {
         clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
         return cliente.getId();
+    }
+
+    @Override
+    public Long activarCliente(ClienteDTO clienteDTO) {
+        clientesRules.activarEstado(clienteDTO);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
+        return clienteDTO.getId();
     }
 
 }

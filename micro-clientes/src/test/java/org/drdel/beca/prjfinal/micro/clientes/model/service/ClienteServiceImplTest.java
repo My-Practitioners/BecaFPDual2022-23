@@ -47,8 +47,8 @@ public class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Creacion de nuevo Cliente")
-    void testCrearCliente() throws ClienteException {
-        ClienteDTO dto = new ClienteDTO(900L, 3, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
+    void testCrearCliente()  {
+        ClienteDTO dto = new ClienteDTO(900L, 5, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
         var cliente = clienteService.crearCliente(dto);
         assertNotNull(cliente);
     }
@@ -68,4 +68,16 @@ public class ClienteServiceImplTest {
         var cliente = clienteService.actualizarCliente(dto);
         assertNotNull(cliente);
     }
+
+    @Test
+    @DisplayName("Activar cliente")
+    void testActivarCliente(){
+        var clienteDraft=clienteService.obtenerCliente(1l);
+        System.out.println(clienteDraft.getIdEstadoCliente()+"antes");
+        clienteService.activarCliente(clienteDraft);
+        System.out.println(clienteDraft.getIdEstadoCliente()+"despues");
+        assertThat(clienteDraft.getIdEstadoCliente()).isEqualTo(1);
+    }
+
+
 }

@@ -8,15 +8,26 @@ import org.springframework.stereotype.Controller;
 public class ClientesRules {
 
 
-    public ClienteDTO activarEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum) throws ClienteException {
-        clienteEstadoEnum=ClienteEstadoEnum.ACTIVAR;
 
-        if (clienteDto.getIdEstadoCliente()==clienteEstadoEnum.getEstadoEnum()){
+
+    public ClienteDTO activarEstado(ClienteDTO clienteDto)  {
+        boolean draftToActive=false;
+        int activar=ClienteEstadoEnum.ACTIVAR.getEstadoEnum();
+
+
+        if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.DRAFT.getEstadoEnum()){
+            draftToActive=true;
+        }
+        if (draftToActive){
+            clienteDto.setIdEstadoCliente(activar);
             return clienteDto;
         }else {
-            return ClienteException.activarCliente();
+            try {
+                return ClienteException.activarCliente();
+            } catch (ClienteException e) {
+                throw new RuntimeException(e);
+            }
         }
-
     }
 
 
@@ -45,8 +56,8 @@ public class ClientesRules {
 
 
 
-    public  ClienteDTO crearEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum) throws ClienteException {
-        clienteEstadoEnum=ClienteEstadoEnum.DRAFT;
+    public  ClienteDTO checkCrearEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum)  {
+
         boolean igualdad=false;
 
             if (clienteDto.getIdEstadoCliente() == clienteEstadoEnum.getEstadoEnum()) {
@@ -55,7 +66,11 @@ public class ClientesRules {
             if (igualdad) {
                 return clienteDto;
             }else {
-                ClienteException.crearCliente();
+                try {
+                    ClienteException.crearCliente();
+                } catch (ClienteException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
 
