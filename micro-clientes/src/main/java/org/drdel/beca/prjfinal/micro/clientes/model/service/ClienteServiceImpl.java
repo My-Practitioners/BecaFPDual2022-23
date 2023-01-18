@@ -42,9 +42,9 @@ public class ClienteServiceImpl implements IClienteService{
 
     @Override
     public Long crearCliente(ClienteDTO cliente) throws ClienteException {
-        clientesRules.crearEstado(cliente, ClienteEstadoEnum.DRAFT);
-        var clienteSalvado = clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
-        return clienteSalvado.getId();
+        var clienteDraft=clientesRules.crearEstado(cliente, ClienteEstadoEnum.DRAFT);
+        var clienteSave = clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDraft));
+        return clienteSave.getId();
     }
 
     @Override
