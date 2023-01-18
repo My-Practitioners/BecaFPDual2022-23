@@ -48,7 +48,7 @@ public class ClienteServiceImplTest {
     @Test
     @DisplayName("Creacion de nuevo Cliente")
     void testCrearCliente() throws ClienteException {
-        ClienteDTO dto = new ClienteDTO(900L, 4, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
+        ClienteDTO dto = new ClienteDTO(900L, 3, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
         var cliente = clienteService.crearCliente(dto);
         assertNotNull(cliente);
     }

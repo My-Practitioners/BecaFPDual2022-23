@@ -47,17 +47,19 @@ public class ClientesRules {
 
     public  ClienteDTO crearEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum) throws ClienteException {
         clienteEstadoEnum=ClienteEstadoEnum.DRAFT;
+        boolean igualdad=false;
 
-        try {
             if (clienteDto.getIdEstadoCliente() == clienteEstadoEnum.getEstadoEnum()) {
-                return clienteDto;
+                igualdad=true;
             }
-        }catch (Exception e){
-            ClienteException.crearCliente(e);
-        }
+            if (igualdad) {
+                return clienteDto;
+            }else {
+                ClienteException.crearCliente();
+            }
+
 
         return clienteDto;
-
     }
 
 
