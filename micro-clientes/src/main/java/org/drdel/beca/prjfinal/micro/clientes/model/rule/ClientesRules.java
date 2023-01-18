@@ -2,7 +2,9 @@ package org.drdel.beca.prjfinal.micro.clientes.model.rule;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
 import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
+import org.springframework.stereotype.Controller;
 
+@Controller
 public class ClientesRules {
 
 
