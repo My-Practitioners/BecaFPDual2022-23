@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IClienteService {
 
-    ClienteDTO obtenerCliente(Long id);
+     ClienteDTO obtenerCliente(Long id);
 
      List<ClienteDTO> obtenerTodosClientes();
 
@@ -19,7 +19,10 @@ public interface IClienteService {
 
      Long actualizarCliente(ClienteDTO clienteDTO);
 
-    Long activarCliente(ClienteDTO clienteDTO);
+     Long activarCliente(ClienteDTO clienteDTO);
 
-    public Long cancelarCliente(ClienteDTO clienteDTO);
+     Long cancelarCliente(ClienteDTO clienteDTO);
+
+     Long suspenderCliente(ClienteDTO clienteDTO);
+
 }

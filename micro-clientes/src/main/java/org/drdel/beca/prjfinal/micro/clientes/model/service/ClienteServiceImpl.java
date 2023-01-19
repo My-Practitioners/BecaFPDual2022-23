@@ -18,10 +18,6 @@ public class ClienteServiceImpl implements IClienteService{
     @Autowired
     ClientesRules clientesRules;
 
-
-
-
-
     @Override
     public ClienteDTO obtenerCliente(Long id) {
         var clienteEntity = clienteDao.findById(id).orElse(null);
@@ -70,6 +66,13 @@ public class ClienteServiceImpl implements IClienteService{
     @Override
     public Long cancelarCliente(ClienteDTO clienteDTO) {
         clientesRules.cancelarEstado(clienteDTO);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
+        return clienteDTO.getId();
+    }
+
+    @Override
+    public Long suspenderCliente(ClienteDTO clienteDTO) {
+        clientesRules.suspenderEstado(clienteDTO);
         clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
         return clienteDTO.getId();
     }

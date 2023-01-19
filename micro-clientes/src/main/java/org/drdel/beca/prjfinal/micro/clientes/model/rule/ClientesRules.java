@@ -14,7 +14,7 @@ public class ClientesRules {
 
     public ClienteDTO activarEstado(ClienteDTO clienteDto)  {
         boolean draftToActive=false;
-        int activar=ClienteEstadoEnum.ACTIVAR.getEstadoEnum();
+        int activar=ClienteEstadoEnum.OPERATIVE.getEstadoEnum();
 
 
         if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.DRAFT.getEstadoEnum()){
@@ -33,13 +33,23 @@ public class ClientesRules {
     }
 
 
-    public ClienteDTO suspenderEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum) throws ClienteException {
-        clienteEstadoEnum=ClienteEstadoEnum.SUSPENDER;
+    public ClienteDTO suspenderEstado(ClienteDTO clienteDto) {
+        boolean operativeToSuspended=false;
+        int suspender=ClienteEstadoEnum.SUSPENDED.getEstadoEnum();
 
-        if (clienteDto.getIdEstadoCliente()==clienteEstadoEnum.getEstadoEnum()){
+
+        if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.OPERATIVE.getEstadoEnum()){
+            operativeToSuspended=true;
+        }
+        if (operativeToSuspended){
+            clienteDto.setIdEstadoCliente(suspender);
             return clienteDto;
         }else {
-            return ClienteException.suspenderCliente();
+            try {
+                return ClienteException.cancelarCliente();
+            } catch (ClienteException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }
@@ -47,10 +57,10 @@ public class ClientesRules {
 
     public ClienteDTO cancelarEstado(ClienteDTO clienteDto) {
         boolean operativeToCanceled=false;
-        int cancelar=ClienteEstadoEnum.CANCELAR.getEstadoEnum();
+        int cancelar=ClienteEstadoEnum.CANCELED.getEstadoEnum();
 
 
-        if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.ACTIVAR.getEstadoEnum()){
+        if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.OPERATIVE.getEstadoEnum()){
             operativeToCanceled=true;
         }
         if (operativeToCanceled){

@@ -47,19 +47,19 @@ public class ClienteServiceImplTest {
     @Test
     @DisplayName("Creacion de nuevo Cliente")
     void testCrearCliente()  {
-        ClienteDTO dto = new ClienteDTO(900L, 5, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
+        ClienteDTO dto = new ClienteDTO(900L, 4, "Carlos", "Rodríguez", "carlosrodrgiguez@gmail.com", new Date(121,6,22));
         var cliente = clienteService.crearCliente(dto);
         assertNotNull(cliente);
     }
 
     @ParameterizedTest
     @DisplayName("Borrar cliente por id")
-    @ValueSource(longs = {1L})
+    @ValueSource(longs = {7L})
     void testBorrarCliente(Long id){
         long clienteBorrado = clienteService.borrarCliente(id);
         var cliente=clienteService.obtenerCliente(id);
         assertNull(cliente);
-        assertThat(clienteBorrado).isEqualTo(1L);
+        assertThat(clienteBorrado).isEqualTo(7L);
     }
 
     @Test
@@ -88,4 +88,11 @@ public class ClienteServiceImplTest {
         assertThat(clienteOperative.getIdEstadoCliente()).isEqualTo(3);
     }
 
+    @Test
+    @DisplayName("Suspender cliente")
+    void testSuspenderCliente(){
+        var clienteOperative=clienteService.obtenerCliente(10l);
+        clienteService.suspenderCliente(clienteOperative);
+        assertThat(clienteOperative.getIdEstadoCliente()).isEqualTo(2);
+    }
 }
