@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class ClienteRestController extends AppController {
 
-    private static final String MSG_RESPONSE_KEY_MENSAJE = "mensaje";
-    private static final String MSG_RESPONSE_KEY_CLIENTE = "cliente";
-    private static final String MSG_RESPONSE_KEY_ERRORES = "errors";
+    private static final String MSG_RESPONSE_KEY_MENSAJE= "mensaje";
+    private static final String MSG_RESPONSE_KEY_CLIENTE= "cliente";
+    private static final String MSG_RESPONSE_KEY_ERRORES= "errors";
+
+    private static final String NO_VALIDO="Cliente no válido";
+    private static final String ACTUALIZADO="Cliente actualizado con éxito";
 
     @Autowired
     private IClienteService clienteService;
@@ -63,7 +66,7 @@ public class ClienteRestController extends AppController {
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         Long id;
@@ -89,7 +92,7 @@ public class ClienteRestController extends AppController {
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         ClienteDTO clienteGuardado;
@@ -102,7 +105,7 @@ public class ClienteRestController extends AppController {
         }
 
         return gestionarResponse(
-                "Cliente actualizado con éxito",
+                ACTUALIZADO,
                 clienteGuardado,
                 HttpStatus.CREATED);
 
@@ -114,7 +117,7 @@ public class ClienteRestController extends AppController {
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         ClienteDTO clienteGuardado;
@@ -127,7 +130,7 @@ public class ClienteRestController extends AppController {
         }
 
         return gestionarResponse(
-                "Cliente actualizado con éxito",
+                ACTUALIZADO,
                 clienteGuardado,
                 HttpStatus.CREATED);
 
@@ -139,7 +142,7 @@ public class ClienteRestController extends AppController {
                                                                BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         ClienteDTO clienteGuardado;
@@ -152,7 +155,7 @@ public class ClienteRestController extends AppController {
         }
 
         return gestionarResponse(
-                "Cliente actualizado con éxito",
+                ACTUALIZADO,
                 clienteGuardado,
                 HttpStatus.CREATED);
 
@@ -164,7 +167,7 @@ public class ClienteRestController extends AppController {
                                                               BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         ClienteDTO clienteGuardado;
@@ -177,7 +180,7 @@ public class ClienteRestController extends AppController {
         }
 
         return gestionarResponse(
-                "Cliente actualizado con éxito",
+                ACTUALIZADO,
                 clienteGuardado,
                 HttpStatus.CREATED);
 

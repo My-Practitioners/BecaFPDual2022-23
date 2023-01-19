@@ -12,7 +12,7 @@ public class ClienteException extends Exception{
         throw new ClienteException("Para crear el cliente, su estado debe ser DRAFT(4)");
     }
 
-    public static ClienteDTO borrarCliente() throws ClienteException{
+    public static void borrarCliente() throws ClienteException{
 
         throw new ClienteException("Para borrar el cliente, su estado debe ser DRAFT(4)");
     }

@@ -7,73 +7,71 @@ import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClienteEstadoEnum;
 import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClientesRules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Objects;
+
 @Service
 public class ClienteServiceImpl implements IClienteService{
-
     @Autowired
     IClienteDao clienteDao;
-
     @Autowired
     ClientesRules clientesRules;
-
     @Override
     public ClienteDTO obtenerCliente(Long id) {
-        var clienteEntity = clienteDao.findById(id).orElse(null);
+        var clienteEntity= clienteDao.findById(id).orElse(null);
         return clienteEntity!=null ? ClienteDTOMapper.transformEntityToDTO(clienteEntity) : null;
     }
 
     @Override
     public List<ClienteDTO> obtenerTodosClientes() {
-        return ClienteDTOMapper.transformEntityListToDTOList(clienteDao.findAll());
+        return ClienteDTOMapper.transformEntityListToDTOList( clienteDao.findAll());
     }
 
     @Override
     public List<ClienteDTO> obtenerClientePorApellido(String apellido) {
-        var listaCliente=clienteDao.findByApellido(apellido);
+        var listaCliente= clienteDao.findByApellido(apellido);
         return ClienteDTOMapper.transformEntityListToDTOList(listaCliente);
     }
 
     @Override
-    public Long crearCliente(ClienteDTO cliente) {
-        clientesRules.checkCrearEstado(cliente, ClienteEstadoEnum.DRAFT);
-        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
-        return cliente.getId();
+    public Long crearCliente(ClienteDTO clienteDto) {
+        clientesRules.checkCrearEstado(clienteDto, ClienteEstadoEnum.DRAFT);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDto));
+        return clienteDto.getId();
     }
 
     @Override
     public Long borrarCliente(Long id) {
         clientesRules.checkBorrarEstado(id);
-        var clienteEntity = clienteDao.findById(id).orElse(null);
+        var clienteEntity= clienteDao.findById(id).orElse(null);
         clienteDao.deleteById(id);
-        return clienteEntity.getId();
+        return Objects.requireNonNull(clienteEntity).getId();
     }
 
     @Override
-    public Long actualizarCliente(ClienteDTO cliente) {
-        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(cliente));
-        return cliente.getId();
+    public Long actualizarCliente(ClienteDTO clienteDto) {
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDto));
+        return clienteDto.getId();
     }
 
     @Override
-    public Long activarCliente(ClienteDTO clienteDTO) {
-        clientesRules.activarEstado(clienteDTO);
-        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
-        return clienteDTO.getId();
+    public Long activarCliente(ClienteDTO clienteDto) {
+        clientesRules.activarEstado(clienteDto);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDto));
+        return clienteDto.getId();
     }
 
     @Override
-    public Long cancelarCliente(ClienteDTO clienteDTO) {
-        clientesRules.cancelarEstado(clienteDTO);
-        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
-        return clienteDTO.getId();
+    public Long cancelarCliente(ClienteDTO clienteDto) {
+        clientesRules.cancelarEstado(clienteDto);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDto));
+        return clienteDto.getId();
     }
 
     @Override
-    public Long suspenderCliente(ClienteDTO clienteDTO) {
-        clientesRules.suspenderEstado(clienteDTO);
-        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
-        return clienteDTO.getId();
+    public Long suspenderCliente(ClienteDTO clienteDto) {
+        clientesRules.suspenderEstado(clienteDto);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDto));
+        return clienteDto.getId();
     }
 }

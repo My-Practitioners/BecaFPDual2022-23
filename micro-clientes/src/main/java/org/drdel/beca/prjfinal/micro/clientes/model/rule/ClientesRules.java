@@ -5,23 +5,21 @@ import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 import org.drdel.beca.prjfinal.micro.clientes.model.service.ClienteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
 @Controller
 public class ClientesRules {
     @Autowired
     ClienteServiceImpl clienteService;
 
+    public ClienteDTO activarEstado(ClienteDTO clienteDto) {
 
-    public ClienteDTO activarEstado(ClienteDTO clienteDto)  {
         boolean draftToActive=false;
-        int activar=ClienteEstadoEnum.OPERATIVE.getEstadoEnum();
 
-
+        int estadoOperative=ClienteEstadoEnum.OPERATIVE.getEstadoEnum();
         if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.DRAFT.getEstadoEnum()){
             draftToActive=true;
         }
         if (draftToActive){
-            clienteDto.setIdEstadoCliente(activar);
+            clienteDto.setIdEstadoCliente(estadoOperative);
             return clienteDto;
         }else {
             try {
@@ -32,17 +30,16 @@ public class ClientesRules {
         }
     }
 
-
     public ClienteDTO suspenderEstado(ClienteDTO clienteDto) {
+
         boolean operativeToSuspended=false;
-        int suspender=ClienteEstadoEnum.SUSPENDED.getEstadoEnum();
 
-
+        int estadoSuspended=ClienteEstadoEnum.SUSPENDED.getEstadoEnum();
         if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.OPERATIVE.getEstadoEnum()){
             operativeToSuspended=true;
         }
         if (operativeToSuspended){
-            clienteDto.setIdEstadoCliente(suspender);
+            clienteDto.setIdEstadoCliente(estadoSuspended);
             return clienteDto;
         }else {
             try {
@@ -51,20 +48,18 @@ public class ClientesRules {
                 throw new RuntimeException(e);
             }
         }
-
     }
 
-
     public ClienteDTO cancelarEstado(ClienteDTO clienteDto) {
+
         boolean operativeToCanceled=false;
-        int cancelar=ClienteEstadoEnum.CANCELED.getEstadoEnum();
 
-
+        int estadoCanceled=ClienteEstadoEnum.CANCELED.getEstadoEnum();
         if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.OPERATIVE.getEstadoEnum()){
             operativeToCanceled=true;
         }
         if (operativeToCanceled){
-            clienteDto.setIdEstadoCliente(cancelar);
+            clienteDto.setIdEstadoCliente(estadoCanceled);
             return clienteDto;
         }else {
             try {
@@ -73,10 +68,7 @@ public class ClientesRules {
                 throw new RuntimeException(e);
             }
         }
-
     }
-
-
 
     public  ClienteDTO checkCrearEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum)  {
 
@@ -94,8 +86,6 @@ public class ClientesRules {
                     throw new RuntimeException(e);
                 }
             }
-
-
         return clienteDto;
     }
 
@@ -119,6 +109,4 @@ public class ClientesRules {
         }
         return id;
     }
-
-
 }
