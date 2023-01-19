@@ -45,13 +45,23 @@ public class ClientesRules {
     }
 
 
-    public ClienteDTO cancelarEstado(ClienteDTO clienteDto, ClienteEstadoEnum clienteEstadoEnum) throws ClienteException {
-        clienteEstadoEnum=ClienteEstadoEnum.CANCELAR;
+    public ClienteDTO cancelarEstado(ClienteDTO clienteDto) {
+        boolean operativeToCanceled=false;
+        int cancelar=ClienteEstadoEnum.CANCELAR.getEstadoEnum();
 
-        if (clienteDto.getIdEstadoCliente()==clienteEstadoEnum.getEstadoEnum()){
+
+        if (clienteDto.getIdEstadoCliente()==ClienteEstadoEnum.ACTIVAR.getEstadoEnum()){
+            operativeToCanceled=true;
+        }
+        if (operativeToCanceled){
+            clienteDto.setIdEstadoCliente(cancelar);
             return clienteDto;
         }else {
-            return ClienteException.cancelarCliente();
+            try {
+                return ClienteException.cancelarCliente();
+            } catch (ClienteException e) {
+                throw new RuntimeException(e);
+            }
         }
 
     }

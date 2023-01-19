@@ -20,4 +20,6 @@ public interface IClienteService {
      Long actualizarCliente(ClienteDTO clienteDTO);
 
     Long activarCliente(ClienteDTO clienteDTO);
+
+    public Long cancelarCliente(ClienteDTO clienteDTO);
 }

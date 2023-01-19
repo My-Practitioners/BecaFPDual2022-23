@@ -67,4 +67,10 @@ public class ClienteServiceImpl implements IClienteService{
         return clienteDTO.getId();
     }
 
+    @Override
+    public Long cancelarCliente(ClienteDTO clienteDTO) {
+        clientesRules.cancelarEstado(clienteDTO);
+        clienteDao.save(ClienteDTOMapper.transformDTOToEntity(clienteDTO));
+        return clienteDTO.getId();
+    }
 }

@@ -80,5 +80,12 @@ public class ClienteServiceImplTest {
         assertThat(clienteDraft.getIdEstadoCliente()).isEqualTo(1);
     }
 
+    @Test
+    @DisplayName("Cancelar cliente")
+    void testCancelarCliente(){
+        var clienteOperative=clienteService.obtenerCliente(5l);
+        clienteService.cancelarCliente(clienteOperative);
+        assertThat(clienteOperative.getIdEstadoCliente()).isEqualTo(3);
+    }
 
 }
