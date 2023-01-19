@@ -108,6 +108,81 @@ public class ClienteRestController extends AppController {
 
     }
 
+    @PatchMapping("/clientes/operative/{id}")
+    public ResponseEntity<Map<String, Object>> updateOperative(@PathVariable Long id,
+                                                      @Valid @RequestBody ClienteDTO cliente,
+                                                      BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida("Cliente no válido", result);
+        }
+
+        ClienteDTO clienteGuardado;
+
+        try {
+            clienteService.activarCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                "Cliente actualizado con éxito",
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
+
+    @PatchMapping("/clientes/canceled/{id}")
+    public ResponseEntity<Map<String, Object>> updateCanceled(@PathVariable Long id,
+                                                               @Valid @RequestBody ClienteDTO cliente,
+                                                               BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida("Cliente no válido", result);
+        }
+
+        ClienteDTO clienteGuardado;
+
+        try {
+            clienteService.cancelarCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                "Cliente actualizado con éxito",
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
+
+    @PatchMapping("/clientes/suspended/{id}")
+    public ResponseEntity<Map<String, Object>> updateSuspended(@PathVariable Long id,
+                                                              @Valid @RequestBody ClienteDTO cliente,
+                                                              BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida("Cliente no válido", result);
+        }
+
+        ClienteDTO clienteGuardado;
+
+        try {
+            clienteService.suspenderCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                "Cliente actualizado con éxito",
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
+
     @DeleteMapping("/clientes/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
 

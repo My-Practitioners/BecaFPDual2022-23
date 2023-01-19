@@ -46,7 +46,7 @@ public class ClientesRules {
             return clienteDto;
         }else {
             try {
-                return ClienteException.cancelarCliente();
+                return ClienteException.suspenderCliente();
             } catch (ClienteException e) {
                 throw new RuntimeException(e);
             }
