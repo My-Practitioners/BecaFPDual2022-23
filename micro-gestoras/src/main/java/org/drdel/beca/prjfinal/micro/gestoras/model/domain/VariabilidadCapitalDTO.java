@@ -12,6 +12,8 @@ import java.util.Date;
 
         private String codVariabilidadCapital;
 
+        private Long idEstadoVariabilidadCapital;
+
         private String descripcion;
 
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -37,13 +39,15 @@ import java.util.Date;
         public VariabilidadCapitalDTO() {
         }
 
-        public VariabilidadCapitalDTO(String codVariabilidadCapital, String descripcion) {
+        public VariabilidadCapitalDTO(String codVariabilidadCapital, Long idEstadoVariabilidadCapital, String descripcion) {
             this.codVariabilidadCapital = codVariabilidadCapital;
+            this.idEstadoVariabilidadCapital=idEstadoVariabilidadCapital;
             this.descripcion = descripcion;
         }
 
         public VariabilidadCapitalDTO(VariabilidadCapitalDTOBuilder builder) {
             this.codVariabilidadCapital=builder.codVariabilidadCapital;
+            this.idEstadoVariabilidadCapital=builder.idEstadoVariabilidadCapital;
             this.descripcion=builder.descripcion;
             builder.audCreaDate(audCreaDate);
             builder.audModDate(audModDate);
@@ -59,6 +63,14 @@ import java.util.Date;
 
         public void setCodVariabilidadCapital(String codVariabilidadCapital) {
             this.codVariabilidadCapital = codVariabilidadCapital;
+        }
+
+        public Long getIdEstadoVariabilidadCapital() {
+            return idEstadoVariabilidadCapital;
+        }
+
+        public void setIdEstadoVariabilidadCapital(Long idEstadoVariabilidadCapital) {
+            this.idEstadoVariabilidadCapital = idEstadoVariabilidadCapital;
         }
 
         public String getDescripcion() {
@@ -122,21 +134,24 @@ import java.util.Date;
 
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("codVariabilidadCapital" ,codVariabilidadCapital);
-        jsonObject.put("descripcion" ,descripcion);
-        jsonObject.put("audCreaDate" , audCreaDate);
-        jsonObject.put("audModDate" , audModDate);
-        jsonObject.put("audCreaProc" , audCreaProc);
-        jsonObject.put("audModProc" , audModProc);
-        jsonObject.put("audCreaUsu" , audCreaUsu);
-        jsonObject.put("audModUsu" , audModUsu);
+        jsonObject.put("codVariabilidadCapital" ,getCodVariabilidadCapital());
+        jsonObject.put("idEstadoVariabilidadCapital",getIdEstadoVariabilidadCapital());
+        jsonObject.put("descripcion" ,getDescripcion());
+        jsonObject.put("audCreaDate" , getAudCreaDate());
+        jsonObject.put("audModDate" , getAudModDate());
+        jsonObject.put("audCreaProc" , getAudCreaProc());
+        jsonObject.put("audModProc" , getAudModProc());
+        jsonObject.put("audCreaUsu" , getAudCreaUsu());
+        jsonObject.put("audModUsu" , getAudModUsu());
 
         return jsonObject.toString();
     }
 
-    public class VariabilidadCapitalDTOBuilder{
+    public static class VariabilidadCapitalDTOBuilder{
 
             private String codVariabilidadCapital;
+
+            private Long idEstadoVariabilidadCapital;
             private String descripcion;
 
             @JsonFormat(pattern = "yyyy-MM-dd")
@@ -159,8 +174,9 @@ import java.util.Date;
             @Size(max = 20)
             private String audModUsu;
 
-            public VariabilidadCapitalDTOBuilder(String codVariabilidadCapital, String descripcion) {
+            public VariabilidadCapitalDTOBuilder(String codVariabilidadCapital, Long idEstadoVariabilidadCapital, String descripcion) {
                 this.codVariabilidadCapital = codVariabilidadCapital;
+                this.idEstadoVariabilidadCapital=idEstadoVariabilidadCapital;
                 this.descripcion = descripcion;
             }
 

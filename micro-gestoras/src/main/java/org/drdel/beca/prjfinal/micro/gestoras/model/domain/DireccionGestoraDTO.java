@@ -12,6 +12,8 @@ public class DireccionGestoraDTO {
 
     private Long idGestora;
 
+    private Long idEstadoDireccionGestora;
+
     private String direccion;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -36,15 +38,17 @@ public class DireccionGestoraDTO {
     private String audModUsu;
 
 
-    public DireccionGestoraDTO(Long idDireccion, Long idGestora,String direccion) {
+    public DireccionGestoraDTO(Long idDireccion, Long idGestora,Long idEstadoDireccionGestora, String direccion) {
         this.idDireccion=idDireccion;
         this.idGestora=idGestora;
+        this.idEstadoDireccionGestora=idEstadoDireccionGestora;
         this.direccion=direccion;
     }
 
     public DireccionGestoraDTO(DireccionGestoraDTOBuilder builder) {
         this.idDireccion= builder.idDireccion;
         this.idGestora= builder.idGestora;
+        this.idEstadoDireccionGestora=builder.idEstadoDireccionGestora;
         this.direccion= builder.direccion;
         builder.audCreaDate(audCreaDate);
         builder.audModDate(audModDate);
@@ -69,6 +73,14 @@ public class DireccionGestoraDTO {
 
     public void setIdGestora(Long idGestora) {
         this.idGestora = idGestora;
+    }
+
+    public Long getIdEstadoDireccionGestora() {
+        return idEstadoDireccionGestora;
+    }
+
+    public void setIdEstadoDireccionGestora(Long idEstadoDireccionGestora) {
+        this.idEstadoDireccionGestora = idEstadoDireccionGestora;
     }
 
     public String getDireccion() {
@@ -131,6 +143,7 @@ public class DireccionGestoraDTO {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("idDireccion" ,getIdDireccion());
         jsonObject.put("idGestora" ,getIdGestora());
+        jsonObject.put("idEstadoDireccionGestora",getIdEstadoDireccionGestora());
         jsonObject.put("direccion" ,getDireccion());
         jsonObject.put("audCreaDate" , getAudCreaDate());
         jsonObject.put("audModDate" , getAudModDate());
@@ -140,15 +153,16 @@ public class DireccionGestoraDTO {
         jsonObject.put("audModUsu" , getAudModUsu());
 
         return jsonObject.toString();
-
     }
 
 
-    public class DireccionGestoraDTOBuilder {
+    public static class DireccionGestoraDTOBuilder {
 
         private Long idDireccion;
 
         private Long idGestora;
+
+        private Long idEstadoDireccionGestora;
 
         private String direccion;
 
@@ -173,9 +187,10 @@ public class DireccionGestoraDTO {
         @Size(max = 20)
         private String audModUsu;
 
-        public DireccionGestoraDTOBuilder (long idDireccion, long idGestora, String direccion){
+        public DireccionGestoraDTOBuilder (Long idDireccion, Long idGestora,Long idEstadoDireccionGestora, String direccion){
             this.idDireccion=idDireccion;
             this.idGestora=idGestora;
+            this.idEstadoDireccionGestora=idEstadoDireccionGestora;
             this.direccion=direccion;
         }
         public DireccionGestoraDTOBuilder audCreaDate(Date audCreaDate){

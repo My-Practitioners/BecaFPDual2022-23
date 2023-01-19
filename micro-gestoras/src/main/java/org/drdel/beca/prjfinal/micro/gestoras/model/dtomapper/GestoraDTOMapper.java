@@ -12,6 +12,7 @@ public class GestoraDTOMapper {
 
     public static GestoraDTO transofrmEntityToDTO(Gestora entity){
         return new GestoraDTO(entity.getIdGestora(),
+                entity.getIdEstadoGestora(),
                 entity.getNombre());
     }
 
@@ -25,6 +26,7 @@ public class GestoraDTOMapper {
     public static Gestora transformDTOToEntity(GestoraDTO dto){
         var entity=new Gestora();
         entity.setIdGestora(dto.getIdGestora());
+        entity.setIdEstadoGestora(dto.getIdEstadoGestora());
         entity.setNombre(dto.getNombre());
         entity.setAudCreaDate(dto.getAudCreaDate());
         entity.setAudModDate(dto.getAudModDate());

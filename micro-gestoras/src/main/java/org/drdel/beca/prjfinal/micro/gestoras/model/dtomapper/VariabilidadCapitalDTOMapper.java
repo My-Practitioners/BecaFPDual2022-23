@@ -13,6 +13,7 @@ public class VariabilidadCapitalDTOMapper {
     public static VariabilidadCapitalDTO transformEntityToDTO(VariabilidadCapital entity) {
 
         return new VariabilidadCapitalDTO(entity.getCodVariabilidadCapital(),
+                entity.getIdEstadoVariabilidadCapital(),
                 entity.getDescripcion());
     }
 
@@ -28,6 +29,7 @@ public class VariabilidadCapitalDTOMapper {
         var entity = new VariabilidadCapital();
 
         entity.setCodVariabilidadCapital(dto.getCodVariabilidadCapital());
+        entity.setIdEstadoVariabilidadCapital(dto.getIdEstadoVariabilidadCapital());
         entity.setDescripcion(dto.getDescripcion());
         entity.setAudCreaDate(dto.getAudCreaDate());
         entity.setAudModDate(dto.getAudModDate());

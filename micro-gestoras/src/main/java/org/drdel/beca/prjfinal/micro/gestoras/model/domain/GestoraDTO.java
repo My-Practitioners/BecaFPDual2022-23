@@ -9,8 +9,9 @@ import java.util.Date;
 
 
 public class GestoraDTO {
+    private Long idGestora;
 
-    private long idGestora;
+    private Long idEstadoGestora;
 
     @NotBlank
     private String nombre;
@@ -35,13 +36,15 @@ public class GestoraDTO {
     @Size(max = 20)
     private String audModUsu;
 
-    public GestoraDTO(Long idGestora, String nombre) {
+    public GestoraDTO(Long idGestora,Long idEstadoGestora, String nombre) {
         this.idGestora=idGestora;
+        this.idEstadoGestora=idEstadoGestora;
         this.nombre=nombre;
     }
 
     public GestoraDTO(GestoraDTOBuilder builder) {
         this.idGestora=builder.idGestora;
+        this.idEstadoGestora=builder.idEstadoGestora;
         this.nombre=builder.nombre;
         builder.audCreaDate(audCreaDate);
         builder.audModDate(audModDate);
@@ -57,6 +60,14 @@ public class GestoraDTO {
 
     public void setIdGestora(long idGestora) {
         this.idGestora = idGestora;
+    }
+
+    public Long getIdEstadoGestora() {
+        return idEstadoGestora;
+    }
+
+    public void setIdEstadoGestora(Long idEstadoGestora) {
+        this.idEstadoGestora = idEstadoGestora;
     }
 
     public String getNombre() {
@@ -120,6 +131,7 @@ public class GestoraDTO {
 
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("idGestora",idGestora);
+        jsonObject.put("idEstadoGestora",idEstadoGestora);
         jsonObject.put("nombre",nombre);
         jsonObject.put("audCreaDate", audCreaDate);
         jsonObject.put("audModDate", audModDate);
@@ -132,8 +144,9 @@ public class GestoraDTO {
 
     }
 
-    public class GestoraDTOBuilder {
-        private long idGestora;
+    public static class GestoraDTOBuilder {
+        private Long idGestora;
+        private Long idEstadoGestora;
         private String nombre;
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Size(max = 10)
@@ -150,8 +163,9 @@ public class GestoraDTO {
         @Size(max = 20)
         private String audModUsu;
 
-        public GestoraDTOBuilder(long idGestora, String nombre) {
+        public GestoraDTOBuilder(Long idGestora, Long idEstadoGestora, String nombre) {
             this.idGestora = idGestora;
+            this.idEstadoGestora=idEstadoGestora;
             this.nombre = nombre;
         }
 

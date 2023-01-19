@@ -13,7 +13,10 @@ public class Gestora implements Serializable {
     @Id
     @Column(name = "id_gestora")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idGestora;
+    private Long idGestora;
+
+    @Column(name = "id_estado_gestora")
+    private Long idEstadoGestora;
 
     @Column(name = "nombre")
     @NotBlank
@@ -45,7 +48,6 @@ public class Gestora implements Serializable {
     private String audModUsu;
 
 
-    //getter-setter
 
     public long getIdGestora() {
         return idGestora;
@@ -53,6 +55,14 @@ public class Gestora implements Serializable {
 
     public void setIdGestora(long idGestora) {
         this.idGestora = idGestora;
+    }
+
+    public Long getIdEstadoGestora() {
+        return idEstadoGestora;
+    }
+
+    public void setIdEstadoGestora(Long idEstadoGestora) {
+        this.idEstadoGestora = idEstadoGestora;
     }
 
     public String getNombre() {
