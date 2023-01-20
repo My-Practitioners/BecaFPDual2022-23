@@ -13,6 +13,6 @@ public interface IVariabilidadCapitalService {
 
     List<VariabilidadCapitalDTO> obtenerVariabilidadPorDescripcion(String decripcion);
 
-    VariabilidadCapital crearVariabilidadCapital(String codPInversion, String descripcion);
+    VariabilidadCapital crearVariabilidadCapital(String codPInversion, Long idEstadoVariabilidadCapital,String descripcion);
 }
 

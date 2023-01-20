@@ -32,8 +32,8 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
     }
 
     @Override
-    public VariabilidadCapital crearVariabilidadCapital(String codPInversion, String descripcion) {
-        VariabilidadCapitalDTO variabilidadCapitalDTO= new VariabilidadCapitalDTO(codPInversion,descripcion);
+    public VariabilidadCapital crearVariabilidadCapital(String codPInversion,Long idEstadoVariabilidadCapital, String descripcion) {
+        VariabilidadCapitalDTO variabilidadCapitalDTO= new VariabilidadCapitalDTO(codPInversion,idEstadoVariabilidadCapital,descripcion);
         return variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDTO));
     }
 
