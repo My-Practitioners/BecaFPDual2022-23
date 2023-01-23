@@ -13,6 +13,7 @@ public class PoliticaInversionDTOMapper {
     public static PoliticaInversionDTO transformEntityToDTO(PoliticaInversion entity) {
 
         return new PoliticaInversionDTO(entity.getCodPinversion(),
+                entity.getIdEstadoPoliticaInversion(),
                 entity.getDescripcion());
     }
 
@@ -26,6 +27,7 @@ public class PoliticaInversionDTOMapper {
     public static PoliticaInversion transformDTOToEntity(PoliticaInversionDTO dto) {
         var entity = new PoliticaInversion();
         entity.setCodPinversion(dto.getCodPinversion());
+        entity.setIdEstadoPoliticaInversion(dto.getIdEstadoPoliticaInversion());
         entity.setDescripcion(dto.getDescripcion());
         entity.setAudCreaDate(dto.getAudCreaDate());
         entity.setAudModDate(dto.getAudModDate());

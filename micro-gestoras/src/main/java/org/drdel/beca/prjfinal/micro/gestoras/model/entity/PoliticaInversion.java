@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +13,9 @@ public class PoliticaInversion implements Serializable {
     @Id
     @Column(name = "cod_p_inversion")
     private String codPinversion;
+
+    @NotNull
+    private int idEstadoPoliticaInversion;
 
     @Column(name = "descripcion")
     private String descripcion;
@@ -50,6 +54,10 @@ public class PoliticaInversion implements Serializable {
     public void setCodPinversion(String codPinversion) {
         this.codPinversion = codPinversion;
     }
+
+    public int getIdEstadoPoliticaInversion() {return idEstadoPoliticaInversion;}
+
+    public void setIdEstadoPoliticaInversion(int idEstadoPoliticaInversion) {this.idEstadoPoliticaInversion = idEstadoPoliticaInversion;}
 
     public String getDescripcion() {
         return descripcion;

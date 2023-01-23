@@ -14,4 +14,14 @@ public interface IPoliticaInversionService {
 
     String crearPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
 
+    String borrarPoliticaInversion(String cod);
+
+    String actualizarPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
+
+    String activarPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
+
+    String cancelarPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
+
+    String suspenderPoliticaInversion(PoliticaInversionDTO politicaInversionDTO);
+
 }

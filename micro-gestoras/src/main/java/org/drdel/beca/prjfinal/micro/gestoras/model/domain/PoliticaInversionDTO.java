@@ -11,6 +11,8 @@ public class PoliticaInversionDTO implements Serializable {
 
     private String codPinversion;
 
+    private int idEstadoPoliticaInversion;
+
     private String descripcion;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -35,13 +37,15 @@ public class PoliticaInversionDTO implements Serializable {
     private String audModUsu;
 
 
-    public PoliticaInversionDTO(String codPinversion, String descripcion) {
+    public PoliticaInversionDTO(String codPinversion, int idEstadoPoliticaInversion, String descripcion) {
         this.codPinversion = codPinversion;
+        this.idEstadoPoliticaInversion = idEstadoPoliticaInversion;
         this.descripcion = descripcion;
     }
 
     public PoliticaInversionDTO(PoliticaInversionDTOBuilder builder) {
         this.codPinversion=builder.codPinversion;
+        this.idEstadoPoliticaInversion=builder.idEstadoPoliticaInversion;
         this.descripcion=builder.descripcion;
         builder.audCreaDate(audCreaDate);
         builder.audModDate(audModDate);
@@ -58,6 +62,10 @@ public class PoliticaInversionDTO implements Serializable {
     public void setCodPinversion(String codPinversion) {
         this.codPinversion = codPinversion;
     }
+
+    public int getIdEstadoPoliticaInversion() {return idEstadoPoliticaInversion;}
+
+    public void setIdEstadoPoliticaInversion(int idEstadoPoliticaInversion) {this.idEstadoPoliticaInversion = idEstadoPoliticaInversion;}
 
     public String getDescripcion() {
         return descripcion;
@@ -120,6 +128,7 @@ public class PoliticaInversionDTO implements Serializable {
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("codPinversion" ,codPinversion);
+        jsonObject.put("idEstadoPoliticaInversion" ,idEstadoPoliticaInversion);
         jsonObject.put("descripcion" ,descripcion);
         jsonObject.put("audCreaDate" , audCreaDate);
         jsonObject.put("audModDate" , audModDate);
@@ -133,6 +142,7 @@ public class PoliticaInversionDTO implements Serializable {
 
     public class PoliticaInversionDTOBuilder {
         private String codPinversion;
+        private int idEstadoPoliticaInversion;
         private String descripcion;
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Size(max = 10)
@@ -149,8 +159,9 @@ public class PoliticaInversionDTO implements Serializable {
         @Size(max = 20)
         private String audModUsu;
 
-        public PoliticaInversionDTOBuilder(String codPinversion, String descripcion) {
+        public PoliticaInversionDTOBuilder(String codPinversion, int idEstadoPoliticaInversion, String descripcion) {
             this.codPinversion = codPinversion;
+            this.idEstadoPoliticaInversion = idEstadoPoliticaInversion;
             this.descripcion = descripcion;
         }
 
