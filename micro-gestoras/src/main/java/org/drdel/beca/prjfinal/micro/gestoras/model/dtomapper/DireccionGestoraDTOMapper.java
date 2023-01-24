@@ -11,8 +11,8 @@ public class DireccionGestoraDTOMapper {
 
     public static DireccionGestoraDTO transformEntityToDTO(DireccionGestora entity){
         return new DireccionGestoraDTO(entity.getIdDireccion(),
-                entity.getIdGestora(),
                 entity.getIdEstadoDireccionGestora(),
+                entity.getIdGestora(),
                 entity.getDireccion());
     }
 
@@ -26,8 +26,8 @@ public class DireccionGestoraDTOMapper {
     public static DireccionGestora transformDTOToEntity(DireccionGestoraDTO dto){
         var entity= new DireccionGestora();
         entity.setIdDireccion(dto.getIdDireccion());
-        entity.setIdGestora(dto.getIdGestora());
         entity.setIdEstadoDireccionGestora(dto.getIdEstadoDireccionGestora());
+        entity.setIdGestora(dto.getIdGestora());
         entity.setDireccion(dto.getDireccion());
         entity.setAudCreaDate(dto.getAudCreaDate());
         entity.setAudModDate(dto.getAudModDate());

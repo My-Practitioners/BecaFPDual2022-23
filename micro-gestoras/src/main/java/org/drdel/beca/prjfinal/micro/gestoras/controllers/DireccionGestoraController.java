@@ -1,8 +1,8 @@
 package org.drdel.beca.prjfinal.micro.gestoras.controllers;
 
 import org.drdel.beca.prjfinal.micro.gestoras.api.commons.AppController;
-import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
-import org.drdel.beca.prjfinal.micro.gestoras.model.service.IGestoraService;
+import org.drdel.beca.prjfinal.micro.gestoras.model.domain.DireccionGestoraDTO;
+import org.drdel.beca.prjfinal.micro.gestoras.model.service.IDireccionGestoraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,45 +17,45 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
-public class GestoraController extends AppController {
+public class DireccionGestoraController extends AppController {
 
     private static final String MSG_RESPONSE_KEY_MENSAJE= "mensaje";
-    private static final String MSG_RESPONSE_KEY_GESTORA = "gestora";
+    private static final String MSG_RESPONSE_KEY_DIRECCION_GESTORA= "Dirección gestora";
     private static final String MSG_RESPONSE_KEY_ERRORES= "errors";
 
-    private static final String NO_VALIDO="Gestora no válido";
-    private static final String ACTUALIZADO="Gestora actualizado con éxito";
+    private static final String NO_VALIDO="Direccion gestora no válido";
+    private static final String ACTUALIZADO="Direccion gestora actualizado con éxito";
 
     @Autowired
-    private IGestoraService gestoraService;
+    private IDireccionGestoraService direccionGestoraService;
 
-    @GetMapping("/gestoras")
-    public List<GestoraDTO> list(){
-        return gestoraService.obtenerTodasGestoras();
+    @GetMapping("/direccion-gestoras")
+    public List<DireccionGestoraDTO> list(){
+        return direccionGestoraService.obtenerTodosDireccionGestora();
     }
 
-    @GetMapping("/gestoras/{id}")
+    @GetMapping("/direccion-gestoras/{id}")
     public ResponseEntity<Map<String, Object>> show(@PathVariable Long id){
-        GestoraDTO gestoraDto;
+        DireccionGestoraDTO direccionGestoraDto;
         try {
-            gestoraDto=gestoraService.obtenerGestora(id);
+            direccionGestoraDto=direccionGestoraService.obtenerDireccionGestora(id);
         }catch (Exception e){
             return gestionarExceptionResponse(e);
         }
-        if (gestoraDto==null){
+        if (direccionGestoraDto==null){
             return gestionarResponse(
-                    "La gestora ID: ".concat(id.toString()).concat(" no existe en la BD"),
-                    gestoraDto,HttpStatus.NOT_FOUND);
+                    "La dirección gestora ID: ".concat(id.toString()).concat(" no existe en la BD"),
+                    direccionGestoraDto,HttpStatus.NOT_FOUND);
         }
 
         return gestionarResponse(
-                "Gestora obtenida con éxito",
-                gestoraDto,
+                "Direccion gestora obtenida con éxito",
+                direccionGestoraDto,
                 HttpStatus.OK);
     }
 
-    @PostMapping(value={"/gestoras"})
-    public ResponseEntity<Map<String, Object>> create(@Valid @RequestBody GestoraDTO gestoraDto,
+    @PostMapping(value={"/direccion-gestoras"})
+    public ResponseEntity<Map<String, Object>> create(@Valid @RequestBody DireccionGestoraDTO direccionGestoraDto,
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
@@ -63,158 +63,158 @@ public class GestoraController extends AppController {
         }
 
         Long id;
-        GestoraDTO gestoraGuardada;
+        DireccionGestoraDTO direccionGuardada;
 
         try {
-            id = gestoraService.crearGestora(gestoraDto);
-            gestoraGuardada = gestoraService.obtenerGestora(id);
+            id = direccionGestoraService.crearDireccionGestora(direccionGestoraDto);
+            direccionGuardada = direccionGestoraService.obtenerDireccionGestora(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
-                "Gestora creada con éxito",
-                gestoraGuardada,
+                "Direccion gestora creada con éxito",
+                direccionGuardada,
                 HttpStatus.CREATED);
 
     }
 
 
-    @PutMapping("/gestoras/{id}")
+    @PutMapping("/direccion-gestoras/{id}")
     public ResponseEntity<Map<String, Object>> update(@PathVariable Long id,
-                                                      @Valid @RequestBody GestoraDTO gestoraDto,
+                                                      @Valid @RequestBody DireccionGestoraDTO direccionGestoraDto,
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
             return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
-        GestoraDTO gestoraGuardada;
+        DireccionGestoraDTO direccionGestoraGuardada;
 
         try {
-            gestoraService.actualizarGestora(gestoraDto);
-            gestoraGuardada = gestoraService.obtenerGestora(id);
+            direccionGestoraService.actualizarDireccionGestora(direccionGestoraDto);
+            direccionGestoraGuardada = direccionGestoraService.obtenerDireccionGestora(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
                 ACTUALIZADO,
-                gestoraGuardada,
+                direccionGestoraGuardada,
                 HttpStatus.CREATED);
 
     }
 
 
-    @PatchMapping("/gestoras/operative/{id}")
+    @PatchMapping("/direccion-gestoras/operative/{id}")
     public ResponseEntity<Map<String, Object>> updateOperative(@PathVariable Long id,
-                                                               @Valid @RequestBody GestoraDTO gestoraDto,
+                                                               @Valid @RequestBody DireccionGestoraDTO direccionGestoraDto,
                                                                BindingResult result) {
 
         if(result.hasErrors()) {
             return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
-        GestoraDTO gestoraGuardada;
+        DireccionGestoraDTO direccionGestoraGuardada;
 
         try {
-            gestoraService.activarGestora(gestoraDto);
-            gestoraGuardada = gestoraService.obtenerGestora(id);
+            direccionGestoraService.activarDireccionGestora(direccionGestoraDto);
+            direccionGestoraGuardada = direccionGestoraService.obtenerDireccionGestora(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
                 ACTUALIZADO,
-                gestoraGuardada,
+                direccionGestoraGuardada,
                 HttpStatus.CREATED);
 
     }
 
-    @PatchMapping("/gestoras/canceled/{id}")
+    @PatchMapping("/direccion-gestoras/canceled/{id}")
     public ResponseEntity<Map<String, Object>> updateCanceled(@PathVariable Long id,
-                                                              @Valid @RequestBody GestoraDTO gestoraDto,
+                                                              @Valid @RequestBody DireccionGestoraDTO direccionGestoraDto,
                                                               BindingResult result) {
 
         if(result.hasErrors()) {
             return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
-        GestoraDTO gestoraGuardada;
+        DireccionGestoraDTO direccionGestoraGuardada;
 
         try {
-            gestoraService.cancelarGestora(gestoraDto);
-            gestoraGuardada = gestoraService.obtenerGestora(id);
+            direccionGestoraService.cancelarDireccionGestora(direccionGestoraDto);
+            direccionGestoraGuardada = direccionGestoraService.obtenerDireccionGestora(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
                 ACTUALIZADO,
-                gestoraGuardada,
+                direccionGestoraGuardada,
                 HttpStatus.CREATED);
 
     }
 
-    @PatchMapping("/gestoras/suspended/{id}")
+    @PatchMapping("/direccion-gestoras/suspended/{id}")
     public ResponseEntity<Map<String, Object>> updateSuspended(@PathVariable Long id,
-                                                               @Valid @RequestBody GestoraDTO gestoraDto,
+                                                               @Valid @RequestBody DireccionGestoraDTO direccionGestoraDto,
                                                                BindingResult result) {
 
         if(result.hasErrors()) {
             return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
-        GestoraDTO gestoraGuardada;
+        DireccionGestoraDTO direccionGestoraGuardada;
 
         try {
-            gestoraService.suspenderGestora(gestoraDto);
-            gestoraGuardada = gestoraService.obtenerGestora(id);
+            direccionGestoraService.suspenderDireccionGestora(direccionGestoraDto);
+            direccionGestoraGuardada = direccionGestoraService.obtenerDireccionGestora(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
                 ACTUALIZADO,
-                gestoraGuardada,
+                direccionGestoraGuardada,
                 HttpStatus.CREATED);
 
     }
 
-    @DeleteMapping("/gestoras/{id}")
+    @DeleteMapping("/direccion-gestoras/{id}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable Long id) {
 
-        GestoraDTO gestoraDto;
+        DireccionGestoraDTO direccionGestoraDto;
 
         try {
-            gestoraDto = gestoraService.obtenerGestora(id);
-            if (gestoraDto != null)
-                gestoraService.borrarGestora(id);
+            direccionGestoraDto = direccionGestoraService.obtenerDireccionGestora(id);
+            if (direccionGestoraDto != null)
+                direccionGestoraService.borrarDireccionGestora(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
-        if (gestoraDto != null)
+        if (direccionGestoraDto != null)
             return gestionarResponse(
-                    "Gestora eliminada con éxito",
-                    gestoraDto,
+                    "Direccion gestora eliminada con éxito",
+                    direccionGestoraDto,
                     HttpStatus.OK);
         else
             return gestionarResponse(
-                    "Gestora inexistente: ".concat(id.toString()),
-                    gestoraDto,
+                    "Direccion gestora inexistente: ".concat(id.toString()),
+                    direccionGestoraDto,
                     HttpStatus.NOT_FOUND);
     }
 
 
 
-    private ResponseEntity<Map<String, Object>> gestionarResponse(String msg, GestoraDTO gestoraDto, HttpStatus status) {
+    private ResponseEntity<Map<String, Object>> gestionarResponse(String msg, DireccionGestoraDTO direccionGestoraDto, HttpStatus status) {
 
         Map<String, Object> mapResult = new HashMap<>();
 
         mapResult.put(MSG_RESPONSE_KEY_MENSAJE, msg);
-        if(gestoraDto != null)
-            mapResult.put(MSG_RESPONSE_KEY_GESTORA, gestoraDto);
+        if(direccionGestoraDto != null)
+            mapResult.put(MSG_RESPONSE_KEY_DIRECCION_GESTORA, direccionGestoraDto);
 
         return new ResponseEntity<>(mapResult, status);
 
@@ -236,7 +236,5 @@ public class GestoraController extends AppController {
         return new ResponseEntity<>(mapResult, HttpStatus.BAD_REQUEST);
 
     }
-
-
 
 }
