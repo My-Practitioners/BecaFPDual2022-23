@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 public class VariabilidadCapitalController extends AppController {
 
-    private static final String MSG_RESPONSE_KEY_MENSAJE= "mensaje";
+    private static final String MSG_RESPONSE_KEY_MENSAJE= "Mensaje";
     private static final String MSG_RESPONSE_KEY_VARIABILIDAD_CAPITAL = "variabilidad capital";
     private static final String MSG_RESPONSE_KEY_ERRORES= "errors";
 
