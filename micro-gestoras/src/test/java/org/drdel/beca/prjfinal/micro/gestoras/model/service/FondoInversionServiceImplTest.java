@@ -23,7 +23,7 @@ class FondoInversionServiceImplTest {
 
     @ParameterizedTest
     @DisplayName("Obtención de Fondo de Inversion por código para verificar existencia")
-    @ValueSource(strings = {"ES0176200030","ES0119251017"} )
+    @ValueSource(strings = {"ES0158677007","ES0158706038"} )
     void testObtenerFondoInversion(String code) {
         // Call the service method
         var varFon = fondoInversionService.obtenerFondoInversion(code);

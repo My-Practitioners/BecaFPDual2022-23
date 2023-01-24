@@ -11,7 +11,7 @@ import java.util.Date;
 public class PoliticaInversion implements Serializable {
 
     @Id
-    @Column(name = "cod_p_inversion")
+    @Column(name = "cod_pinversion")
     private String codPinversion;
 
     @NotNull

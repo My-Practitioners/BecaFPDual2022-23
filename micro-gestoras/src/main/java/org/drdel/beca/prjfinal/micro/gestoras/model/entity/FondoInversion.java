@@ -33,13 +33,13 @@ public class FondoInversion implements Serializable {
     @Column(name = "id_direccion")
     private Long idDireccion;
 
-    @Column(name = "cod_p_inversion")
+    @Column(name = "cod_pinversion")
     private String codPInversion;
 
-    @Column(name = "cod_variabilidad_capital")
+    @Column(name = "cod_variabilidadcapital")
     private String codVariabilidadCapital;
 
-    @Column(name = "sub_fondo")
+    @Column(name = "subfondo")
     private String subFondo;
 
     @Column(name = "cod_supervisor")
