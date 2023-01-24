@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.gestoras.controllers;
 
 import org.apache.tomcat.util.descriptor.LocalResolver;
+import org.drdel.beca.prjfinal.micro.gestoras.api.commons.AppController;
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.VariabilidadCapitalDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.service.IVariabilidadCapitalService;
 import org.slf4j.Logger;
@@ -11,27 +12,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class VariabilidadCapitalController {
-
-
-    private LocalResolver localResolver;
-    @Autowired
-    private HttpServletRequest request;
-
-    private final Logger log= LoggerFactory.getLogger(getClass());
-
-    private static final String MSG_RESPONSE_KEY_ERROR="error";
-
-    private static final String MSG_RESPONSE_VALUE_ERROR_SERVICIO="Error al acceder al servicio";
-
-
+@RestController
+@RequestMapping("/api")
+public class VariabilidadCapitalController extends AppController {
 
     private static final String MSG_RESPONSE_KEY_MENSAJE= "mensaje";
     private static final String MSG_RESPONSE_KEY_VARIABILIDAD_CAPITAL = "variabilidad capital";
@@ -251,17 +240,6 @@ public class VariabilidadCapitalController {
         mapResult.put(MSG_RESPONSE_KEY_ERRORES, errors);
 
         return new ResponseEntity<>(mapResult, HttpStatus.BAD_REQUEST);
-
-    }
-
-    private ResponseEntity<Map<String, Object>> gestionarExceptionResponse(Exception e) {
-        Map<String, Object> mapResult = new HashMap<>();
-        log.error(MSG_RESPONSE_VALUE_ERROR_SERVICIO);
-        log.error(e.getMessage(),e);
-        mapResult.put(MSG_RESPONSE_KEY_MENSAJE, MSG_RESPONSE_VALUE_ERROR_SERVICIO);
-        mapResult.put(MSG_RESPONSE_KEY_ERROR, e.toString() );
-        return new ResponseEntity<>(mapResult,
-                HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 }
