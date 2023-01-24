@@ -14,7 +14,7 @@ public class VariabilidadCapital implements Serializable {
     private String codVariabilidadCapital;
 
     @Column(name = "id_estado_variabilidad_capital")
-    private Long idEstadoVariabilidadCapital;
+    private int idEstadoVariabilidadCapital;
 
     @Column(name="descripcion")
     private String descripcion;
@@ -53,11 +53,11 @@ public class VariabilidadCapital implements Serializable {
         this.codVariabilidadCapital = codVariabilidadCapital;
     }
 
-    public Long getIdEstadoVariabilidadCapital() {
+    public int getIdEstadoVariabilidadCapital() {
         return idEstadoVariabilidadCapital;
     }
 
-    public void setIdEstadoVariabilidadCapital(Long idEstadoVariabilidadCapital) {
+    public void setIdEstadoVariabilidadCapital(int idEstadoVariabilidadCapital) {
         this.idEstadoVariabilidadCapital = idEstadoVariabilidadCapital;
     }
 

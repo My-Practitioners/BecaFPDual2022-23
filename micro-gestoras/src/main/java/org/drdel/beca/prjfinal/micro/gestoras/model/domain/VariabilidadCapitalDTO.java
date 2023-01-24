@@ -12,7 +12,7 @@ import java.util.Date;
 
         private String codVariabilidadCapital;
 
-        private Long idEstadoVariabilidadCapital;
+        private int idEstadoVariabilidadCapital;
 
         private String descripcion;
 
@@ -39,7 +39,7 @@ import java.util.Date;
         public VariabilidadCapitalDTO() {
         }
 
-        public VariabilidadCapitalDTO(String codVariabilidadCapital, Long idEstadoVariabilidadCapital, String descripcion) {
+        public VariabilidadCapitalDTO(String codVariabilidadCapital, int idEstadoVariabilidadCapital, String descripcion) {
             this.codVariabilidadCapital = codVariabilidadCapital;
             this.idEstadoVariabilidadCapital=idEstadoVariabilidadCapital;
             this.descripcion = descripcion;
@@ -65,11 +65,11 @@ import java.util.Date;
             this.codVariabilidadCapital = codVariabilidadCapital;
         }
 
-        public Long getIdEstadoVariabilidadCapital() {
+        public int getIdEstadoVariabilidadCapital() {
             return idEstadoVariabilidadCapital;
         }
 
-        public void setIdEstadoVariabilidadCapital(Long idEstadoVariabilidadCapital) {
+        public void setIdEstadoVariabilidadCapital(int idEstadoVariabilidadCapital) {
             this.idEstadoVariabilidadCapital = idEstadoVariabilidadCapital;
         }
 
@@ -151,7 +151,7 @@ import java.util.Date;
 
             private String codVariabilidadCapital;
 
-            private Long idEstadoVariabilidadCapital;
+            private int idEstadoVariabilidadCapital;
             private String descripcion;
 
             @JsonFormat(pattern = "yyyy-MM-dd")
@@ -174,7 +174,7 @@ import java.util.Date;
             @Size(max = 20)
             private String audModUsu;
 
-            public VariabilidadCapitalDTOBuilder(String codVariabilidadCapital, Long idEstadoVariabilidadCapital, String descripcion) {
+            public VariabilidadCapitalDTOBuilder(String codVariabilidadCapital, int idEstadoVariabilidadCapital, String descripcion) {
                 this.codVariabilidadCapital = codVariabilidadCapital;
                 this.idEstadoVariabilidadCapital=idEstadoVariabilidadCapital;
                 this.descripcion = descripcion;

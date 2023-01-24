@@ -13,6 +13,18 @@ public interface IVariabilidadCapitalService {
 
     List<VariabilidadCapitalDTO> obtenerVariabilidadPorDescripcion(String decripcion);
 
-    VariabilidadCapital crearVariabilidadCapital(String codPInversion, Long idEstadoVariabilidadCapital,String descripcion);
+
+    String crearVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto);
+
+    String borrarVariabilidadCapital(String codVariabilidadCapital);
+
+    String actualizarVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto);
+
+    String activarVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto);
+
+    String suspenderVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto);
+
+    String cancelarVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto);
+
 }
 
