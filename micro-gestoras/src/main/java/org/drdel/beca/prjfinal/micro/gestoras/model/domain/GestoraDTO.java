@@ -11,7 +11,7 @@ import java.util.Date;
 public class GestoraDTO {
     private Long idGestora;
 
-    private Long idEstadoGestora;
+    private int idEstadoGestora;
 
     @NotBlank
     private String nombre;
@@ -36,7 +36,7 @@ public class GestoraDTO {
     @Size(max = 20)
     private String audModUsu;
 
-    public GestoraDTO(Long idGestora,Long idEstadoGestora, String nombre) {
+    public GestoraDTO(Long idGestora,int idEstadoGestora, String nombre) {
         this.idGestora=idGestora;
         this.idEstadoGestora=idEstadoGestora;
         this.nombre=nombre;
@@ -62,11 +62,11 @@ public class GestoraDTO {
         this.idGestora = idGestora;
     }
 
-    public Long getIdEstadoGestora() {
+    public int getIdEstadoGestora() {
         return idEstadoGestora;
     }
 
-    public void setIdEstadoGestora(Long idEstadoGestora) {
+    public void setIdEstadoGestora(int idEstadoGestora) {
         this.idEstadoGestora = idEstadoGestora;
     }
 
@@ -146,7 +146,7 @@ public class GestoraDTO {
 
     public static class GestoraDTOBuilder {
         private Long idGestora;
-        private Long idEstadoGestora;
+        private int idEstadoGestora;
         private String nombre;
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Size(max = 10)
@@ -163,7 +163,7 @@ public class GestoraDTO {
         @Size(max = 20)
         private String audModUsu;
 
-        public GestoraDTOBuilder(Long idGestora, Long idEstadoGestora, String nombre) {
+        public GestoraDTOBuilder(Long idGestora, int idEstadoGestora, String nombre) {
             this.idGestora = idGestora;
             this.idEstadoGestora=idEstadoGestora;
             this.nombre = nombre;

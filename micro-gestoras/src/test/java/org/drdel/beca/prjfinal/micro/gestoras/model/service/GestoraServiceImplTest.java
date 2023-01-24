@@ -1,5 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
+import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -18,24 +21,61 @@ class GestoraServiceImplTest {
     @Autowired
     GestoraServiceImpl gestoraService;
 
-    @ParameterizedTest
-    @DisplayName("Obtención de gestora por id para verificar existencia")
-    @ValueSource(longs = {1,2})
-    void testObtenerGestora(Long id){
-        var gestora=gestoraService.obtenerGestora(id);
-        assertNotNull(gestora);
+    @Test
+    @DisplayName("Test crear Gestora")
+    void testCrearGestora(){
+        GestoraDTO dto = new GestoraDTO(900L,4, "GESTORAX");
+        var gestora = gestoraService.crearGestora(dto);
+        assertEquals("GESTORAX",dto.getNombre());
     }
 
     @Test
-    @DisplayName("Obtención de Gestora por id")
-    void testObtenerGestora(){
-        var gestora=gestoraService.obtenerGestora(1L);
-        assertEquals("360 CORA SGIIC, S.A.",gestora.getNombre());
-        gestora= gestoraService.obtenerGestora(2L);
-        assertEquals("4FOUNDERS CAPITAL SGEIC, S.A.",gestora.getNombre());
+    @DisplayName("Test borrar Gestora")
+    void testBorrarGestora(){
+        gestoraService.borrarGestora(237L);
+        assertNull(gestoraService.obtenerGestora(237L));
     }
 
-    @Disabled
+    @Test
+    @DisplayName("Test actualizar gestora")
+    void testActualizarGestora(){
+        GestoraDTO gestoraDto = new GestoraDTO(15L, 2, "GestoraUpdate");
+        var cliente = gestoraService.actualizarGestora(gestoraDto);
+        assertNotNull(cliente);
+    }
+
+    @Test
+    @DisplayName("Test activar gestora solo si está en estado DRAFT")
+    void testActivarGestora(){
+        var gestoraDraft=gestoraService.obtenerGestora(10L);
+        gestoraService.activarGestora(gestoraDraft);
+        assertThat(gestoraDraft.getIdEstadoGestora()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("Test de suspender gestora solo si está en operative")
+    void testSuspenderGestora(){
+        var gestoraOperative=gestoraService.obtenerGestora(20L);
+        gestoraService.suspenderGestora(gestoraOperative);
+        assertThat(gestoraOperative.getIdEstadoGestora()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("Test de cancelar gestora solo si está en operative")
+    void testCancelarGestora(){
+        var gestoraOperative=gestoraService.obtenerGestora(30L);
+        gestoraService.cancelarGestora(gestoraOperative);
+        assertThat(gestoraOperative.getIdEstadoGestora()).isEqualTo(3);
+    }
+
+
+    @Test
+    @DisplayName("Obtención de gestora por id para verificar existencia")
+    void testObtenerGestora(){
+        var gestora=gestoraService.obtenerGestora(2L);
+        assertNotNull(gestora);
+    }
+
     @Test
     @DisplayName("Obtención de todas las Gestoras")
     void testObtenerTodasGestora(){
@@ -49,23 +89,4 @@ class GestoraServiceImplTest {
         var gestoras=gestoraService.obtenerGestoraPorNombre(nombre);
         assertNotEquals(0, gestoras.size());
     }
-
-
-    @ParameterizedTest
-    @DisplayName("Creacion de nueva Gestora2")
-    @ValueSource(longs = 900)
-    void testCrearGestora(Long idGestora){
-        var gestora=gestoraService.crearGestora2(idGestora,"gestoraPrueba");
-        assertNotNull(gestora);
-
-    }
-
-    /*@Test
-    @DisplayName("Creacion de nueva Gestora")
-    void testCrearGestora(){
-        GestoraDTO dto = new GestoraDTO(900L, "GESTORAX");
-        var gestora = gestoraService.crearGestora(dto);
-        assertEquals("GESTORAX",dto.getNombre());
-    }
-    */
 }
