@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.FondoInversionDTO;
+import org.drdel.beca.prjfinal.micro.gestoras.model.domain.PoliticaInversionDTO;
 
 import java.util.List;
 
@@ -14,4 +15,13 @@ public interface IFondoInversionService {
 
     String crearFondoInversion(FondoInversionDTO fondoInversion);
 
+    String borrarFondoInversion(String cod);
+
+    String actualizarFondoInversion(FondoInversionDTO fondoInversionDTO);
+
+    String activarFondoInversion(FondoInversionDTO fondoInversionDTO);
+
+    String cancelarFondoInversion(FondoInversionDTO fondoInversionDTO);
+
+    String suspenderFondoInversion(FondoInversionDTO fondoInversionDTO);
 }

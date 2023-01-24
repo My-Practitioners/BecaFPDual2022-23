@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +13,10 @@ public class FondoInversion implements Serializable {
     @Id
     @Column(name = "cod_isin")
     private String codIsin;
+
+    @NotNull
+    @Column(name = "id_estado_fondo_inversion")
+    private int idEstadoFondoInversion;
 
     @Column(name = "cod_europeo")
     private String codEuropeo;
@@ -65,11 +70,6 @@ public class FondoInversion implements Serializable {
     @Size(max = 20)
     private String audModUsu;
 
-
-
-
-    //getter-setter
-
     public String getCodIsin() {
         return codIsin;
     }
@@ -77,6 +77,10 @@ public class FondoInversion implements Serializable {
     public void setCodIsin(String codIsin) {
         this.codIsin = codIsin;
     }
+
+    public int getIdEstadoFondoInversion() {return idEstadoFondoInversion;}
+
+    public void setIdEstadoFondoInversion(int idEstadoFondoInversion) {this.idEstadoFondoInversion = idEstadoFondoInversion;}
 
     public String getCodEuropeo() {
         return codEuropeo;
@@ -198,8 +202,6 @@ public class FondoInversion implements Serializable {
         this.audModUsu = audModUsu;
     }
 
-
-    //methods
     @PrePersist
     public void prePersist(){
         audModDate =new Date();

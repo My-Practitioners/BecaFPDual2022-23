@@ -11,6 +11,7 @@ public class FondoInversionDTOMapper {
 
         return new FondoInversionDTO(
                 entity.getCodIsin(),
+                entity.getIdEstadoFondoInversion(),
                 entity.getCodEuropeo(),
                 entity.getCodLei(),
                 entity.getNombreFondo(),
@@ -33,6 +34,7 @@ public class FondoInversionDTOMapper {
     public static FondoInversion transformDTOToEntity(FondoInversionDTO dto) {
         var entity = new FondoInversion();
         entity.setCodIsin(dto.getCodIsin());
+        entity.setIdEstadoFondoInversion(dto.getIdEstadoFondoInversion());
         entity.setCodEuropeo(dto.getCodEuropeo());
         entity.setCodLei(dto.getCodLei());
         entity.setNombreFondo(dto.getNombreFondo());

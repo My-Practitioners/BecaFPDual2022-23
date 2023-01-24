@@ -15,6 +15,7 @@ public class PoliticaInversion implements Serializable {
     private String codPinversion;
 
     @NotNull
+    @Column(name = "id_estado_politica_inversion")
     private int idEstadoPoliticaInversion;
 
     @Column(name = "descripcion")

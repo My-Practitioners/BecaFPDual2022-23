@@ -3,16 +3,22 @@ package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 import org.drdel.beca.prjfinal.micro.gestoras.model.dtomapper.FondoInversionDTOMapper;
 import org.drdel.beca.prjfinal.micro.gestoras.model.dao.IFondoInversionDAO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.FondoInversionDTO;
+import org.drdel.beca.prjfinal.micro.gestoras.model.rules.EstadoEnum;
+import org.drdel.beca.prjfinal.micro.gestoras.model.rules.FondoInversionRules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class FondoInversionServiceImpl implements IFondoInversionService{
 
     @Autowired
     IFondoInversionDAO fondoInversionDAO;
+
+    @Autowired
+    FondoInversionRules fondoInversionRules;
 
     @Override
     public FondoInversionDTO obtenerFondoInversion(String code) {
@@ -33,11 +39,44 @@ public class FondoInversionServiceImpl implements IFondoInversionService{
 
     @Override
     public String crearFondoInversion(FondoInversionDTO fondoInversionDTO) {
-        FondoInversionDTO fondoInversionDTO1 = new FondoInversionDTO("ES111111111", "ES22222222", "JDUIBNCS88NHFDSI", "FONDOX", 6L, 8L, "arsg", "capv", "no", "SICA90");
-        var fondoGuardado = fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO1));
-        return fondoGuardado.getCodIsin();
+        fondoInversionRules.checkCrearFondoInversion(fondoInversionDTO, EstadoEnum.DRAFT);
+        fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO));
+        return fondoInversionDTO.getCodIsin();
     }
 
+    @Override
+    public String borrarFondoInversion(String cod) {
+        fondoInversionRules.checkBorrarFondoInversion(cod);
+        var fondoInversionEntity = fondoInversionDAO.findById(cod).orElse(null);
+        fondoInversionDAO.deleteById(cod);
+        return Objects.requireNonNull(fondoInversionEntity).getCodIsin();
+    }
 
+    @Override
+    public String actualizarFondoInversion(FondoInversionDTO fondoInversionDTO) {
+        fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO));
+        return fondoInversionDTO.getCodIsin();
+    }
+
+    @Override
+    public String activarFondoInversion(FondoInversionDTO fondoInversionDTO) {
+        fondoInversionRules.activarFondoInversion(fondoInversionDTO);
+        fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO));
+        return fondoInversionDTO.getCodIsin();
+    }
+
+    @Override
+    public String cancelarFondoInversion(FondoInversionDTO fondoInversionDTO) {
+        fondoInversionRules.cancelarFondoInversion(fondoInversionDTO);
+        fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO));
+        return fondoInversionDTO.getCodIsin();
+    }
+
+    @Override
+    public String suspenderFondoInversion(FondoInversionDTO fondoInversionDTO) {
+        fondoInversionRules.suspenderFondoInversion(fondoInversionDTO);
+        fondoInversionDAO.save(FondoInversionDTOMapper.transformDTOToEntity(fondoInversionDTO));
+        return fondoInversionDTO.getCodIsin();
+    }
 
 }

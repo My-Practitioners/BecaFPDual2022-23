@@ -10,6 +10,8 @@ public class FondoInversionDTO {
 
     private String codIsin;
 
+    private int idEstadoFondoInversion;
+
     private String codEuropeo;
 
     private String codLei;
@@ -49,8 +51,9 @@ public class FondoInversionDTO {
     @Size(max = 20)
     private String audModUsu;
 
-    public FondoInversionDTO(String codIsin, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor) {
+    public FondoInversionDTO(String codIsin, int idEstadoFondoInversion, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor) {
         this.codIsin = codIsin;
+        this.idEstadoFondoInversion = idEstadoFondoInversion;
         this.codEuropeo = codEuropeo;
         this.codLei = codLei;
         this.nombreFondo = nombreFondo;
@@ -64,6 +67,7 @@ public class FondoInversionDTO {
 
     public FondoInversionDTO(FondoInversionDTOBuilder builder) {
         this.codIsin = codIsin;
+        this.idEstadoFondoInversion = idEstadoFondoInversion;
         this.codEuropeo = codEuropeo;
         this.codLei = codLei;
         this.nombreFondo = nombreFondo;
@@ -89,6 +93,10 @@ public class FondoInversionDTO {
     public void setCodIsin(String codIsin) {
         this.codIsin = codIsin;
     }
+
+    public int getIdEstadoFondoInversion() {return idEstadoFondoInversion;}
+
+    public void setIdEstadoFondoInversion(int idEstadoFondoInversion) {this.idEstadoFondoInversion = idEstadoFondoInversion;}
 
     public String getCodEuropeo() {
         return codEuropeo;
@@ -142,9 +150,7 @@ public class FondoInversionDTO {
         return codVariabilidadCapital;
     }
 
-    public void setCodVariabilidadCapital(String codVariabilidadCapital) {
-        this.codVariabilidadCapital = codVariabilidadCapital;
-    }
+    public void setCodVariabilidadCapital(String codVariabilidadCapital) {this.codVariabilidadCapital = codVariabilidadCapital;}
 
     public String getSubFondo() {
         return subFondo;
@@ -213,6 +219,7 @@ public class FondoInversionDTO {
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("codIsin" ,codIsin);
+        jsonObject.put("idEstadoFondoInversion" ,idEstadoFondoInversion);
         jsonObject.put("codEuropeo" ,codEuropeo);
         jsonObject.put("nombreFondo" ,nombreFondo);
         jsonObject.put("idGestora" ,idGestora);
@@ -233,6 +240,8 @@ public class FondoInversionDTO {
     public class FondoInversionDTOBuilder {
 
         private String codIsin;
+
+        private int idEstadoFondoInversion;
 
         private String codEuropeo;
 
@@ -266,8 +275,9 @@ public class FondoInversionDTO {
         @Size(max = 20)
         private String audModUsu;
 
-        public FondoInversionDTOBuilder(String codIsin, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor) {
+        public FondoInversionDTOBuilder(String codIsin, int idEstadoFondoInversion, String codEuropeo, String codLei, String nombreFondo, Long idGestora, Long idDireccion, String codPInversion, String codVariabilidadCapital, String subFondo, String codSupervisor) {
             this.codIsin = codIsin;
+            this.idEstadoFondoInversion = idEstadoFondoInversion;
             this.codEuropeo = codEuropeo;
             this.codLei = codLei;
             this.nombreFondo = nombreFondo;
