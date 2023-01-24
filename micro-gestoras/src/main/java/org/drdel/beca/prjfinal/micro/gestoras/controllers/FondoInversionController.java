@@ -33,7 +33,7 @@ public class FondoInversionController extends AppController {
         return fondoService.obtenerTodosFondoInversion();
     }
 
-    @GetMapping("/fondos/{id}")
+    @GetMapping("/fondos/{cod}")
     public ResponseEntity<Map<String, Object>> show(@PathVariable String cod){
         FondoInversionDTO fondoInversionDTO;
         try {
@@ -79,7 +79,7 @@ public class FondoInversionController extends AppController {
     }
 
 
-    @PutMapping("/fondos/{id}")
+    @PutMapping("/fondos/{cod}")
     public ResponseEntity<Map<String, Object>> update(@PathVariable String cod,
                                                       @Valid @RequestBody FondoInversionDTO fondoInversionDTO,
                                                       BindingResult result) {
@@ -105,7 +105,7 @@ public class FondoInversionController extends AppController {
     }
 
 
-    @PatchMapping("/fondos/operative/{id}")
+    @PatchMapping("/fondos/operative/{cod}")
     public ResponseEntity<Map<String, Object>> updateOperative(@PathVariable String cod,
                                                                @Valid @RequestBody FondoInversionDTO fondoInversionDTO,
                                                                BindingResult result) {
@@ -130,7 +130,7 @@ public class FondoInversionController extends AppController {
 
     }
 
-    @PatchMapping("/fondos/canceled/{id}")
+    @PatchMapping("/fondos/canceled/{cod}")
     public ResponseEntity<Map<String, Object>> updateCanceled(@PathVariable String cod,
                                                               @Valid @RequestBody FondoInversionDTO fondoInversionDTO,
                                                               BindingResult result) {
@@ -155,7 +155,7 @@ public class FondoInversionController extends AppController {
 
     }
 
-    @PatchMapping("/fondos/suspended/{id}")
+    @PatchMapping("/fondos/suspended/{cod}")
     public ResponseEntity<Map<String, Object>> updateSuspended(@PathVariable String cod,
                                                                @Valid @RequestBody FondoInversionDTO fondoInversionDTO,
                                                                BindingResult result) {
@@ -180,7 +180,7 @@ public class FondoInversionController extends AppController {
 
     }
 
-    @DeleteMapping("/fondos/{id}")
+    @DeleteMapping("/fondos/{cod}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable String cod) {
 
         FondoInversionDTO fondoInversionDTO;
@@ -200,7 +200,7 @@ public class FondoInversionController extends AppController {
                     HttpStatus.OK);
         else
             return gestionarResponse(
-                    "Fondo inexistente: ".concat(cod.toString()),
+                    "Fondo inexistente: ".concat(cod),
                     fondoInversionDTO,
                     HttpStatus.NOT_FOUND);
     }
