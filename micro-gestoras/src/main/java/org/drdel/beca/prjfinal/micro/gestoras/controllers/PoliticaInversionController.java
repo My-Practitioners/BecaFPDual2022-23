@@ -33,7 +33,7 @@ public class PoliticaInversionController extends AppController {
         return politicaService.obtenerTodosPoliticaInversion();
     }
 
-    @GetMapping("/politica/{id}")
+    @GetMapping("/politica/{cod}")
     public ResponseEntity<Map<String, Object>> show(@PathVariable String cod){
         PoliticaInversionDTO politicaInversionDTO;
         try {
@@ -79,7 +79,7 @@ public class PoliticaInversionController extends AppController {
     }
 
 
-    @PutMapping("/politica/{id}")
+    @PutMapping("/politica/{cod}")
     public ResponseEntity<Map<String, Object>> update(@PathVariable String cod,
                                                       @Valid @RequestBody PoliticaInversionDTO politicaInversionDTO,
                                                       BindingResult result) {
@@ -105,7 +105,7 @@ public class PoliticaInversionController extends AppController {
     }
 
 
-    @PatchMapping("/politica/operative/{id}")
+    @PatchMapping("/politica/operative/{cod}")
     public ResponseEntity<Map<String, Object>> updateOperative(@PathVariable String cod,
                                                                @Valid @RequestBody PoliticaInversionDTO politicaInversionDTO,
                                                                BindingResult result) {
@@ -130,7 +130,7 @@ public class PoliticaInversionController extends AppController {
 
     }
 
-    @PatchMapping("/politica/canceled/{id}")
+    @PatchMapping("/politica/canceled/{cod}")
     public ResponseEntity<Map<String, Object>> updateCanceled(@PathVariable String cod,
                                                               @Valid @RequestBody PoliticaInversionDTO politicaInversionDTO,
                                                               BindingResult result) {
@@ -155,7 +155,7 @@ public class PoliticaInversionController extends AppController {
 
     }
 
-    @PatchMapping("/politica/suspended/{id}")
+    @PatchMapping("/politica/suspended/{cod}")
     public ResponseEntity<Map<String, Object>> updateSuspended(@PathVariable String cod,
                                                                @Valid @RequestBody PoliticaInversionDTO politicaInversionDTO,
                                                                BindingResult result) {
@@ -180,7 +180,7 @@ public class PoliticaInversionController extends AppController {
 
     }
 
-    @DeleteMapping("/politica/{id}")
+    @DeleteMapping("/politica/{cod}")
     public ResponseEntity<Map<String, Object>> delete(@PathVariable String cod) {
 
         PoliticaInversionDTO politicaInversionDTO;
