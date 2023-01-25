@@ -43,7 +43,7 @@ public class FondoInversionController extends AppController {
         }
         if (fondoInversionDTO==null){
             return gestionarResponse(
-                    "El fondo COD: ".concat(cod.toString()).concat(" no existe en la BD"),
+                    "El fondo COD: ".concat(cod).concat(" no existe en la BD"),
                     fondoInversionDTO, HttpStatus.NOT_FOUND);
         }
 

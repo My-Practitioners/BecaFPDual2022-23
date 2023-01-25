@@ -43,7 +43,7 @@ public class PoliticaInversionController extends AppController {
         }
         if (politicaInversionDTO==null){
             return gestionarResponse(
-                    "La Politica COD: ".concat(cod.toString()).concat(" no existe en la BD"),
+                    "La Politica COD: ".concat(cod).concat(" no existe en la BD"),
                     politicaInversionDTO, HttpStatus.NOT_FOUND);
         }
 
@@ -200,7 +200,7 @@ public class PoliticaInversionController extends AppController {
                     HttpStatus.OK);
         else
             return gestionarResponse(
-                    "Politica inexistente: ".concat(cod.toString()),
+                    "Politica inexistente: ".concat(cod),
                     politicaInversionDTO,
                     HttpStatus.NOT_FOUND);
     }

@@ -27,7 +27,7 @@ public class FondoInversionRules {
             try {
                 return FondoInversionException.activarFondoInversion();
             } catch (FondoInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -47,7 +47,7 @@ public class FondoInversionRules {
             try {
                 return FondoInversionException.suspenderFondoInversion();
             } catch (FondoInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -67,25 +67,22 @@ public class FondoInversionRules {
             try {
                 return FondoInversionException.cancelarFondoInversion();
             } catch (FondoInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
 
     public  FondoInversionDTO checkCrearFondoInversion(FondoInversionDTO fondoInversionDTO, EstadoEnum estadoEnum)  {
 
-        boolean igualdad=false;
+        boolean igualdad= fondoInversionDTO.getIdEstadoFondoInversion() == estadoEnum.getEstadoEnum();
 
-        if (fondoInversionDTO.getIdEstadoFondoInversion() == estadoEnum.getEstadoEnum()) {
-            igualdad=true;
-        }
         if (igualdad) {
             return fondoInversionDTO;
         }else {
             try {
                 FondoInversionException.crearFondoInversion();
             } catch (FondoInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return fondoInversionDTO;
@@ -106,7 +103,7 @@ public class FondoInversionRules {
             try {
                 FondoInversionException.borrarFondoInversion();
             }catch (FondoInversionException e){
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return code;

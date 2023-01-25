@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FondoInversionDTOMapper {
+    private FondoInversionDTOMapper(){}
     public static FondoInversionDTO transformEntityToDTO(FondoInversion entity) {
 
         return new FondoInversionDTO(

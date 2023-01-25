@@ -1,7 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.FondoInversionDTO;
-import org.drdel.beca.prjfinal.micro.gestoras.model.domain.PoliticaInversionDTO;
 
 import java.util.List;
 

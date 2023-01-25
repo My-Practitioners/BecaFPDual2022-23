@@ -27,7 +27,7 @@ public class PoliticaInversionRules {
             try {
                 return PoliticaInversionException.activarPoliticaInversion();
             } catch (PoliticaInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -47,7 +47,7 @@ public class PoliticaInversionRules {
             try {
                 return PoliticaInversionException.suspenderPoliticaInversion();
             } catch (PoliticaInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -67,25 +67,22 @@ public class PoliticaInversionRules {
             try {
                 return PoliticaInversionException.cancelarPoliticaInversion();
             } catch (PoliticaInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
 
     public  PoliticaInversionDTO checkCrearPoliticaInversion(PoliticaInversionDTO politicaInversionDTO, EstadoEnum estadoEnum)  {
 
-        boolean igualdad=false;
+        boolean igualdad= politicaInversionDTO.getIdEstadoPoliticaInversion() == estadoEnum.getEstadoEnum();
 
-        if (politicaInversionDTO.getIdEstadoPoliticaInversion() == estadoEnum.getEstadoEnum()) {
-            igualdad=true;
-        }
         if (igualdad) {
             return politicaInversionDTO;
         }else {
             try {
                 PoliticaInversionException.crearPoliticaInversion();
             } catch (PoliticaInversionException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return politicaInversionDTO;
@@ -106,7 +103,7 @@ public class PoliticaInversionRules {
             try {
                 PoliticaInversionException.borrarPoliticaInversion();
             }catch (PoliticaInversionException e){
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return code;

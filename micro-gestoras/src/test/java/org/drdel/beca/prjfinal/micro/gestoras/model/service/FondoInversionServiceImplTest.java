@@ -1,8 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.FondoInversionDTO;
-import org.drdel.beca.prjfinal.micro.gestoras.model.domain.PoliticaInversionDTO;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -39,7 +37,7 @@ class FondoInversionServiceImplTest {
         varFon = fondoInversionService.obtenerFondoInversion("ES0162933032");
         assertEquals("CORE ASSETS,SICAV,S.A.", varFon.getNombreFondo());
     }
-    @Disabled
+
     @Test
     @DisplayName("Obtención de todos los tipos de Fondo de Inversion")
     void testObtenerTodosPoliticaInversion(){
@@ -60,6 +58,7 @@ class FondoInversionServiceImplTest {
         FondoInversionDTO dto = new FondoInversionDTO("ES111111111",4, "ES22222222", "JDUIBNCS88NHFDSI", "FONDOX", 6L, 8L, "arsg", "capv", "no", "SICA90");
         var fondoInversion = fondoInversionService.crearFondoInversion(dto);
         assertNotNull(fondoInversion);
+        fondoInversionService.borrarFondoInversion("ES111111111");
     }
 
     @ParameterizedTest
