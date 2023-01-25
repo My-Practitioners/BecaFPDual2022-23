@@ -23,7 +23,7 @@ class DireccionGestoraServiceImplTest {
     @DisplayName("Test Crear de Direccion Gestora")
     void testCrearDireccionGestora(){
         DireccionGestoraDTO dto=new DireccionGestoraDTO(570L,4,300L,"Garcia Lorca");
-        var direccionGestora=direccionGestoraService.crearDireccionGestora(dto);
+        direccionGestoraService.crearDireccionGestora(dto);
         assertEquals("Garcia Lorca",dto.getDireccion());
         direccionGestoraService.borrarDireccionGestora(570L);
     }

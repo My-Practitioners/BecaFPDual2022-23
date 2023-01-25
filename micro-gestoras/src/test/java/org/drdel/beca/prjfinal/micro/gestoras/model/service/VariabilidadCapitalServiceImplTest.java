@@ -1,6 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
-import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
+
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.VariabilidadCapitalDTO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

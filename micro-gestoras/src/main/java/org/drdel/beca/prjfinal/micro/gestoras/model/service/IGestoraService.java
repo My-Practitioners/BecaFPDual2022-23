@@ -1,7 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
-import org.drdel.beca.prjfinal.micro.gestoras.model.entity.Gestora;
 
 
 import java.util.List;

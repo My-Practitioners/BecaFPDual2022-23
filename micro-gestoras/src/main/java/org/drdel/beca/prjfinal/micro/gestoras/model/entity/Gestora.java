@@ -11,6 +11,7 @@ import java.util.Date;
 public class Gestora implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_gestora")
     private Long idGestora;
 

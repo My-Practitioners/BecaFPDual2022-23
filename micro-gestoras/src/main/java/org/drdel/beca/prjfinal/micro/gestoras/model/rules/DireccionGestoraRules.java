@@ -12,6 +12,7 @@ public class DireccionGestoraRules {
     @Autowired
     DireccionGestoraServiceImpl direccionGestoraService;
 
+
     public DireccionGestoraDTO activarEstado(DireccionGestoraDTO direccionGestoraDto) {
 
         boolean draftToActive=false;
@@ -27,7 +28,7 @@ public class DireccionGestoraRules {
             try {
                 return DireccionGestoraException.activarDireccionGestora();
             } catch (DireccionGestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -47,7 +48,7 @@ public class DireccionGestoraRules {
             try {
                 return DireccionGestoraException.suspenderDireccionGestora();
             } catch (DireccionGestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -67,25 +68,22 @@ public class DireccionGestoraRules {
             try {
                 return DireccionGestoraException.cancelarDireccionGestora();
             } catch (DireccionGestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
 
     public  DireccionGestoraDTO checkEstadoToCrear(DireccionGestoraDTO direccionGestoraDto)  {
 
-        boolean igualdad=false;
+        boolean igualdad= direccionGestoraDto.getIdEstadoDireccionGestora() == EstadoEnum.DRAFT.getEstadoEnum();
 
-        if (direccionGestoraDto.getIdEstadoDireccionGestora() == EstadoEnum.DRAFT.getEstadoEnum()) {
-            igualdad=true;
-        }
         if (igualdad) {
             return direccionGestoraDto;
         }else {
             try {
                 DireccionGestoraException.crearDireccionGestora();
             } catch (DireccionGestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return direccionGestoraDto;
@@ -106,9 +104,10 @@ public class DireccionGestoraRules {
             try {
                 DireccionGestoraException.borrarDireccionGestora();
             }catch (DireccionGestoraException e){
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return id;
     }
+
 }

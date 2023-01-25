@@ -10,7 +10,7 @@ public class GestoraDTOMapper {
 
     private GestoraDTOMapper(){}
 
-    public static GestoraDTO transofrmEntityToDTO(Gestora entity){
+    public static GestoraDTO transformEntityToDTO(Gestora entity){
         return new GestoraDTO(entity.getIdGestora(),
                 entity.getIdEstadoGestora(),
                 entity.getNombre());
@@ -19,7 +19,7 @@ public class GestoraDTOMapper {
     public static List<GestoraDTO> transformEntityListToDTOList(Iterable<Gestora> entityIterable){
         List<GestoraDTO> dtoList=new ArrayList<>();
         entityIterable.forEach(pr ->
-                dtoList.add(transofrmEntityToDTO(pr)));
+                dtoList.add(transformEntityToDTO(pr)));
         return dtoList;
     }
 

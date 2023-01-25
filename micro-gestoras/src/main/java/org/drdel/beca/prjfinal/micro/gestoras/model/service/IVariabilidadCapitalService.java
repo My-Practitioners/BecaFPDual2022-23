@@ -1,7 +1,7 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.VariabilidadCapitalDTO;
-import org.drdel.beca.prjfinal.micro.gestoras.model.entity.VariabilidadCapital;
+
 
 import java.util.List;
 

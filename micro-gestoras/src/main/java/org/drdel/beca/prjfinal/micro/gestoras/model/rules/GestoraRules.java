@@ -27,7 +27,7 @@ public class GestoraRules {
             try {
                 return GestoraException.activarGestora();
             } catch (GestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -47,7 +47,7 @@ public class GestoraRules {
             try {
                 return GestoraException.suspenderGestora();
             } catch (GestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
@@ -67,25 +67,22 @@ public class GestoraRules {
             try {
                 return GestoraException.cancelarGestora();
             } catch (GestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
     }
 
     public  GestoraDTO checkEstadoToCrear(GestoraDTO gestoraDto)  {
 
-        boolean igualdad=false;
+        boolean igualdad= gestoraDto.getIdEstadoGestora() == EstadoEnum.DRAFT.getEstadoEnum();
 
-        if (gestoraDto.getIdEstadoGestora() == EstadoEnum.DRAFT.getEstadoEnum()) {
-            igualdad=true;
-        }
         if (igualdad) {
             return gestoraDto;
         }else {
             try {
                 GestoraException.crearGestora();
             } catch (GestoraException e) {
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return gestoraDto;
@@ -106,7 +103,7 @@ public class GestoraRules {
             try {
                 GestoraException.borrarGestora();
             }catch (GestoraException e){
-                throw new RuntimeException(e);
+                throw new IllegalArgumentException(e);
             }
         }
         return id;

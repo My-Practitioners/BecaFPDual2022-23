@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface IDireccionGestoraDAO extends JpaRepository<DireccionGestora,Long> {
 
-    public List<DireccionGestora> findByDireccion(String direccionGestora);
+    List<DireccionGestora> findByDireccion(String direccionGestora);
 }

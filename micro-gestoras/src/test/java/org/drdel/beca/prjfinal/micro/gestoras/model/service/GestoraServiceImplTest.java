@@ -1,7 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +24,7 @@ class GestoraServiceImplTest {
     @DisplayName("Test crear Gestora")
     void testCrearGestora(){
         GestoraDTO dto = new GestoraDTO(900L,4, "GESTORAX");
-        var gestora = gestoraService.crearGestora(dto);
+        gestoraService.crearGestora(dto);
         assertEquals("GESTORAX",dto.getNombre());
     }
 
