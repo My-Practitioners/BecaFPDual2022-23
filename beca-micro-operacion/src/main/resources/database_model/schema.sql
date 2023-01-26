@@ -16,7 +16,7 @@ fecha_contratacion date not null);
 drop table if exists t_fondos_cliente_history;
 create t_fondos_cliente_history (
 id_fondos_cliente bigint,
-estados_contratacion varchar(255),
+estados_contratacion bigint,
 fecha_cambio_estado date,
 operaciones_contratacion varchar(255),
 importe double);

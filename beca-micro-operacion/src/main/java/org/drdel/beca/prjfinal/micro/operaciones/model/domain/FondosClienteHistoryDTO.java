@@ -10,7 +10,7 @@ public class FondosClienteHistoryDTO {
 
     private long idFondosCliente;
 
-    private String estadosContratacion;
+    private int estadosContratacion;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Size(max = 10)
@@ -20,7 +20,7 @@ public class FondosClienteHistoryDTO {
 
     private String operacionesContratacion;
 
-    public FondosClienteHistoryDTO(long idFondosCliente, String estadosContratacion, Date fechaCambioEstado, double importe, String operacionesContratacion) {
+    public FondosClienteHistoryDTO(long idFondosCliente, int estadosContratacion, Date fechaCambioEstado, double importe, String operacionesContratacion) {
         this.idFondosCliente = idFondosCliente;
         this.estadosContratacion = estadosContratacion;
         this.fechaCambioEstado = fechaCambioEstado;
@@ -36,11 +36,11 @@ public class FondosClienteHistoryDTO {
         this.idFondosCliente = idFondosCliente;
     }
 
-    public String getEstadosContratacion() {
+    public int getEstadosContratacion() {
         return estadosContratacion;
     }
 
-    public void setEstadosContratacion(String estadosContratacion) {
+    public void setEstadosContratacion(int estadosContratacion) {
         this.estadosContratacion = estadosContratacion;
     }
 

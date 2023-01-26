@@ -18,7 +18,7 @@ public class FondosClienteHistory {
 
     @Column(name = "estados_contratacion")
     @NotNull
-    private String estadosContratacion;
+    private int estadosContratacion;
 
     @Column(name = "fecha_cambio_estado")
     @NotNull
@@ -38,11 +38,11 @@ public class FondosClienteHistory {
         this.idFondosCliente = idFondosCliente;
     }
 
-    public String getEstadosContratacion() {
+    public int getEstadosContratacion() {
         return estadosContratacion;
     }
 
-    public void setEstadosContratacion(String estadosContratacion) {
+    public void setEstadosContratacion(int estadosContratacion) {
         this.estadosContratacion = estadosContratacion;
     }
 

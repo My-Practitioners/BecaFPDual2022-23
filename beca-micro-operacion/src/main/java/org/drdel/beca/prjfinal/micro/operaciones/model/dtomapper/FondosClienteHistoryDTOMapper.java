@@ -8,6 +8,8 @@ import java.util.List;
 
 public class FondosClienteHistoryDTOMapper {
 
+
+
     private FondosClienteHistoryDTOMapper(){}
 
     public static FondosClienteHistoryDTO transformEntityToDTO(FondosClienteHistory entity){
@@ -25,7 +27,7 @@ public class FondosClienteHistoryDTOMapper {
         return dtoList;
     }
 
-    public FondosClienteHistory transformDTOToEntity(FondosClienteHistoryDTO dto){
+    public static FondosClienteHistory transformDTOToEntity(FondosClienteHistoryDTO dto){
         var entity= new FondosClienteHistory();
         entity.setIdFondosCliente(dto.getIdFondosCliente());
         entity.setEstadosContratacion(dto.getEstadosContratacion());

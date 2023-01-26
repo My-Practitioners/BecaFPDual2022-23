@@ -9,11 +9,11 @@ public class FondosClienteHistoryException extends Exception{
     }
 
     public static FondosClienteHistoryDTO suspenderFondoCliente() throws FondosClienteHistoryException{
-        throw new FondosClienteHistoryException("Para suspender un fondo de un cliente, su estado debe ser OPERATIVE(1)");
+        throw new FondosClienteHistoryException("Este fondo de cliente ya estaba suspendido");
     }
 
     public static FondosClienteHistoryDTO cancelarFondoCliente() throws FondosClienteHistoryException{
-        throw new FondosClienteHistoryException("Para cancelar un fondo de un cliente, su estado debe ser OPERATIVE(1)");
+        throw new FondosClienteHistoryException("Este fondo de cliente ya estaba cancelado");
     }
 
 }

@@ -1,0 +1,5 @@
+insert into t_fondos_cliente_history(id_fondos_cliente, estados_contratacion, fecha_cambio_estado, operaciones_contratacion, importe) values (1, 1,  , "Activar Fondo", 200);
+insert into t_fondos_cliente_history(id_fondos_cliente, estados_contratacion, fecha_cambio_estado, operaciones_contratacion, importe) values (2, 1,  , "Activar Fondo", 300);
+insert into t_fondos_cliente_history(id_fondos_cliente, estados_contratacion, fecha_cambio_estado, operaciones_contratacion, importe) values (3, 1,  , "Activar Fondo", 2000);
+insert into t_fondos_cliente_history(id_fondos_cliente, estados_contratacion, fecha_cambio_estado, operaciones_contratacion, importe) values (1, 1,  , "Suspender Fondo", 1500);
+insert into t_fondos_cliente_history(id_fondos_cliente, estados_contratacion, fecha_cambio_estado, operaciones_contratacion, importe) values (1, 1,  , "Cancelar Fondo", 900);
