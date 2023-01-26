@@ -1,7 +1,7 @@
 -- ESTADOSCONTRATACION
 drop table if exists t_estados_contratacion;
 create table t_estados_contratacion (
-cod_estados_contratacion varchar(255),
+id_estados_contratacion bigint,
 descripcion varchar(255));
 
 -- FONDOSCLIENTE
@@ -25,5 +25,5 @@ importe double);
 -- OPERACIONESCONTRATACION
 drop table if exists t_operaciones_contratacion;
 create table t_operaciones_contratacion (
-cod_operaciones_contratacion varchar(255),
+id_operaciones_contratacion bigint,
 descripcion varchar(255));
