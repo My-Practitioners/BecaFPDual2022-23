@@ -4,21 +4,21 @@ import org.json.JSONObject;
 
 public class OperacionesContratacionDTO {
 
-    private String codOperacionesContratacion;
+    private int idOperacionesContratacion;
 
     private String descripcion;
 
-    public OperacionesContratacionDTO(String codOperacionesContratacion, String descripcion) {
-        this.codOperacionesContratacion = codOperacionesContratacion;
+    public OperacionesContratacionDTO(int idOperacionesContratacion, String descripcion) {
+        this.idOperacionesContratacion = idOperacionesContratacion;
         this.descripcion = descripcion;
     }
 
-    public String getCodOperacionesContratacion() {
-        return codOperacionesContratacion;
+    public int getIdOperacionesContratacion() {
+        return idOperacionesContratacion;
     }
 
-    public void setCodOperacionesContratacion(String codOperacionesContratacion) {
-        this.codOperacionesContratacion = codOperacionesContratacion;
+    public void setIdOperacionesContratacion(int idOperacionesContratacion) {
+        this.idOperacionesContratacion = idOperacionesContratacion;
     }
 
     public String getDescripcion() {
@@ -31,7 +31,7 @@ public class OperacionesContratacionDTO {
 
     public String toJSON(){
         JSONObject jsonObject=new JSONObject();
-        jsonObject.put("codOperacionesContratacion",getCodOperacionesContratacion());
+        jsonObject.put("idOperacionesContratacion",getIdOperacionesContratacion());
         jsonObject.put("descripcion",getDescripcion());
         return jsonObject.toString();
 

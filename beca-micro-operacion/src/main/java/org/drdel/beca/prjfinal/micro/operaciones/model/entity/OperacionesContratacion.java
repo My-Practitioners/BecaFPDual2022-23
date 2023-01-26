@@ -12,19 +12,19 @@ import java.io.Serializable;
 public class OperacionesContratacion implements Serializable {
 
     @Id
-    @Column(name = "cod_operaciones_contratacion")
-    private String codOperacionesContratacion;
+    @Column(name = "id_operaciones_contratacion")
+    private int idOperacionesContratacion;
 
     @Column(name = "descripcion")
     @NotBlank
     private String descripcion;
 
-    public String getCodOperacionesContratacion() {
-        return codOperacionesContratacion;
+    public int getIdOperacionesContratacion() {
+        return idOperacionesContratacion;
     }
 
-    public void setCodOperacionesContratacion(String codOperacionesContratacion) {
-        this.codOperacionesContratacion = codOperacionesContratacion;
+    public void setIdOperacionesContratacion(int idOperacionesContratacion) {
+        this.idOperacionesContratacion = idOperacionesContratacion;
     }
 
     public String getDescripcion() {

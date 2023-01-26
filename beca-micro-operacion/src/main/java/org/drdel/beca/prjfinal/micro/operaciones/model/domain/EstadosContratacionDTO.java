@@ -6,22 +6,22 @@ import javax.validation.constraints.NotBlank;
 
 public class EstadosContratacionDTO {
 
-    private String codEstadosContratacion;
+    private int idEstadosContratacion;
 
     @NotBlank
     private String descripcion;
 
-    public EstadosContratacionDTO(String codEstadosContratacion, String descripcion) {
-        this.codEstadosContratacion = codEstadosContratacion;
+    public EstadosContratacionDTO(int idEstadosContratacion, String descripcion) {
+        this.idEstadosContratacion = idEstadosContratacion;
         this.descripcion = descripcion;
     }
 
-    public String getCodEstadosContratacion() {
-        return codEstadosContratacion;
+    public int getIdEstadosContratacion() {
+        return idEstadosContratacion;
     }
 
-    public void setCodEstadosContratacion(String codEstadosContratacion) {
-        this.codEstadosContratacion = codEstadosContratacion;
+    public void setIdEstadosContratacion(int idEstadosContratacion) {
+        this.idEstadosContratacion = idEstadosContratacion;
     }
 
     public String getDescripcion() {
@@ -34,7 +34,7 @@ public class EstadosContratacionDTO {
 
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("codEstadosContratacion", codEstadosContratacion);
+        jsonObject.put("idEstadosContratacion", idEstadosContratacion);
         jsonObject.put("descripcion", descripcion);
 
         return jsonObject.toString();

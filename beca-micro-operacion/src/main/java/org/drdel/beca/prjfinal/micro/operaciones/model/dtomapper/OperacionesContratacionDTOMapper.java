@@ -12,7 +12,7 @@ public class OperacionesContratacionDTOMapper {
     private OperacionesContratacionDTOMapper(){}
 
     public static OperacionesContratacionDTO transformEntityToDTO(OperacionesContratacion entity){
-        return new OperacionesContratacionDTO(entity.getCodOperacionesContratacion(),entity.getDescripcion());
+        return new OperacionesContratacionDTO(entity.getIdOperacionesContratacion(),entity.getDescripcion());
     }
 
     public static List<OperacionesContratacionDTO> transformEntityToDTOList(Iterable<OperacionesContratacion> entityIterable){
@@ -23,7 +23,7 @@ public class OperacionesContratacionDTOMapper {
 
     public static OperacionesContratacion transformDTOToEntity(OperacionesContratacionDTO dto){
         var entity=new OperacionesContratacion();
-        entity.setCodOperacionesContratacion(dto.getCodOperacionesContratacion());
+        entity.setIdOperacionesContratacion(dto.getIdOperacionesContratacion());
         entity.setDescripcion(dto.getDescripcion());
         return entity;
     }

@@ -11,7 +11,7 @@ public class EstadosContratacionDTOMapper {
     private EstadosContratacionDTOMapper(){}
 
     public static EstadosContratacionDTO transformEntityToDTO(EstadosContratacion entity){
-        return new EstadosContratacionDTO(entity.getCodEstadosContratacion(),
+        return new EstadosContratacionDTO(entity.getIdEstadosContratacion(),
                 entity.getDescripcion());
     }
 
@@ -24,7 +24,7 @@ public class EstadosContratacionDTOMapper {
 
     public static EstadosContratacion transformDTOToEntity(EstadosContratacionDTO dto){
         var entity = new EstadosContratacion();
-        entity.setCodEstadosContratacion(dto.getCodEstadosContratacion());
+        entity.setIdEstadosContratacion(dto.getIdEstadosContratacion());
         entity.setDescripcion((dto.getDescripcion()));
         return entity;
     }
