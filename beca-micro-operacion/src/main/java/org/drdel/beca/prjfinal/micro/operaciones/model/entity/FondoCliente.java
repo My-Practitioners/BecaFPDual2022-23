@@ -7,10 +7,10 @@ import java.util.Date;
 
 @Entity
 @Table(name = "t_fondos_cliente")
-public class FondosCliente implements Serializable {
+public class FondoCliente implements Serializable {
 
     @Id
-    @Column(name = "id_fondos_cliente")
+    @Column(name = "id_fondo_cliente")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idFondosCliente;
 
@@ -18,9 +18,9 @@ public class FondosCliente implements Serializable {
     @NotNull
     private String codIsin;
 
-    @Column(name = "id_clientes")
+    @Column(name = "id_cliente")
     @NotNull
-    private long idClientes;
+    private long idCliente;
 
     @Column(name = "fecha_contratacion")
     @NotNull
@@ -42,12 +42,12 @@ public class FondosCliente implements Serializable {
         this.codIsin = codIsin;
     }
 
-    public long getIdClientes() {
-        return idClientes;
+    public long getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdClientes(long idClientes) {
-        this.idClientes = idClientes;
+    public void setIdCliente(long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Date getFechaContratacion() {

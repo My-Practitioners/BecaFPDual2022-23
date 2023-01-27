@@ -9,16 +9,16 @@ import java.util.Date;
 
 @Entity
 @Table(name = "t_fondos_cliente_history")
-public class FondosClienteHistory {
+public class FondoClienteHistory {
 
     @Id
-    @Column(name = "id_fondos_cliente")
+    @Column(name = "id_fondo_cliente")
     //seria generatedvalue??
-    private Long idFondosCliente;
+    private Long idFondoCliente;
 
-    @Column(name = "estados_contratacion")
+    @Column(name = "id_estado_contratacion")
     @NotNull
-    private int estadosContratacion;
+    private int idEstadoContratacion;
 
     @Column(name = "fecha_cambio_estado")
     @NotNull
@@ -27,23 +27,23 @@ public class FondosClienteHistory {
     @Column(name = "importe")
     private double importe;
 
-    @Column(name = "operaciones_contratacion")
-    private String operacionesContratacion;
+    @Column(name = "id_operacion_contratacion")
+    private int idOperacionContratacion;
 
-    public Long getIdFondosCliente() {
-        return idFondosCliente;
+    public Long getIdFondoCliente() {
+        return idFondoCliente;
     }
 
-    public void setIdFondosCliente(Long idFondosCliente) {
-        this.idFondosCliente = idFondosCliente;
+    public void setIdFondoCliente(Long idFondoCliente) {
+        this.idFondoCliente = idFondoCliente;
     }
 
-    public int getEstadosContratacion() {
-        return estadosContratacion;
+    public int getIdEstadoContratacion() {
+        return idEstadoContratacion;
     }
 
-    public void setEstadosContratacion(int estadosContratacion) {
-        this.estadosContratacion = estadosContratacion;
+    public void setIdEstadoContratacion(int idEstadoContratacion) {
+        this.idEstadoContratacion = idEstadoContratacion;
     }
 
     public Date getFechaCambioEstado() {
@@ -62,11 +62,11 @@ public class FondosClienteHistory {
         this.importe = importe;
     }
 
-    public String getOperacionesContratacion() {
-        return operacionesContratacion;
+    public int getIdOperacionContratacion() {
+        return idOperacionContratacion;
     }
 
-    public void setOperacionesContratacion(String operacionesContratacion) {
-        this.operacionesContratacion = operacionesContratacion;
+    public void setIdOperacionContratacion(int idOperacionContratacion) {
+        this.idOperacionContratacion = idOperacionContratacion;
     }
 }

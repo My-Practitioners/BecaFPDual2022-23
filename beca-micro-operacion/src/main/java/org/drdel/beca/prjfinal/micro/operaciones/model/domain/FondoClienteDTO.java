@@ -7,33 +7,33 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
-public class FondosClienteDTO{
+public class FondoClienteDTO {
 
-    private long idFondosCliente;
+    private long idFondoCliente;
 
     @NotNull
     private String codIsin;
 
     @NotNull
-    private long idClientes;
+    private long idCliente;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Size(max = 10)
     private Date fechaContratacion;
 
-    public FondosClienteDTO(long idFondosCliente, String codIsin, long idClientes, Date fechaContratacion) {
-        this.idFondosCliente = idFondosCliente;
+    public FondoClienteDTO(long idFondoCliente, String codIsin, long idCliente, Date fechaContratacion) {
+        this.idFondoCliente = idFondoCliente;
         this.codIsin = codIsin;
-        this.idClientes = idClientes;
+        this.idCliente = idCliente;
         this.fechaContratacion = fechaContratacion;
     }
 
-    public long getIdFondosCliente() {
-        return idFondosCliente;
+    public long getIdFondoCliente() {
+        return idFondoCliente;
     }
 
-    public void setIdFondosCliente(long idFondosCliente) {
-        this.idFondosCliente = idFondosCliente;
+    public void setIdFondoCliente(long idFondoCliente) {
+        this.idFondoCliente = idFondoCliente;
     }
 
     public String getCodIsin() {
@@ -44,12 +44,12 @@ public class FondosClienteDTO{
         this.codIsin = codIsin;
     }
 
-    public long getIdClientes() {
-        return idClientes;
+    public long getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdClientes(long idClientes) {
-        this.idClientes = idClientes;
+    public void setIdCliente(long idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Date getFechaContratacion() {
@@ -62,9 +62,9 @@ public class FondosClienteDTO{
 
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("idFondosCliente", idFondosCliente);
+        jsonObject.put("idFondoCliente", idFondoCliente);
         jsonObject.put("codIsin", codIsin);
-        jsonObject.put("idClientes", idClientes);
+        jsonObject.put("idCliente", idCliente);
         jsonObject.put("fechaContratacion", fechaContratacion);
 
         return jsonObject.toString();

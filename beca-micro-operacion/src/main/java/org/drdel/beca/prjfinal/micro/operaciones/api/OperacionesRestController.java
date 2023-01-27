@@ -1,8 +1,8 @@
 package org.drdel.beca.prjfinal.micro.operaciones.api;
 
 import org.drdel.beca.prjfinal.micro.operaciones.common.api.configuration.AppController;
-import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondosClienteHistoryDTO;
-import org.drdel.beca.prjfinal.micro.operaciones.model.service.IFondosClienteHistoryService;
+import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteHistoryDTO;
+import org.drdel.beca.prjfinal.micro.operaciones.model.service.IFondoClienteHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,87 +26,118 @@ public class OperacionesRestController extends AppController {
     private static final String ACTUALIZADO="Fondo actualizado con éxito";
 
     @Autowired
-    IFondosClienteHistoryService fondosClienteHistoryService;
+    IFondoClienteHistoryService fondosClienteHistoryService;
 
-    @GetMapping(value = {"/fondocliente/{id}"})
+    @GetMapping(value = {"/fondo-cliente/{id}"})
     public ResponseEntity<Map<String, Object>> show(@PathVariable Long id) {
 
-        FondosClienteHistoryDTO fondosClienteHistoryDTO;
+        FondoClienteHistoryDTO fondoClienteHistoryDTO;
 
         try {
-            fondosClienteHistoryDTO = fondosClienteHistoryService.obtenerFondoCliente(id);
+            fondoClienteHistoryDTO = fondosClienteHistoryService.obtenerFondoCliente(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
-        if (fondosClienteHistoryDTO==null) {
+        if (fondoClienteHistoryDTO ==null) {
             return gestionarResponse(
                     "El fondo de cliente ID: ".concat(id.toString()).concat(" no existe en la BD"),
-                    fondosClienteHistoryDTO,
+                    fondoClienteHistoryDTO,
                     HttpStatus.NOT_FOUND);
         }
         return gestionarResponse(
                 "Fondo de cliente obtenido con éxito",
-                fondosClienteHistoryDTO,
+                fondoClienteHistoryDTO,
                 HttpStatus.OK);
     }
 
-    @PatchMapping("/fondocliente/canceled/{id}")
+
+    @GetMapping(value = {"/fondo-cliente"})
+    public List<FondoClienteHistoryDTO> list(){
+        return fondosClienteHistoryService.obtenerTodosFondoCliente();
+    }
+
+
+    @PatchMapping("/fondo-cliente/operative/{id}")
+    public ResponseEntity<Map<String, Object>> updateOperative(@PathVariable Long id,
+                                                               @Valid @RequestBody FondoClienteHistoryDTO fondoClienteHistoryDto,
+                                                               BindingResult result){
+        if (result.hasErrors())
+            return gestionarResponseNoValida(NO_VALIDO,result);
+
+        FondoClienteHistoryDTO dtoGuardado;
+        try {
+            fondosClienteHistoryService.activarFondoCliente(fondoClienteHistoryDto);
+            dtoGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
+        }catch (Exception e){
+            return gestionarExceptionResponse(e);
+        }
+        return gestionarResponse(
+                ACTUALIZADO,
+                dtoGuardado,
+                HttpStatus.OK);
+    }
+
+
+
+    @PatchMapping("/fondo-cliente/canceled/{id}")
     public ResponseEntity<Map<String, Object>> updateCanceled(@PathVariable Long id,
-                                                              @Valid @RequestBody FondosClienteHistoryDTO fondosClienteHistoryDTO,
+                                                              @Valid @RequestBody FondoClienteHistoryDTO fondoClienteHistoryDto,
                                                               BindingResult result) {
 
         if(result.hasErrors()) {
             return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
-        FondosClienteHistoryDTO fondosClienteHistoryGuardado;
+        FondoClienteHistoryDTO dtoGuardado;
 
         try {
-            fondosClienteHistoryService.cancelarFondoCliente(fondosClienteHistoryDTO);
-            fondosClienteHistoryGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
+            fondosClienteHistoryService.cancelarFondoCliente(fondoClienteHistoryDto);
+            dtoGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
                 ACTUALIZADO,
-                fondosClienteHistoryGuardado,
-                HttpStatus.CREATED);
+                dtoGuardado,
+                HttpStatus.OK);
 
     }
 
-    @PatchMapping("/fondocliente/suspended/{id}")
+    @PatchMapping("/fondo-cliente/suspended/{id}")
     public ResponseEntity<Map<String, Object>> updateSuspended(@PathVariable Long id,
-                                                               @Valid @RequestBody FondosClienteHistoryDTO fondosClienteHistoryDTO,
+                                                               @Valid @RequestBody FondoClienteHistoryDTO fondoClienteHistoryDto,
                                                                BindingResult result) {
 
         if(result.hasErrors()) {
             return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
-        FondosClienteHistoryDTO fondosClienteHistoryGuardado;
+        FondoClienteHistoryDTO dtoGuardado;
 
         try {
-            fondosClienteHistoryService.suspenderFondoCliente(fondosClienteHistoryDTO);
-            fondosClienteHistoryGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
+            fondosClienteHistoryService.suspenderFondoCliente(fondoClienteHistoryDto);
+            dtoGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
         }
 
         return gestionarResponse(
                 ACTUALIZADO,
-                fondosClienteHistoryGuardado,
-                HttpStatus.CREATED);
+                dtoGuardado,
+                HttpStatus.OK);
 
     }
 
-    private ResponseEntity<Map<String, Object>> gestionarResponse(String msg, FondosClienteHistoryDTO fondosClienteHistoryDTO, HttpStatus status) {
+
+
+    private ResponseEntity<Map<String, Object>> gestionarResponse(String msg, FondoClienteHistoryDTO fondoClienteHistoryDto, HttpStatus status) {
 
         Map<String, Object> mapResult = new HashMap<>();
 
         mapResult.put(MSG_RESPONSE_KEY_MENSAJE, msg);
-        if(fondosClienteHistoryDTO != null)
-            mapResult.put(MSG_RESPONSE_KEY_FONDO_CLIENTE, fondosClienteHistoryDTO);
+        if(fondoClienteHistoryDto != null)
+            mapResult.put(MSG_RESPONSE_KEY_FONDO_CLIENTE, fondoClienteHistoryDto);
 
         return new ResponseEntity<>(mapResult, status);
 

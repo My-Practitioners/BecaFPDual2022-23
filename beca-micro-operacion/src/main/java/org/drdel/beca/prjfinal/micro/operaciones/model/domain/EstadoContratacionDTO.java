@@ -4,24 +4,24 @@ import org.json.JSONObject;
 
 import javax.validation.constraints.NotBlank;
 
-public class EstadosContratacionDTO {
+public class EstadoContratacionDTO {
 
-    private int idEstadosContratacion;
+    private int idEstadoContratacion;
 
     @NotBlank
     private String descripcion;
 
-    public EstadosContratacionDTO(int idEstadosContratacion, String descripcion) {
-        this.idEstadosContratacion = idEstadosContratacion;
+    public EstadoContratacionDTO(int idEstadoContratacion, String descripcion) {
+        this.idEstadoContratacion = idEstadoContratacion;
         this.descripcion = descripcion;
     }
 
-    public int getIdEstadosContratacion() {
-        return idEstadosContratacion;
+    public int getIdEstadoContratacion() {
+        return idEstadoContratacion;
     }
 
-    public void setIdEstadosContratacion(int idEstadosContratacion) {
-        this.idEstadosContratacion = idEstadosContratacion;
+    public void setIdEstadoContratacion(int idEstadoContratacion) {
+        this.idEstadoContratacion = idEstadoContratacion;
     }
 
     public String getDescripcion() {
@@ -34,7 +34,7 @@ public class EstadosContratacionDTO {
 
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("idEstadosContratacion", idEstadosContratacion);
+        jsonObject.put("idEstadoContratacion", idEstadoContratacion);
         jsonObject.put("descripcion", descripcion);
 
         return jsonObject.toString();

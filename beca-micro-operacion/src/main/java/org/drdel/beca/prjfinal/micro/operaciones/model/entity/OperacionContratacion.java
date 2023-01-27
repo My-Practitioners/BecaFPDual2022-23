@@ -9,22 +9,22 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "t_operaciones_contratacion")
-public class OperacionesContratacion implements Serializable {
+public class OperacionContratacion implements Serializable {
 
     @Id
-    @Column(name = "id_operaciones_contratacion")
-    private int idOperacionesContratacion;
+    @Column(name = "id_operacion_contratacion")
+    private int idOperacionContratacion;
 
     @Column(name = "descripcion")
     @NotBlank
     private String descripcion;
 
-    public int getIdOperacionesContratacion() {
-        return idOperacionesContratacion;
+    public int getIdOperacionContratacion() {
+        return idOperacionContratacion;
     }
 
-    public void setIdOperacionesContratacion(int idOperacionesContratacion) {
-        this.idOperacionesContratacion = idOperacionesContratacion;
+    public void setIdOperacionContratacion(int idOperacionContratacion) {
+        this.idOperacionContratacion = idOperacionContratacion;
     }
 
     public String getDescripcion() {
