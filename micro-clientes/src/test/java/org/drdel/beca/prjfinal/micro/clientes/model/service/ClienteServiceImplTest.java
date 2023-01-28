@@ -1,6 +1,7 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
+import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +17,6 @@ import java.util.Date;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class ClienteServiceImplTest {
     @Autowired
@@ -46,8 +46,8 @@ class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Creacion de nuevo Cliente")
-    void testCrearCliente()  {
-        ClienteDTO clienteDto = new ClienteDTO(900L, 4, "Pedro", "Rodriguez", "Pedrorodrgiguez@gmail.com", new Date(121, Calendar.JULY,22));
+    void testCrearCliente() throws ClienteException {
+        ClienteDTO clienteDto = new ClienteDTO(900L, 0, "Pedro", "Rodriguez", "Pedrorodrgiguez@gmail.com", new Date(121, Calendar.JULY,22));
         var cliente = clienteService.crearCliente(clienteDto);
         assertNotNull(cliente);
     }
@@ -55,7 +55,7 @@ class ClienteServiceImplTest {
     @ParameterizedTest
     @DisplayName("Borrar cliente por id")
     @ValueSource(longs = {11L})
-    void testBorrarCliente(Long id){
+    void testBorrarCliente(Long id) throws ClienteException {
         long clienteBorrado= clienteService.borrarCliente(id);
         var cliente=clienteService.obtenerCliente(id);
         assertNull(cliente);
@@ -72,7 +72,7 @@ class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Activar cliente")
-    void testActivarCliente(){
+    void testActivarCliente() throws ClienteException {
         var clienteDraft=clienteService.obtenerCliente(2L);
         clienteService.activarCliente(clienteDraft);
         assertThat(clienteDraft.getIdEstadoCliente()).isEqualTo(1);
@@ -80,7 +80,7 @@ class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Cancelar cliente")
-    void testCancelarCliente(){
+    void testCancelarCliente() throws ClienteException {
         var clienteOperative=clienteService.obtenerCliente(5L);
         clienteService.cancelarCliente(clienteOperative);
         assertThat(clienteOperative.getIdEstadoCliente()).isEqualTo(3);
@@ -88,7 +88,7 @@ class ClienteServiceImplTest {
 
     @Test
     @DisplayName("Suspender cliente")
-    void testSuspenderCliente(){
+    void testSuspenderCliente() throws ClienteException {
         var clienteOperative=clienteService.obtenerCliente(10L);
         clienteService.suspenderCliente(clienteOperative);
         assertThat(clienteOperative.getIdEstadoCliente()).isEqualTo(2);
