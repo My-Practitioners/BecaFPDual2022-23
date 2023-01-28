@@ -1,13 +1,13 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.rule;
 
 public enum ClienteEstadoEnum {
-    OPERATIVE(1), SUSPENDED(2), CANCELED(3), DRAFT(4);
-    private final int estadoEnum;
+    DRAFT(0),OPERATIVE(1), SUSPENDED(2), CANCELED(3);
+    private final Integer estadoEnum;
 
-    ClienteEstadoEnum(int estadoEnum) {
+    ClienteEstadoEnum(Integer estadoEnum) {
         this.estadoEnum= estadoEnum;
     }
-    public int getEstadoEnum() {
+    public Integer getEstadoEnum() {
         return estadoEnum ;
     }
 
