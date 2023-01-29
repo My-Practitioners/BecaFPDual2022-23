@@ -1,4 +1,4 @@
-package org.drdel.beca.prjfinal.micro.clientes.model.service;
+package org.drdel.beca.prjfinal.micro.clientes.model.rule;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
 import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
@@ -14,7 +14,6 @@ import java.util.Date;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 
-@SpringBootTest
 class ClientesDomainRulesTest {
 
     @Autowired

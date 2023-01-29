@@ -2,14 +2,15 @@ package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
 import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
+import org.drdel.beca.prjfinal.micro.clientes.model.rule.ClienteEstadoEnum;
+import org.drdel.beca.prjfinal.micro.clientes.model.rule.EstadosRules;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
+
 
 import java.util.Calendar;
 import java.util.Date;
@@ -89,8 +90,30 @@ class ClienteServiceImplTest {
     @Test
     @DisplayName("Suspender cliente")
     void testSuspenderCliente() throws ClienteException {
-        var clienteOperative=clienteService.obtenerCliente(10L);
-        clienteService.suspenderCliente(clienteOperative);
-        assertThat(clienteOperative.getIdEstadoCliente()).isEqualTo(2);
+        var idCliente = 10L;
+        var clienteOperative = clienteService.obtenerCliente(idCliente);
+        var idClienteReturned = clienteService.suspenderCliente(clienteOperative);
+        // aseguro que los ID son iguales después de suspender el cliente
+        assertEquals(idCliente, idClienteReturned);
+        var clienteSuspendido = clienteService.obtenerCliente(idCliente);
+        // aseguro que el estado nuevo ha cambiado en la BBDD
+        assertThat(clienteSuspendido.getIdEstadoCliente()).isEqualTo(ClienteEstadoEnum.SUSPENDED.getEstadoEnum());
     }
+
+
+    @Test
+    @DisplayName("Cambiar estado de cliente")
+    void testCambiarEstadoCliente() throws ClienteException {
+        var idCliente = 10L;
+        var clienteOperative = clienteService.obtenerCliente(idCliente);
+        var idClienteReturned = clienteService.cambiarEstadoCliente(clienteOperative, ClienteEstadoEnum.SUSPENDED.getEstadoEnum());
+        // aseguro que los ID son iguales después de suspender el cliente
+        assertEquals(idCliente, idClienteReturned);
+        var clienteSuspendido = clienteService.obtenerCliente(idCliente);
+        // aseguro que el estado nuevo ha cambiado en la BBDD
+        assertThat(clienteSuspendido.getIdEstadoCliente()).isEqualTo(ClienteEstadoEnum.SUSPENDED.getEstadoEnum());
+    }
+
+
+
 }
