@@ -80,7 +80,7 @@ class ClienteServiceImplTest {
     }
 
     @Test
-    @DisplayName("Cancelar cliente")
+    @DisplayName("Cancelar cliente ")
     void testCancelarCliente() throws ClienteException {
         var clienteOperative=clienteService.obtenerCliente(5L);
         clienteService.cancelarCliente(clienteOperative);
