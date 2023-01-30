@@ -11,7 +11,7 @@ INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, f
 INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (10, 1,'Leo','Chandler','mattis@mi.net','2020-12-22', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (11, 0,'Axel','Mosley','torquent.per@odioauctorvitae.ca','2020-08-17', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (12, 4,'Otto','Dodson','ornare.tortor@ante.ca','2021-04-13', null, CURRENT_TIMESTAMP());
-INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (13, 4,'Phillip','Pittman','ut.molestie.in@nec.org','2022-01-25', null, CURRENT_TIMESTAMP());
+INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (13, 1,'Phillip','Pittman','ut.molestie.in@nec.org','2022-01-25', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (14, 4,'Jerome','Pearson','viverra@utdolor.ca','2021-02-15', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (15, 4,'Rahim','Trujillo','convallis.ante.lectus@vulputate.org','2021-10-19', null, CURRENT_TIMESTAMP());
 INSERT INTO clientes (id, id_estado_cliente, nombre, apellido, email, born_at, foto, create_at) VALUES (16, 4,'Zachery','Knox','a@Vivamuseuismod.edu','2021-04-02', null, CURRENT_TIMESTAMP());

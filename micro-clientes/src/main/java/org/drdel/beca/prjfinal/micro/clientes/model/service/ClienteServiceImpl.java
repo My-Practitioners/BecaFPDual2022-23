@@ -13,7 +13,7 @@ import java.util.Objects;
 @Service
 public class ClienteServiceImpl implements IClienteService{
 
-    private IClienteDao clienteDao;
+    private final IClienteDao clienteDao;
 
     public ClienteServiceImpl(IClienteDao clienteDao) {
         this.clienteDao = clienteDao;
