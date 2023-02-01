@@ -31,7 +31,7 @@ public class FondoClienteHistoryServiceImpl implements IFondoClienteHistoryServi
 
     @Override
     public Long activarFondoCliente(FondoClienteHistoryDTO dto) {
-
+            rules.checkToActiveFondoCliente(dto);
             dto.setIdEstadoContratacion(1);
             dto.setIdOperacionContratacion(4);
             fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(dto));
