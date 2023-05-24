@@ -8,12 +8,4 @@ public interface IFondoClienteHistoryService {
 
     List<FondoClienteHistoryDTO> obtenerTodosFondoCliente();
     FondoClienteHistoryDTO obtenerFondoCliente(Long id);
-
-    Long activarFondoCliente(FondoClienteHistoryDTO fondoClienteHistoryDto);
-    Long suspenderFondoCliente(FondoClienteHistoryDTO fondoClienteHistoryDTO);
-
-    Long cancelarFondoCliente(FondoClienteHistoryDTO fondoClienteHistoryDTO);
-
-    Long modificarImporte(FondoClienteHistoryDTO fondoClienteHistoryDTO, double importe);
-
 }

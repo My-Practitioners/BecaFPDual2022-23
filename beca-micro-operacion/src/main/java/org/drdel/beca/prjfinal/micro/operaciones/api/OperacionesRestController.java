@@ -3,6 +3,7 @@ package org.drdel.beca.prjfinal.micro.operaciones.api;
 import org.drdel.beca.prjfinal.micro.operaciones.common.api.configuration.AppController;
 import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteHistoryDTO;
 import org.drdel.beca.prjfinal.micro.operaciones.model.service.IFondoClienteHistoryService;
+import org.drdel.beca.prjfinal.micro.operaciones.model.service.IOperacionContratacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,7 @@ public class OperacionesRestController extends AppController {
 
     @Autowired
     IFondoClienteHistoryService fondosClienteHistoryService;
+    IOperacionContratacionService operacionContratacionService;
 
     @GetMapping(value = {"/fondo-cliente/{id}"})
     public ResponseEntity<Map<String, Object>> show(@PathVariable Long id) {
@@ -66,7 +68,7 @@ public class OperacionesRestController extends AppController {
 
         FondoClienteHistoryDTO dtoGuardado;
         try {
-            fondosClienteHistoryService.activarFondoCliente(fondoClienteHistoryDto);
+            operacionContratacionService.activarFondoCliente(fondoClienteHistoryDto);
             dtoGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
         }catch (Exception e){
             return gestionarExceptionResponse(e);
@@ -91,7 +93,7 @@ public class OperacionesRestController extends AppController {
         FondoClienteHistoryDTO dtoGuardado;
 
         try {
-            fondosClienteHistoryService.cancelarFondoCliente(fondoClienteHistoryDto);
+            operacionContratacionService.cancelarFondoCliente(fondoClienteHistoryDto);
             dtoGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
@@ -116,7 +118,7 @@ public class OperacionesRestController extends AppController {
         FondoClienteHistoryDTO dtoGuardado;
 
         try {
-            fondosClienteHistoryService.suspenderFondoCliente(fondoClienteHistoryDto);
+            operacionContratacionService.suspenderFondoCliente(fondoClienteHistoryDto);
             dtoGuardado = fondosClienteHistoryService.obtenerFondoCliente(id);
         } catch (Exception e) {
             return gestionarExceptionResponse(e);
