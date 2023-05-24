@@ -5,8 +5,9 @@ import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteHistor
 import org.drdel.beca.prjfinal.micro.operaciones.model.dtomapper.FondoClienteHistoryDTOMapper;
 import org.drdel.beca.prjfinal.micro.operaciones.model.rules.ContratacionRules;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class OperacionContratacionServiceImpl implements IOperacionContratacionService{
 
     @Autowired
