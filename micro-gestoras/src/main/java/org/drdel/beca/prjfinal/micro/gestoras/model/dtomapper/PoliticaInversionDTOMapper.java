@@ -1,5 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.dtomapper;
 
+import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.PoliticaInversionDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.PoliticaInversion;
 
@@ -12,9 +13,19 @@ public class PoliticaInversionDTOMapper {
 
     public static PoliticaInversionDTO transformEntityToDTO(PoliticaInversion entity) {
 
-        return new PoliticaInversionDTO(entity.getCodPinversion(),
-                entity.getIdEstadoPoliticaInversion(),
-                entity.getDescripcion());
+        PoliticaInversionDTO.PoliticaInversionDTOBuilder politicaInversionDTOBuilder=new PoliticaInversionDTO.PoliticaInversionDTOBuilder();
+        politicaInversionDTOBuilder.codPinversion(entity.getCodPinversion());
+        politicaInversionDTOBuilder.idEstadoPoliticaInversion(entity.getIdEstadoPoliticaInversion());
+        politicaInversionDTOBuilder.descripcion(entity.getDescripcion());
+        politicaInversionDTOBuilder.audCreaDate(entity.getAudCreaDate());
+        politicaInversionDTOBuilder.audModDate(entity.getAudModDate());
+        politicaInversionDTOBuilder.audCreaProc(entity.getAudCreaProc());
+        politicaInversionDTOBuilder.audModProc(entity.getAudModProc());
+        politicaInversionDTOBuilder.audCreaUsu(entity.getAudCreaUsu());
+        politicaInversionDTOBuilder.audModUsu(entity.getAudModUsu());
+
+        var politicaInversion=politicaInversionDTOBuilder.build();
+        return politicaInversion;
     }
 
     public static List<PoliticaInversionDTO> transformEntityListToDTOList(Iterable<PoliticaInversion> entityIterable) {

@@ -25,7 +25,7 @@ public class GestoraDTO {
     @JsonProperty("audCreaDate")
     private Date audCreaDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Size(max = 20)
     @JsonProperty("audModDate")
     private Date audModDate;

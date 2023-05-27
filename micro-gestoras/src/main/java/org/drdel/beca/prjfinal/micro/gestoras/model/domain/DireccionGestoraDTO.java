@@ -1,27 +1,31 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.json.JSONObject;
 
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class DireccionGestoraDTO {
-
+    @JsonProperty("idDireccion")
     private Long idDireccion;
 
+    @JsonProperty("idEstadoDireccionGestora")
     private int idEstadoDireccionGestora;
 
+    @JsonProperty("idGestora")
     private Long idGestora;
 
 
+    @JsonProperty("direccion")
     private String direccion;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     @Size(max = 10)
     private Date audCreaDate;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Size(max = 20)
     private Date audModDate;
 
@@ -51,12 +55,12 @@ public class DireccionGestoraDTO {
         this.idEstadoDireccionGestora=builder.idEstadoDireccionGestora;
         this.idGestora= builder.idGestora;
         this.direccion= builder.direccion;
-        builder.audCreaDate(audCreaDate);
-        builder.audModDate(audModDate);
-        builder.audCreaProc(audCreaProc);
-        builder.audModProc(audModProc);
-        builder.audCreaUsu(audCreaUsu);
-        builder.audModUsu(audModUsu);
+        this.audCreaDate=builder.audCreaDate;
+        this.audModDate=builder.audModDate;
+        this.audCreaProc=builder.audCreaProc;
+        this.audModProc=builder.audModProc;
+        this.audCreaUsu=builder.audCreaUsu;
+        this.audModUsu=builder.audModUsu;
     }
 
 
@@ -165,7 +169,6 @@ public class DireccionGestoraDTO {
 
         private Long idGestora;
 
-
         private String direccion;
 
         @JsonFormat(pattern = "yyyy-MM-dd")
@@ -189,11 +192,21 @@ public class DireccionGestoraDTO {
         @Size(max = 20)
         private String audModUsu;
 
-        public DireccionGestoraDTOBuilder (Long idDireccion, int idEstadoDireccionGestora, Long idGestora, String direccion){
+        public DireccionGestoraDTOBuilder idDireccion(Long idDireccion){
             this.idDireccion=idDireccion;
+            return this;
+        }
+        public DireccionGestoraDTOBuilder idEstadoDireccionGestora(int idEstadoDireccionGestora){
             this.idEstadoDireccionGestora=idEstadoDireccionGestora;
+            return this;
+        }
+        public DireccionGestoraDTOBuilder idGestora(Long idGestora){
             this.idGestora=idGestora;
+            return this;
+        }
+        public DireccionGestoraDTOBuilder direccion(String direccion){
             this.direccion=direccion;
+            return this;
         }
         public DireccionGestoraDTOBuilder audCreaDate(Date audCreaDate){
             this.audCreaDate=audCreaDate;
