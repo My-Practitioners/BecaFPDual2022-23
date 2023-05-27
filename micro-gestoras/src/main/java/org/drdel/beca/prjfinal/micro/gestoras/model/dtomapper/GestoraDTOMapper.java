@@ -11,9 +11,28 @@ public class GestoraDTOMapper {
     private GestoraDTOMapper(){}
 
     public static GestoraDTO transformEntityToDTO(Gestora entity){
-        return new GestoraDTO(entity.getIdGestora(),
-                entity.getIdEstadoGestora(),
-                entity.getNombre());
+        /*return new GestoraDTO.GestoraDTOBuilder(entity.getIdGestora(),
+                                                entity.getIdEstadoGestora(),
+                entity.getNombre(),
+                entity.getAudCreaDate(),
+                entity.getAudModDate(),
+                .build()entity.getAudCreaProc(),
+                entity.getAudModProc(),
+                entity.getAudCreaUsu(),
+                entity.getAudModUsu());*/
+        GestoraDTO.GestoraDTOBuilder gestoraDTOBuilder=new GestoraDTO.GestoraDTOBuilder();
+        gestoraDTOBuilder.idGestora(entity.getIdGestora());
+        gestoraDTOBuilder.idEstadoGestora(entity.getIdEstadoGestora());
+        gestoraDTOBuilder.nombre(entity.getNombre());
+        gestoraDTOBuilder.audCreaDate(entity.getAudCreaDate());
+        gestoraDTOBuilder.audModDate(entity.getAudModDate());
+        gestoraDTOBuilder.audCreaProc(entity.getAudCreaProc());
+        gestoraDTOBuilder.audModProc(entity.getAudModProc());
+        gestoraDTOBuilder.audCreaUsu(entity.getAudCreaUsu());
+        gestoraDTOBuilder.audModUsu(entity.getAudModUsu());
+
+        var gestora=gestoraDTOBuilder.build();
+        return gestora;
     }
 
     public static List<GestoraDTO> transformEntityListToDTOList(Iterable<Gestora> entityIterable){
