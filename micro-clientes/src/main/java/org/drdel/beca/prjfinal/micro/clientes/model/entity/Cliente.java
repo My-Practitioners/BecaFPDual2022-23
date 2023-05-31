@@ -9,31 +9,37 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "t_clientes")
 public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "id_estado_cliente")
     @NotNull
     private int idEstadoCliente;
 
+    @Column(name = "nombre")
     @NotEmpty
     @NotNull
     @NotBlank
     private String nombre;
 
+    @Column(name = "apellido")
     @NotEmpty
     @NotNull
     @NotBlank
     private String apellido;
 
+    @Column(name = "email")
     @NotEmpty
     @NotNull
     @NotBlank
     @Email
     private String email;
+
 
     @NotNull
     @Column(name = "born_at")

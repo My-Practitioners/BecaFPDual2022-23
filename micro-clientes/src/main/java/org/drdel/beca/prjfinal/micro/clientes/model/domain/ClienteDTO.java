@@ -31,7 +31,7 @@ public class ClienteDTO implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date bornAt;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date createAt;
 
     private String foto;

@@ -34,7 +34,7 @@ public class ClienteDTOMapper {
 
     public static Cliente transformDTOToEntity(ClienteDTO cliente) {
 
-        var clienteEntity = new Cliente();
+        Cliente clienteEntity = new Cliente();
 
         clienteEntity.setId(cliente.getId());
         clienteEntity.setIdEstadoCliente(cliente.getIdEstadoCliente());
