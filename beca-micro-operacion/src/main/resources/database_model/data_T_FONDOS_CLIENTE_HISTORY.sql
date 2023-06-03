@@ -1,8 +1,0 @@
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (1, 1, CURRENT_TIMESTAMP(), 4, 200);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (2, 1, CURRENT_TIMESTAMP(), 4, 300);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (3, 1, CURRENT_TIMESTAMP(), 2, 2000);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (4, 2, CURRENT_TIMESTAMP(), 3, 1500);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (5, 3, CURRENT_TIMESTAMP(), 5, 900);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (6, 3, CURRENT_TIMESTAMP(), 5, 400);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (7, 1, CURRENT_TIMESTAMP(), 2, 600);
-insert into t_fondos_cliente_history(id_fondo_cliente, id_estado_contratacion, fecha_cambio_estado, id_operacion_contratacion, importe) values (8, 3, CURRENT_TIMESTAMP(), 5, 1800);
