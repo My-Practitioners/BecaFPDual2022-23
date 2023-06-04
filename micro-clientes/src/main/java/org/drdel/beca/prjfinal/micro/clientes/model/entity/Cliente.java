@@ -9,30 +9,37 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "t_clientes")
 public class Cliente implements Serializable {
-
-    private static final long serialVersionUID = 1230791196947869605L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "id_estado_cliente")
+    @NotNull
+    private int idEstadoCliente;
+
+    @Column(name = "nombre")
     @NotEmpty
     @NotNull
     @NotBlank
     private String nombre;
 
+    @Column(name = "apellido")
     @NotEmpty
     @NotNull
     @NotBlank
     private String apellido;
 
+    @Column(name = "email")
     @NotEmpty
     @NotNull
     @NotBlank
     @Email
     private String email;
+
 
     @NotNull
     @Column(name = "born_at")
@@ -47,14 +54,6 @@ public class Cliente implements Serializable {
     @Column(name = "foto",nullable = true )
     private String foto;
 
-    /*@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Factura> facturas;
-
-
-    public Cliente() {
-        facturas = new ArrayList<>();
-    }*/
-
     @PrePersist
     public void prePersist() {
         createAt =  new Date();
@@ -66,6 +65,12 @@ public class Cliente implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getIdEstadoCliente() {return idEstadoCliente;}
+
+    public void setIdEstadoCliente(int idEstadoCliente) {
+        this.idEstadoCliente = idEstadoCliente;
     }
 
     public String getNombre() {
@@ -116,20 +121,5 @@ public class Cliente implements Serializable {
         this.foto = foto;
     }
 
-    /*public List<Factura> getFacturas() {
-        return facturas;
-    }
-
-    public void setFacturas(List<Factura> facturas) {
-        this.facturas = facturas;
-    }
-
-    public void addFactura(Factura factura) {
-        this.facturas.add(factura);
-    }*/
-
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
 
 }

@@ -22,6 +22,7 @@ public class ClienteDTOMapper {
     public static ClienteDTO transformEntityToDTO(Cliente clienteEntity) {
 
         return new ClienteDTO(clienteEntity.getId(),
+                clienteEntity.getIdEstadoCliente(),
                 clienteEntity.getNombre(),
                 clienteEntity.getApellido(),
                 clienteEntity.getEmail(),
@@ -33,9 +34,10 @@ public class ClienteDTOMapper {
 
     public static Cliente transformDTOToEntity(ClienteDTO cliente) {
 
-        var clienteEntity = new Cliente();
+        Cliente clienteEntity = new Cliente();
 
         clienteEntity.setId(cliente.getId());
+        clienteEntity.setIdEstadoCliente(cliente.getIdEstadoCliente());
         clienteEntity.setNombre(cliente.getNombre());
         clienteEntity.setApellido(cliente.getApellido());
         clienteEntity.setEmail(cliente.getEmail());
@@ -52,6 +54,7 @@ public class ClienteDTOMapper {
         var clienteEntity = new Cliente();
 
         clienteEntity.setId(currentCliente.getId());
+        clienteEntity.setIdEstadoCliente(currentCliente.getIdEstadoCliente());
         clienteEntity.setNombre(cliente.getNombre()!=null ? cliente.getNombre() : currentCliente.getNombre());
         clienteEntity.setApellido(cliente.getApellido()!=null ? cliente.getApellido() : currentCliente.getApellido());
         clienteEntity.setEmail(cliente.getEmail()!=null ? cliente.getEmail() : currentCliente.getEmail());

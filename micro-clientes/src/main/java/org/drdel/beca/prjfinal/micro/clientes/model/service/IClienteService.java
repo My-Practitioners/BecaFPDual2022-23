@@ -1,20 +1,28 @@
 package org.drdel.beca.prjfinal.micro.clientes.model.service;
 
 import org.drdel.beca.prjfinal.micro.clientes.model.domain.ClienteDTO;
+import org.drdel.beca.prjfinal.micro.clientes.model.exception.ClienteException;
 
 import java.util.List;
 
 public interface IClienteService {
 
-    public ClienteDTO obtenerCliente(Long id);
+     ClienteDTO obtenerCliente(Long id);
 
-    public List<ClienteDTO> obtenerTodosClientes();
+     List<ClienteDTO> obtenerTodosClientes();
 
-    public Long crearCliente(ClienteDTO cliente);
+     Long crearCliente(ClienteDTO clienteDto) throws ClienteException;
 
-    public List<ClienteDTO> obtenerClientePorApellido(String apellido);
+     List<ClienteDTO> obtenerClientePorApellido(String apellido);
 
-    public Long borrarCliente(Long id);
+     Long borrarCliente(Long id) throws ClienteException;
 
-    public Long actualizarCliente(ClienteDTO cliente);
+     Long actualizarCliente(ClienteDTO clienteDto);
+
+     Long activarCliente(ClienteDTO clienteDto) throws ClienteException;
+
+     Long cancelarCliente(ClienteDTO clienteDto) throws ClienteException;
+
+     Long suspenderCliente(ClienteDTO clienteDto) throws ClienteException;
+
 }

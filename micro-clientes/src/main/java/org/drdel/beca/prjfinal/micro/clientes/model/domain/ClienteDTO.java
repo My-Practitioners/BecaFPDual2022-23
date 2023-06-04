@@ -12,6 +12,8 @@ public class ClienteDTO implements Serializable {
 
     private Long id;
 
+    private int idEstadoCliente;
+
     @NotBlank
     @Size(min=4, max=30)
     private String nombre;
@@ -29,7 +31,7 @@ public class ClienteDTO implements Serializable {
     @JsonFormat(pattern="yyyy-MM-dd")
     private Date bornAt;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private Date createAt;
 
     private String foto;
@@ -38,17 +40,19 @@ public class ClienteDTO implements Serializable {
         super();
     }
 
-    public ClienteDTO(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email, Date bornAt){
+    public ClienteDTO(Long id, int idEstadoCliente, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email, Date bornAt){
         this.id = id;
+        this.idEstadoCliente = idEstadoCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.bornAt = bornAt;
     }
 
-    public ClienteDTO(Long id, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email,
+    public ClienteDTO(Long id, int idEstadoCliente, @NotEmpty String nombre, @NotEmpty String apellido, @NotEmpty @Email String email,
                       Date bornAt, Date createAt, String foto) {
         this.id = id;
+        this.idEstadoCliente = idEstadoCliente;
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -65,6 +69,10 @@ public class ClienteDTO implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public int getIdEstadoCliente() {return idEstadoCliente;}
+
+    public void setIdEstadoCliente(int idEstadoCliente) {this.idEstadoCliente = idEstadoCliente;}
 
     public String getNombre() {
         return nombre;

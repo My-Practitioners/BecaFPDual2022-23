@@ -20,9 +20,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class ClienteRestController extends AppController {
 
-    private static final String MSG_RESPONSE_KEY_MENSAJE = "mensaje";
-    private static final String MSG_RESPONSE_KEY_CLIENTE = "cliente";
-    private static final String MSG_RESPONSE_KEY_ERRORES = "errors";
+    private static final String MSG_RESPONSE_KEY_MENSAJE= "mensaje";
+    private static final String MSG_RESPONSE_KEY_CLIENTE= "cliente";
+    private static final String MSG_RESPONSE_KEY_ERRORES= "errors";
+
+    private static final String NO_VALIDO="Cliente no válido";
+    private static final String ACTUALIZADO="Cliente actualizado con éxito";
 
     @Autowired
     private IClienteService clienteService;
@@ -63,7 +66,7 @@ public class ClienteRestController extends AppController {
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         Long id;
@@ -89,7 +92,7 @@ public class ClienteRestController extends AppController {
                                                       BindingResult result) {
 
         if(result.hasErrors()) {
-            return gestionarResponseNoValida("Cliente no válido", result);
+            return gestionarResponseNoValida(NO_VALIDO, result);
         }
 
         ClienteDTO clienteGuardado;
@@ -102,7 +105,82 @@ public class ClienteRestController extends AppController {
         }
 
         return gestionarResponse(
-                "Cliente actualizado con éxito",
+                ACTUALIZADO,
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
+
+    @PatchMapping("/clientes/operative/{id}")
+    public ResponseEntity<Map<String, Object>> updateOperative(@PathVariable Long id,
+                                                      @Valid @RequestBody ClienteDTO cliente,
+                                                      BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida(NO_VALIDO, result);
+        }
+
+        ClienteDTO clienteGuardado;
+
+        try {
+            clienteService.activarCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                ACTUALIZADO,
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
+
+    @PatchMapping("/clientes/canceled/{id}")
+    public ResponseEntity<Map<String, Object>> updateCanceled(@PathVariable Long id,
+                                                               @Valid @RequestBody ClienteDTO cliente,
+                                                               BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida(NO_VALIDO, result);
+        }
+
+        ClienteDTO clienteGuardado;
+
+        try {
+            clienteService.cancelarCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                ACTUALIZADO,
+                clienteGuardado,
+                HttpStatus.CREATED);
+
+    }
+
+    @PatchMapping("/clientes/suspended/{id}")
+    public ResponseEntity<Map<String, Object>> updateSuspended(@PathVariable Long id,
+                                                              @Valid @RequestBody ClienteDTO cliente,
+                                                              BindingResult result) {
+
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida(NO_VALIDO, result);
+        }
+
+        ClienteDTO clienteGuardado;
+
+        try {
+            clienteService.suspenderCliente(cliente);
+            clienteGuardado = clienteService.obtenerCliente(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                ACTUALIZADO,
                 clienteGuardado,
                 HttpStatus.CREATED);
 
