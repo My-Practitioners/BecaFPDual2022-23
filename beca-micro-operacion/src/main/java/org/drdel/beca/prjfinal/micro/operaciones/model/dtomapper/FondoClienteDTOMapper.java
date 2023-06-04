@@ -11,13 +11,15 @@ public class FondoClienteDTOMapper {
     private FondoClienteDTOMapper(){}
 
     public static FondoClienteDTO transformEntityToDTO(FondoCliente entity){
-        return new FondoClienteDTO(entity.getIdFondosCliente(),
+        return new FondoClienteDTO(
+                entity.getIdFondosCliente(),
                 entity.getCodIsin(),
                 entity.getIdCliente(),
-                entity.getFechaContratacion());
+                entity.getFechaContratacion(),
+                entity.getImporte());
     }
 
-    public static List<FondoClienteDTO> transformEntityListToDTOList(Iterable<FondoCliente> entityIterable){
+    public static List<FondoClienteDTO> transformEntityToDTOList(Iterable<FondoCliente> entityIterable){
         List<FondoClienteDTO> dtoList = new ArrayList<>();
         entityIterable.forEach(pr ->
                 dtoList.add(transformEntityToDTO(pr)));

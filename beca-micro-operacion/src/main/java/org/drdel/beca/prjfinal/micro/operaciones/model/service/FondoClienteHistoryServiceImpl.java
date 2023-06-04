@@ -19,13 +19,13 @@ public class FondoClienteHistoryServiceImpl implements IFondoClienteHistoryServi
 
 
     @Override
-    public FondoClienteHistoryDTO obtenerFondoCliente(Long id) {
+    public FondoClienteHistoryDTO obtenerFondoClienteHistory(Long id) {
         var fondoCliente = fondosClienteHistoryDao.findById(id).orElse(null);
         return fondoCliente != null ? FondoClienteHistoryDTOMapper.transformEntityToDTO(fondoCliente) : null;
     }
 
     @Override
-    public List<FondoClienteHistoryDTO> obtenerTodosFondoCliente() {
+    public List<FondoClienteHistoryDTO> obtenerTodosFondoClienteHistory() {
         return FondoClienteHistoryDTOMapper.transformEntityToDTOList(fondosClienteHistoryDao.findAll());
     }
 }

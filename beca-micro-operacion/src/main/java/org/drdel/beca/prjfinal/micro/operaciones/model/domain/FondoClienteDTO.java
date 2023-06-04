@@ -21,11 +21,18 @@ public class FondoClienteDTO {
     @Size(max = 10)
     private Date fechaContratacion;
 
-    public FondoClienteDTO(long idFondoCliente, String codIsin, long idCliente, Date fechaContratacion) {
+
+    private Integer importe;
+
+    public FondoClienteDTO() {
+    }
+
+    public FondoClienteDTO(long idFondoCliente, String codIsin, long idCliente, Date fechaContratacion, Integer importe) {
         this.idFondoCliente = idFondoCliente;
         this.codIsin = codIsin;
         this.idCliente = idCliente;
         this.fechaContratacion = fechaContratacion;
+        this.importe = importe;
     }
 
     public long getIdFondoCliente() {
@@ -60,12 +67,21 @@ public class FondoClienteDTO {
         this.fechaContratacion = fechaContratacion;
     }
 
+    public Integer getImporte() {
+        return importe;
+    }
+
+    public void setImporte(Integer importe) {
+        this.importe = importe;
+    }
+
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("idFondoCliente", idFondoCliente);
         jsonObject.put("codIsin", codIsin);
         jsonObject.put("idCliente", idCliente);
         jsonObject.put("fechaContratacion", fechaContratacion);
+        jsonObject.put("importe", importe);
 
         return jsonObject.toString();
     }

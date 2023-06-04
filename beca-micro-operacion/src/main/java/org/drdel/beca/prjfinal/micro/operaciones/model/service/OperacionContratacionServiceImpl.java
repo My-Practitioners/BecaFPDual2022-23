@@ -1,6 +1,8 @@
 package org.drdel.beca.prjfinal.micro.operaciones.model.service;
 
+import org.drdel.beca.prjfinal.micro.operaciones.model.dao.IFondosClienteDao;
 import org.drdel.beca.prjfinal.micro.operaciones.model.dao.IFondosClienteHistoryDao;
+import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteDTO;
 import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteHistoryDTO;
 import org.drdel.beca.prjfinal.micro.operaciones.model.dtomapper.FondoClienteHistoryDTOMapper;
 import org.drdel.beca.prjfinal.micro.operaciones.model.rules.ContratacionRules;
@@ -14,6 +16,9 @@ public class OperacionContratacionServiceImpl implements IOperacionContratacionS
     IFondosClienteHistoryDao fondosClienteHistoryDao;
     @Autowired
     ContratacionRules rules;
+
+    @Autowired
+    IFondosClienteDao iFondosClienteDao;
 
     @Override
     public Long activarFondoCliente(FondoClienteHistoryDTO dto) {
@@ -51,4 +56,18 @@ public class OperacionContratacionServiceImpl implements IOperacionContratacionS
         fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(dto));
         return dto.getIdFondoCliente();
     }
+
+    @Override
+    public Long contratarFondo(Integer id, FondoClienteDTO fondoClienteDTO) {
+        //llamada a facade para get de micro-cliente(todos los clientes)
+        //llamada a facade para get de micro-gestora(todos los fondos de inversion)
+        //Cuando se crea el contratar fondo se setea el id_estado_operacion 1(operative)
+        //Cuando se crea el contratar fondo se setea 1 en el id_operacion_contratacion(contratar fondo)
+        //historyDTO.setImporte(fondoClienteDTO.getimporte).HistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(historyDTO)); CREAR CAMPO IMPORTE EN LAS DOS TABLAS EN BD Y EN CODIGO
+        //¿Por qué le queriamos pasar don dtos? con el de fondoCliente basta creo, no hace falta el fondoClienteHistory?
+        //EL CAMPO IMPORTE LO OBTENDREMOS DEL BODY DEL POST
+        return null;
+    }
+
+
 }

@@ -24,7 +24,7 @@ public class OperacionContratacionServiceImplTest {
     @Test
     @DisplayName("Test activar fondo de cliente")
     void testActivarFondoCliente(){
-        var fondoClienteHistoryDTO=fondoClienteHistoryService.obtenerFondoCliente(4L);
+        var fondoClienteHistoryDTO=fondoClienteHistoryService.obtenerFondoClienteHistory(4L);
         operacionContratacionService.activarFondoCliente(fondoClienteHistoryDTO);
         assertThat(fondoClienteHistoryDTO.getIdEstadoContratacion()).isEqualTo(1);
         assertThat(fondoClienteHistoryDTO.getIdOperacionContratacion()).isEqualTo(4);
@@ -33,7 +33,7 @@ public class OperacionContratacionServiceImplTest {
     @Test
     @DisplayName("Suspender fondo de cliente")
     void testSuspenderFondoCliente(){
-        var fondoClienteHistoryDTO = fondoClienteHistoryService.obtenerFondoCliente(1L);
+        var fondoClienteHistoryDTO = fondoClienteHistoryService.obtenerFondoClienteHistory(1L);
         operacionContratacionService.suspenderFondoCliente(fondoClienteHistoryDTO);
         assertThat(fondoClienteHistoryDTO.getIdEstadoContratacion()).isEqualTo(3);
         assertThat(fondoClienteHistoryDTO.getIdOperacionContratacion()).isEqualTo(3);
@@ -42,7 +42,7 @@ public class OperacionContratacionServiceImplTest {
     @Test
     @DisplayName("Cancelar fondo de cliente")
     void testCancelarFondoCliente(){
-        var fondoClienteHistoryDTO = fondoClienteHistoryService.obtenerFondoCliente(2L);
+        var fondoClienteHistoryDTO = fondoClienteHistoryService.obtenerFondoClienteHistory(2L);
         operacionContratacionService.cancelarFondoCliente(fondoClienteHistoryDTO);
         assertThat(fondoClienteHistoryDTO.getIdEstadoContratacion()).isEqualTo(2);
         assertThat(fondoClienteHistoryDTO.getIdOperacionContratacion()).isEqualTo(5);
@@ -53,7 +53,7 @@ public class OperacionContratacionServiceImplTest {
     @DisplayName("Test para modificar importe si su estado está operativo y su operacion es modificar importe")
     @ValueSource(doubles = 2109.5)
     void testModificarImporte(double importe){
-        var dto=fondoClienteHistoryService.obtenerFondoCliente(3L);
+        var dto=fondoClienteHistoryService.obtenerFondoClienteHistory(3L);
         operacionContratacionService.modificarImporte(dto,importe);
         assertThat(dto.getImporte()).isEqualTo(2109.5);
     }

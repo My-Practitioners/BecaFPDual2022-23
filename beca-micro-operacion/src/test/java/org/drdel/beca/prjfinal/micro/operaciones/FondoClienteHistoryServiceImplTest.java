@@ -25,13 +25,13 @@ class FondoClienteHistoryServiceImplTest {
     @DisplayName("Obtencion de cliente por id para verificar existencia")
     @ValueSource(longs= {1, 2})
     void testObtenerFondoCliente(Long id){
-        var fondo= fondoClienteHistoryService.obtenerFondoCliente(id);
+        var fondo= fondoClienteHistoryService.obtenerFondoClienteHistory(id);
         assertNotNull(fondo);
     }
 
     @Test
     @DisplayName("Test obtener todos los fondo cliente de la base de datos")
     void TestObtenerTodosFondoCliente(){
-        assertEquals(8,fondoClienteHistoryService.obtenerTodosFondoCliente().size());
+        assertEquals(8,fondoClienteHistoryService.obtenerTodosFondoClienteHistory().size());
     }
 }

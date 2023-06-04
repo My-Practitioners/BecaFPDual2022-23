@@ -1,5 +1,6 @@
 package org.drdel.beca.prjfinal.micro.operaciones.model.service;
 
+import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteDTO;
 import org.drdel.beca.prjfinal.micro.operaciones.model.domain.FondoClienteHistoryDTO;
 
 public interface IOperacionContratacionService {
@@ -10,4 +11,6 @@ public interface IOperacionContratacionService {
     Long cancelarFondoCliente(FondoClienteHistoryDTO fondoClienteHistoryDTO);
 
     Long modificarImporte(FondoClienteHistoryDTO fondoClienteHistoryDTO, double importe);
+
+    Long contratarFondo(Integer id, FondoClienteDTO fondoClienteDTO);
 }

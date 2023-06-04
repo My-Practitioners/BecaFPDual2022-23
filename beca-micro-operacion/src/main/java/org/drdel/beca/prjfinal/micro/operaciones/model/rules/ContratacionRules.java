@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ContratacionRules {
-    @Autowired
-    FondoClienteHistoryServiceImpl fondoClienteHistoryService;
+
 
     public FondoClienteHistoryDTO checkToActiveFondoCliente(FondoClienteHistoryDTO dto){
         if (dto.getIdEstadoContratacion()!=1 || dto.getIdOperacionContratacion()!=4){

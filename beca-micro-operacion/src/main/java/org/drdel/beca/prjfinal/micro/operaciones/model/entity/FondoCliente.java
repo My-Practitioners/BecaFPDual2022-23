@@ -26,6 +26,10 @@ public class FondoCliente implements Serializable {
     @NotNull
     private Date fechaContratacion;
 
+    @Column(name = "importe")
+    @NotNull
+    private Integer importe;
+
     public long getIdFondosCliente() {
         return idFondosCliente;
     }
@@ -58,4 +62,11 @@ public class FondoCliente implements Serializable {
         this.fechaContratacion = fechaContratacion;
     }
 
+    public Integer getImporte() {
+        return importe;
+    }
+
+    public void setImporte(Integer importe) {
+        this.importe = importe;
+    }
 }

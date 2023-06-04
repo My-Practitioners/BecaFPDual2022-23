@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface IFondoClienteHistoryService {
 
-    List<FondoClienteHistoryDTO> obtenerTodosFondoCliente();
-    FondoClienteHistoryDTO obtenerFondoCliente(Long id);
+    List<FondoClienteHistoryDTO> obtenerTodosFondoClienteHistory();
+    FondoClienteHistoryDTO obtenerFondoClienteHistory(Long id);
 }
