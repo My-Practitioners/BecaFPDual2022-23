@@ -9,6 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -16,6 +18,56 @@ import static org.junit.jupiter.api.Assertions.*;
 class DireccionGestoraServiceImplTest {
     @Autowired
     DireccionGestoraServiceImpl direccionGestoraService;
+
+    @Test
+    @DisplayName("Test Crear de Direccion Gestora")
+    void testCrearDireccionGestora(){
+        DireccionGestoraDTO dto=new DireccionGestoraDTO(570L,4,300L,"Garcia Lorca");
+        direccionGestoraService.crearDireccionGestora(dto);
+        assertEquals("Garcia Lorca",dto.getDireccion());
+        direccionGestoraService.borrarDireccionGestora(570L);
+    }
+
+    @Test
+    @DisplayName("Test Borrar de Direccion Gestora")
+    void testBorrarDireccionGestora(){
+        direccionGestoraService.borrarDireccionGestora(535L);
+        assertNull(direccionGestoraService.obtenerDireccionGestora(535L));
+        direccionGestoraService.crearDireccionGestora(new DireccionGestoraDTO(535L, 4, 134L, "RAFAEL CALVO, 40, 1º 2, 28010, MADRID"));
+
+    }
+
+    @Test
+    @DisplayName("Test actualizar Direccion Gestora")
+    void testActualizarDireccionGestora(){
+        DireccionGestoraDTO dto=new DireccionGestoraDTO(100L,3,30L,"Calle de Guadalix");
+        var direccionGestoraAct=direccionGestoraService.actualizarDireccionGestora(dto);
+        assertNotNull(direccionGestoraAct);
+    }
+
+    @Test
+    @DisplayName("Test activar Direccion Gestora")
+    void testActivarDireccionGestora(){
+        var direccionGestoraDraft=direccionGestoraService.obtenerDireccionGestora(10L);
+        direccionGestoraService.activarDireccionGestora(direccionGestoraDraft);
+        assertThat(direccionGestoraDraft.getIdEstadoDireccionGestora()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("Test suspender Direccion Gestora solo si está en operative")
+    void testSuspenderDireccionGestora(){
+        var direccionGestoraOperative=direccionGestoraService.obtenerDireccionGestora(20L);
+        direccionGestoraService.suspenderDireccionGestora(direccionGestoraOperative);
+        assertThat(direccionGestoraOperative.getIdEstadoDireccionGestora()).isEqualTo(2);
+    }
+
+    @Test
+    @DisplayName("Test cancelar Direccion Gestora solo si está en operative")
+    void testCancelarDireccionGestora(){
+        var gestoraOperative=direccionGestoraService.obtenerDireccionGestora(30L);
+        direccionGestoraService.cancelarDireccionGestora(gestoraOperative);
+        assertThat(gestoraOperative.getIdEstadoDireccionGestora()).isEqualTo(3);
+    }
 
     @ParameterizedTest
     @DisplayName("Obtencion de direccion gestora por id para verificar existencia")
@@ -34,12 +86,6 @@ class DireccionGestoraServiceImplTest {
         assertEquals("32, RUE DE MONCEAU, 75008, PARIS",dirGestora.getDireccion());
     }
 
-    @Test
-    @DisplayName("Obtencion de todas las direcciones gestora")
-    void testObtenerTodasDireccionGestora(){
-        assertEquals(569,direccionGestoraService.obtenerTodosDireccionGestora().size());
-    }
-
     @ParameterizedTest
     @DisplayName("Obtencion de direcion gestora por nombre de direccion para verificacion de existencia")
     @ValueSource(strings = "3RD FLOOR, 76 LOWER BAGGOT STREET DUBLIN 2")
@@ -49,10 +95,9 @@ class DireccionGestoraServiceImplTest {
     }
 
     @Test
-    @DisplayName("Creacion de nueva Direccion Gestora")
-    void testCrearDireccionGestora(){
-        DireccionGestoraDTO dto = new DireccionGestoraDTO(900L, 900L, "Avenida 9032dsvd");
-        var direccionGestora = direccionGestoraService.crearDireccionGestora(dto);
-        assertNotNull(direccionGestora);
+    @DisplayName("Obtencion de todas las direcciones gestora")
+    void testObtenerTodasDireccionGestora(){
+        assertEquals(569,direccionGestoraService.obtenerTodosDireccionGestora().size());
     }
+
 }

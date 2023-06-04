@@ -14,6 +14,9 @@ public class DireccionGestora implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDireccion;
 
+    @Column(name = "id_estado_direccion_gestora")
+    private int idEstadoDireccionGestora;
+
     @Column(name = "id_gestora")
     private Long idGestora;
 
@@ -47,15 +50,20 @@ public class DireccionGestora implements Serializable {
 
 
 
-    //getter-setter
-
-
     public Long getIdDireccion() {
         return idDireccion;
     }
 
     public void setIdDireccion(Long idDireccion) {
         this.idDireccion = idDireccion;
+    }
+
+    public int getIdEstadoDireccionGestora() {
+        return idEstadoDireccionGestora;
+    }
+
+    public void setIdEstadoDireccionGestora(int idEstadoDireccionGestora) {
+        this.idEstadoDireccionGestora = idEstadoDireccionGestora;
     }
 
     public Long getIdGestora() {

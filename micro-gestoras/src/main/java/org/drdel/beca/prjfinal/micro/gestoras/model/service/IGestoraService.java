@@ -1,7 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
-import org.drdel.beca.prjfinal.micro.gestoras.model.entity.Gestora;
 
 
 import java.util.List;
@@ -12,10 +11,18 @@ public interface IGestoraService {
 
     List<GestoraDTO> obtenerTodasGestoras();
 
-    List<GestoraDTO> obtenerGestoraPorNombre(String nombreDTO);
+    List<GestoraDTO> obtenerGestoraPorNombre(String nombreDto);
 
-    Long crearGestora(GestoraDTO gestoraDTO);
+    Long crearGestora (GestoraDTO gestoraDto);
 
-    Gestora crearGestora2(Long idDireccion, String nombre);
+    Long borrarGestora(Long id);
+
+    Long actualizarGestora(GestoraDTO gestoraDto);
+
+    Long activarGestora(GestoraDTO gestoraDto);
+
+    Long suspenderGestora(GestoraDTO gestoraDto);
+
+    Long cancelarGestora(GestoraDTO gestoraDto);
 }
 

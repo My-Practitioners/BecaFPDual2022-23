@@ -11,9 +11,12 @@ import java.util.Date;
 public class Gestora implements Serializable {
 
     @Id
-    @Column(name = "id_gestora")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idGestora;
+    @Column(name = "id_gestora")
+    private Long idGestora;
+
+    @Column(name = "id_estado_gestora")
+    private int idEstadoGestora;
 
     @Column(name = "nombre")
     @NotBlank
@@ -45,7 +48,6 @@ public class Gestora implements Serializable {
     private String audModUsu;
 
 
-    //getter-setter
 
     public long getIdGestora() {
         return idGestora;
@@ -53,6 +55,14 @@ public class Gestora implements Serializable {
 
     public void setIdGestora(long idGestora) {
         this.idGestora = idGestora;
+    }
+
+    public int getIdEstadoGestora() {
+        return idEstadoGestora;
+    }
+
+    public void setIdEstadoGestora(int idEstadoGestora) {
+        this.idEstadoGestora = idEstadoGestora;
     }
 
     public String getNombre() {

@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -62,9 +62,50 @@ class PoliticaInversionServiceImplTest {
     @Test
     @DisplayName("Creacion de nueva Politica de Inversion")
     void testCrearPoliticaInversion(){
-        PoliticaInversionDTO dto = new PoliticaInversionDTO("muy", "muy arriesgada");
+        PoliticaInversionDTO dto = new PoliticaInversionDTO("muy", 4, "muy arriesgada");
         var politicaInversion = politicaInversionService.crearPoliticaInversion(dto);
         assertNotNull(politicaInversion);
     }
 
+    @ParameterizedTest
+    @DisplayName("Borrar Politica de Inversion por cod")
+    @ValueSource(strings = {"otr"})
+    void testBorrarPoliticaInversion(String cod){
+        String politicaInversionBorrada= politicaInversionService.borrarPoliticaInversion(cod);
+        var politica=politicaInversionService.obtenerPoliticaInversion(cod);
+        assertNull(politica);
+        assertThat(politicaInversionBorrada).isEqualTo("otr");
+    }
+
+    @Test
+    @DisplayName("Actualizar Politica de Inversion")
+    void testActualizarPoliticaInversion(){
+        PoliticaInversionDTO dto = new PoliticaInversionDTO("muy", 2, "arriesgadísima");
+        var politicaInversion = politicaInversionService.actualizarPoliticaInversion(dto);
+        assertNotNull(politicaInversion);
+    }
+
+    @Test
+    @DisplayName("Activar Politica de Inversion")
+    void testActivarPoliticaInversion(){
+        var politicaDraft=politicaInversionService.obtenerPoliticaInversion("par");
+        politicaInversionService.activarPoliticaInversion(politicaDraft);
+        assertThat(politicaDraft.getIdEstadoPoliticaInversion()).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("Cancelar Politica de Inversion")
+    void testCancelarPoliticaInversion(){
+        var politicaOperative=politicaInversionService.obtenerPoliticaInversion("obl");
+        politicaInversionService.cancelarPoliticaInversion(politicaOperative);
+        assertThat(politicaOperative.getIdEstadoPoliticaInversion()).isEqualTo(3);
+    }
+
+    @Test
+    @DisplayName("Suspender Politica de Inversion")
+    void testSuspenderPoliticaInversion(){
+        var politicaOperative=politicaInversionService.obtenerPoliticaInversion("mix");
+        politicaInversionService.suspenderPoliticaInversion(politicaOperative);
+        assertThat(politicaOperative.getIdEstadoPoliticaInversion()).isEqualTo(2);
+    }
 }

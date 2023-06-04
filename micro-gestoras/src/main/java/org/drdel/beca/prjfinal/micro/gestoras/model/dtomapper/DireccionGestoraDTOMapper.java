@@ -10,9 +10,20 @@ public class DireccionGestoraDTOMapper {
     private DireccionGestoraDTOMapper(){}
 
     public static DireccionGestoraDTO transformEntityToDTO(DireccionGestora entity){
-        return new DireccionGestoraDTO(entity.getIdDireccion(),
-                entity.getIdGestora(),
-                entity.getDireccion());
+        DireccionGestoraDTO.DireccionGestoraDTOBuilder direccionGestoraDTOBuilder=new DireccionGestoraDTO.DireccionGestoraDTOBuilder();
+        direccionGestoraDTOBuilder.idDireccion(entity.getIdDireccion());
+        direccionGestoraDTOBuilder.idEstadoDireccionGestora(entity.getIdEstadoDireccionGestora());
+        direccionGestoraDTOBuilder.idGestora(entity.getIdGestora());
+        direccionGestoraDTOBuilder.direccion(entity.getDireccion());
+        direccionGestoraDTOBuilder.audCreaDate(entity.getAudCreaDate());
+        direccionGestoraDTOBuilder.audModDate(entity.getAudModDate());
+        direccionGestoraDTOBuilder.audCreaProc(entity.getAudCreaProc());
+        direccionGestoraDTOBuilder.audModProc(entity.getAudModProc());
+        direccionGestoraDTOBuilder.audCreaUsu(entity.getAudCreaUsu());
+        direccionGestoraDTOBuilder.audModUsu(entity.getAudModUsu());
+
+        var direccionGestora=direccionGestoraDTOBuilder.build();
+        return direccionGestora;
     }
 
     public static List<DireccionGestoraDTO> transformEntityListToDTOList(Iterable<DireccionGestora> entityIterable){
@@ -25,6 +36,7 @@ public class DireccionGestoraDTOMapper {
     public static DireccionGestora transformDTOToEntity(DireccionGestoraDTO dto){
         var entity= new DireccionGestora();
         entity.setIdDireccion(dto.getIdDireccion());
+        entity.setIdEstadoDireccionGestora(dto.getIdEstadoDireccionGestora());
         entity.setIdGestora(dto.getIdGestora());
         entity.setDireccion(dto.getDireccion());
         entity.setAudCreaDate(dto.getAudCreaDate());

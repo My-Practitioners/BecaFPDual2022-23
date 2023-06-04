@@ -1,5 +1,6 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.dtomapper;
 
+import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.VariabilidadCapitalDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.VariabilidadCapital;
 
@@ -12,8 +13,19 @@ public class VariabilidadCapitalDTOMapper {
 
     public static VariabilidadCapitalDTO transformEntityToDTO(VariabilidadCapital entity) {
 
-        return new VariabilidadCapitalDTO(entity.getCodVariabilidadCapital(),
-                entity.getDescripcion());
+        VariabilidadCapitalDTO.VariabilidadCapitalDTOBuilder variabilidadCapitalDTOBuilder=new VariabilidadCapitalDTO.VariabilidadCapitalDTOBuilder();
+        variabilidadCapitalDTOBuilder.codVariabilidadCapital(entity.getCodVariabilidadCapital());
+        variabilidadCapitalDTOBuilder.idEstadoVariabilidadCapital(entity.getIdEstadoVariabilidadCapital());
+        variabilidadCapitalDTOBuilder.descripcion(entity.getDescripcion());
+        variabilidadCapitalDTOBuilder.audCreaDate(entity.getAudCreaDate());
+        variabilidadCapitalDTOBuilder.audModDate(entity.getAudModDate());
+        variabilidadCapitalDTOBuilder.audCreaProc(entity.getAudCreaProc());
+        variabilidadCapitalDTOBuilder.audModProc(entity.getAudModProc());
+        variabilidadCapitalDTOBuilder.audCreaUsu(entity.getAudCreaUsu());
+        variabilidadCapitalDTOBuilder.audModUsu(entity.getAudModUsu());
+
+        var variabilidadCapital=variabilidadCapitalDTOBuilder.build();
+        return variabilidadCapital;
     }
 
     public static List<VariabilidadCapitalDTO> transformEntityListToDTOList(Iterable<VariabilidadCapital> entityIterable) {
@@ -28,6 +40,7 @@ public class VariabilidadCapitalDTOMapper {
         var entity = new VariabilidadCapital();
 
         entity.setCodVariabilidadCapital(dto.getCodVariabilidadCapital());
+        entity.setIdEstadoVariabilidadCapital(dto.getIdEstadoVariabilidadCapital());
         entity.setDescripcion(dto.getDescripcion());
         entity.setAudCreaDate(dto.getAudCreaDate());
         entity.setAudModDate(dto.getAudModDate());

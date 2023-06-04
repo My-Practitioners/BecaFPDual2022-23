@@ -14,5 +14,15 @@ public interface IDireccionGestoraService {
 
     Long crearDireccionGestora(DireccionGestoraDTO direccionGestoraDTO);
 
+    Long borrarDireccionGestora(Long idDireccionGestora);
+
+    Long actualizarDireccionGestora(DireccionGestoraDTO direccionGestoraDto);
+
+    Long activarDireccionGestora(DireccionGestoraDTO direccionGestoraDto);
+
+    Long suspenderDireccionGestora(DireccionGestoraDTO direccionGestoraDto);
+
+    Long cancelarDireccionGestora(DireccionGestoraDTO direccionGestoraDto);
+
 
 }

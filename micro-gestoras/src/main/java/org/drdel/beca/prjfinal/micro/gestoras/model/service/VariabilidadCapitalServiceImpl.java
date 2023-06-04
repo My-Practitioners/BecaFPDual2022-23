@@ -1,9 +1,9 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.service;
 
-import org.drdel.beca.prjfinal.micro.gestoras.model.entity.VariabilidadCapital;
 import org.drdel.beca.prjfinal.micro.gestoras.model.dao.IVariabilidadCapitalDao;
 import org.drdel.beca.prjfinal.micro.gestoras.model.domain.VariabilidadCapitalDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.dtomapper.VariabilidadCapitalDTOMapper;
+import org.drdel.beca.prjfinal.micro.gestoras.model.rules.VariabilidadCapitalRules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,8 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
 
     @Autowired
     IVariabilidadCapitalDao variabilidadCapitalDao;
+    @Autowired
+    VariabilidadCapitalRules variabilidadCapitalRules;
 
     @Override
     public VariabilidadCapitalDTO obtenerVariabilidadCapital(String code) {
@@ -32,9 +34,45 @@ public class VariabilidadCapitalServiceImpl implements IVariabilidadCapitalServi
     }
 
     @Override
-    public VariabilidadCapital crearVariabilidadCapital(String codPInversion, String descripcion) {
-        VariabilidadCapitalDTO variabilidadCapitalDTO= new VariabilidadCapitalDTO(codPInversion,descripcion);
-        return variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDTO));
+    public String crearVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto) {
+        variabilidadCapitalRules.checkEstadoToCrear(variabilidadCapitalDto);
+        var variabilidadCapGuardada=variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDto));
+        return variabilidadCapGuardada.getCodVariabilidadCapital();
     }
+
+    @Override
+    public String borrarVariabilidadCapital(String codVariabilidadCapital) {
+        variabilidadCapitalRules.checkEstadoToBorrar(codVariabilidadCapital);
+        variabilidadCapitalDao.deleteById(codVariabilidadCapital);
+        return codVariabilidadCapital;
+    }
+
+    @Override
+    public String actualizarVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto) {
+        variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDto));
+        return variabilidadCapitalDto.getCodVariabilidadCapital();
+    }
+
+    @Override
+    public String activarVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto) {
+        variabilidadCapitalRules.activarEstado(variabilidadCapitalDto);
+        variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDto));
+        return variabilidadCapitalDto.getCodVariabilidadCapital();
+    }
+
+    @Override
+    public String suspenderVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto) {
+        variabilidadCapitalRules.suspenderEstado(variabilidadCapitalDto);
+        variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDto));
+        return variabilidadCapitalDto.getCodVariabilidadCapital();
+    }
+
+    @Override
+    public String cancelarVariabilidadCapital(VariabilidadCapitalDTO variabilidadCapitalDto) {
+        variabilidadCapitalRules.cancelarEstado(variabilidadCapitalDto);
+        variabilidadCapitalDao.save(VariabilidadCapitalDTOMapper.transformDTOToEntity(variabilidadCapitalDto));
+        return variabilidadCapitalDto.getCodVariabilidadCapital();
+    }
+
 
 }

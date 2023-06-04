@@ -14,4 +14,13 @@ public interface IFondoInversionService {
 
     String crearFondoInversion(FondoInversionDTO fondoInversion);
 
+    String borrarFondoInversion(String cod);
+
+    String actualizarFondoInversion(FondoInversionDTO fondoInversionDTO);
+
+    String activarFondoInversion(FondoInversionDTO fondoInversionDTO);
+
+    String cancelarFondoInversion(FondoInversionDTO fondoInversionDTO);
+
+    String suspenderFondoInversion(FondoInversionDTO fondoInversionDTO);
 }

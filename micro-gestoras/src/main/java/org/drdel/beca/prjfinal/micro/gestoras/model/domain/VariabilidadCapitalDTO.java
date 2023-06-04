@@ -2,6 +2,7 @@
 package org.drdel.beca.prjfinal.micro.gestoras.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.json.JSONObject;
 
 import javax.validation.constraints.Size;
@@ -10,47 +11,57 @@ import java.util.Date;
 
     public class VariabilidadCapitalDTO implements Serializable {
 
+        @JsonProperty("codVariabilidadCapital")
         private String codVariabilidadCapital;
 
+        @JsonProperty("idEstadoVariabilidadCapital")
+        private int idEstadoVariabilidadCapital;
+
+        @JsonProperty("descripcion")
         private String descripcion;
 
+        @JsonProperty("audCreaDate")
         @JsonFormat(pattern = "yyyy-MM-dd")
         @Size(max = 10)
         private Date audCreaDate;
 
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @JsonProperty("audModDate")
+        @JsonFormat(pattern = "yyyy-MM-dd")
         @Size(max = 20)
         private Date audModDate;
 
+        @JsonProperty("audCreaProc")
         @Size(max = 20)
         private String audCreaProc;
 
+        @JsonProperty("audModProc")
         @Size(max = 20)
         private String audModProc;
 
+        @JsonProperty("audCreaUsu")
         @Size(max = 20)
         private String audCreaUsu;
 
+        @JsonProperty("audModUsu")
         @Size(max = 20)
         private String audModUsu;
 
-        public VariabilidadCapitalDTO() {
-        }
-
-        public VariabilidadCapitalDTO(String codVariabilidadCapital, String descripcion) {
+        public VariabilidadCapitalDTO(String codVariabilidadCapital, int idEstadoVariabilidadCapital, String descripcion) {
             this.codVariabilidadCapital = codVariabilidadCapital;
+            this.idEstadoVariabilidadCapital=idEstadoVariabilidadCapital;
             this.descripcion = descripcion;
         }
 
         public VariabilidadCapitalDTO(VariabilidadCapitalDTOBuilder builder) {
             this.codVariabilidadCapital=builder.codVariabilidadCapital;
+            this.idEstadoVariabilidadCapital=builder.idEstadoVariabilidadCapital;
             this.descripcion=builder.descripcion;
-            builder.audCreaDate(audCreaDate);
-            builder.audModDate(audModDate);
-            builder.audCreaProc(audCreaProc);
-            builder.audModProc(audModProc);
-            builder.audCreaUsu(audCreaUsu);
-            builder.audModUsu(audModUsu);
+            this.audCreaDate=builder.audCreaDate;
+            this.audModDate=builder.audModDate;
+            this.audCreaProc=builder.audCreaProc;
+            this.audModProc=builder.audModProc;
+            this.audCreaUsu=builder.audCreaUsu;
+            this.audModUsu=builder.audModUsu;
         }
 
         public String getCodVariabilidadCapital() {
@@ -59,6 +70,14 @@ import java.util.Date;
 
         public void setCodVariabilidadCapital(String codVariabilidadCapital) {
             this.codVariabilidadCapital = codVariabilidadCapital;
+        }
+
+        public int getIdEstadoVariabilidadCapital() {
+            return idEstadoVariabilidadCapital;
+        }
+
+        public void setIdEstadoVariabilidadCapital(int idEstadoVariabilidadCapital) {
+            this.idEstadoVariabilidadCapital = idEstadoVariabilidadCapital;
         }
 
         public String getDescripcion() {
@@ -122,28 +141,31 @@ import java.util.Date;
 
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("codVariabilidadCapital" ,codVariabilidadCapital);
-        jsonObject.put("descripcion" ,descripcion);
-        jsonObject.put("audCreaDate" , audCreaDate);
-        jsonObject.put("audModDate" , audModDate);
-        jsonObject.put("audCreaProc" , audCreaProc);
-        jsonObject.put("audModProc" , audModProc);
-        jsonObject.put("audCreaUsu" , audCreaUsu);
-        jsonObject.put("audModUsu" , audModUsu);
+        jsonObject.put("codVariabilidadCapital" ,getCodVariabilidadCapital());
+        jsonObject.put("idEstadoVariabilidadCapital",getIdEstadoVariabilidadCapital());
+        jsonObject.put("descripcion" ,getDescripcion());
+        jsonObject.put("audCreaDate" , getAudCreaDate());
+        jsonObject.put("audModDate" , getAudModDate());
+        jsonObject.put("audCreaProc" , getAudCreaProc());
+        jsonObject.put("audModProc" , getAudModProc());
+        jsonObject.put("audCreaUsu" , getAudCreaUsu());
+        jsonObject.put("audModUsu" , getAudModUsu());
 
         return jsonObject.toString();
     }
 
-    public class VariabilidadCapitalDTOBuilder{
+    public static class VariabilidadCapitalDTOBuilder{
 
             private String codVariabilidadCapital;
+
+            private int idEstadoVariabilidadCapital;
             private String descripcion;
 
             @JsonFormat(pattern = "yyyy-MM-dd")
             @Size(max = 10)
             private Date audCreaDate;
 
-            @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+            @JsonFormat(pattern = "yyyy-MM-dd")
             @Size(max = 20)
             private Date audModDate;
 
@@ -159,10 +181,20 @@ import java.util.Date;
             @Size(max = 20)
             private String audModUsu;
 
-            public VariabilidadCapitalDTOBuilder(String codVariabilidadCapital, String descripcion) {
-                this.codVariabilidadCapital = codVariabilidadCapital;
-                this.descripcion = descripcion;
-            }
+        public VariabilidadCapitalDTO.VariabilidadCapitalDTOBuilder codVariabilidadCapital(String codVariabilidadCapital) {
+            this.codVariabilidadCapital = codVariabilidadCapital;
+            return this;
+        }
+
+        public VariabilidadCapitalDTO.VariabilidadCapitalDTOBuilder idEstadoVariabilidadCapital(int idEstadoVariabilidadCapital) {
+            this.idEstadoVariabilidadCapital = idEstadoVariabilidadCapital;
+            return this;
+        }
+
+        public VariabilidadCapitalDTO.VariabilidadCapitalDTOBuilder descripcion(String descripcion) {
+            this.descripcion = descripcion;
+            return this;
+        }
 
             public VariabilidadCapitalDTO.VariabilidadCapitalDTOBuilder audCreaDate(Date audCreaDate) {
                 this.audCreaDate = audCreaDate;
