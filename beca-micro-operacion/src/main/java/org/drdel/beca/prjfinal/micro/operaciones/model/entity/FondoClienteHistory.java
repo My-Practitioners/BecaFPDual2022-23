@@ -12,6 +12,9 @@ import java.util.Date;
 public class FondoClienteHistory {
 
     @Id
+    @Column(name = "id_fondo_cliente_history")
+    private Long idFondoClienteHistory;
+
     @Column(name = "id_fondo_cliente")
     //seria generatedvalue??
     private Long idFondoCliente;
@@ -20,16 +23,19 @@ public class FondoClienteHistory {
     @NotNull
     private int idEstadoContratacion;
 
-    @Column(name = "fecha_cambio_estado")
-    @NotNull
-    private Date fechaCambioEstado;
-
     @Column(name = "importe")
     private double importe;
 
     @Column(name = "id_operacion_contratacion")
     private int idOperacionContratacion;
 
+    public Long getIdFondoClienteHistory() {
+        return idFondoClienteHistory;
+    }
+
+    public void setIdFondoClienteHistory(Long idFondoClienteHistory) {
+        this.idFondoClienteHistory = idFondoClienteHistory;
+    }
     public Long getIdFondoCliente() {
         return idFondoCliente;
     }
@@ -44,14 +50,6 @@ public class FondoClienteHistory {
 
     public void setIdEstadoContratacion(int idEstadoContratacion) {
         this.idEstadoContratacion = idEstadoContratacion;
-    }
-
-    public Date getFechaCambioEstado() {
-        return fechaCambioEstado;
-    }
-
-    public void setFechaCambioEstado(Date fechaCambioEstado) {
-        this.fechaCambioEstado = fechaCambioEstado;
     }
 
     public double getImporte() {

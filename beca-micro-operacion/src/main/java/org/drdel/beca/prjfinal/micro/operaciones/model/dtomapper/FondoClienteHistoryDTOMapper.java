@@ -12,9 +12,9 @@ public class FondoClienteHistoryDTOMapper {
 
     public static FondoClienteHistoryDTO transformEntityToDTO(FondoClienteHistory entity){
         return new FondoClienteHistoryDTO(
+                entity.getIdFondoClienteHistory(),
                 entity.getIdFondoCliente(),
                 entity.getIdEstadoContratacion(),
-                entity.getFechaCambioEstado(),
                 entity.getImporte(),
                 entity.getIdOperacionContratacion());
     }
@@ -27,9 +27,9 @@ public class FondoClienteHistoryDTOMapper {
 
     public static FondoClienteHistory transformDTOToEntity(FondoClienteHistoryDTO dto){
         var entity= new FondoClienteHistory();
+        entity.setIdFondoClienteHistory(dto.getIdFondoClienteHistory());
         entity.setIdFondoCliente(dto.getIdFondoCliente());
         entity.setIdEstadoContratacion(dto.getIdEstadoContratacion());
-        entity.setFechaCambioEstado(dto.getFechaCambioEstado());
         entity.setImporte(dto.getImporte());
         entity.setIdOperacionContratacion(dto.getIdOperacionContratacion());
         return entity;

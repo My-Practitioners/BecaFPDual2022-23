@@ -8,26 +8,35 @@ import java.util.Date;
 
 public class FondoClienteHistoryDTO {
 
+    private Long idFondoClienteHistory;
+
     private long idFondoCliente;
 
     private int idEstadoContratacion;
-
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    @Size(max = 10)
-    private Date fechaCambioEstado;
 
     private double importe;
 
     private int idOperacionContratacion;
 
-    public FondoClienteHistoryDTO(long idFondoCliente, int idEstadoContratacion, Date fechaCambioEstado, double importe, int idOperacionContratacion) {
+    public FondoClienteHistoryDTO(Long idFondoClienteHistory, long idFondoCliente, int idEstadoContratacion, double importe, int idOperacionContratacion) {
+        this.idFondoClienteHistory = idFondoClienteHistory;
         this.idFondoCliente = idFondoCliente;
         this.idEstadoContratacion = idEstadoContratacion;
-        this.fechaCambioEstado = fechaCambioEstado;
         this.importe = importe;
         this.idOperacionContratacion = idOperacionContratacion;
     }
 
+    public FondoClienteHistoryDTO() {
+
+    }
+
+    public Long getIdFondoClienteHistory() {
+        return idFondoClienteHistory;
+    }
+
+    public void setIdFondoClienteHistory(Long idFondoClienteHistory) {
+        this.idFondoClienteHistory = idFondoClienteHistory;
+    }
     public long getIdFondoCliente() {
         return idFondoCliente;
     }
@@ -42,14 +51,6 @@ public class FondoClienteHistoryDTO {
 
     public void setIdEstadoContratacion(int idEstadoContratacion) {
         this.idEstadoContratacion = idEstadoContratacion;
-    }
-
-    public Date getFechaCambioEstado() {
-        return fechaCambioEstado;
-    }
-
-    public void setFechaCambioEstado(Date fechaCambioEstado) {
-        this.fechaCambioEstado = fechaCambioEstado;
     }
 
     public double getImporte() {
@@ -72,7 +73,6 @@ public class FondoClienteHistoryDTO {
         JSONObject jsonObject=new JSONObject();
         jsonObject.put("idFondoCliente", getIdFondoCliente());
         jsonObject.put("idEstadoContratacion", getIdEstadoContratacion());
-        jsonObject.put("cambioEstado", getFechaCambioEstado());
         jsonObject.put("importe",getImporte());
         jsonObject.put("idOperacionContratacion", getIdOperacionContratacion());
         return jsonObject.toString();

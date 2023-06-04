@@ -8,6 +8,14 @@ public class FondoClienteHistoryException extends Exception{
         super(mensaje);
     }
 
+    public static FondoClienteHistoryDTO verificaCliente() throws FondoClienteHistoryException {
+        throw new FondoClienteHistoryException("El cliente que has indicado no existe.");
+    }
+
+    public static FondoClienteHistoryDTO verificaFondo() throws FondoClienteHistoryException {
+        throw new FondoClienteHistoryException("El fondo que has indicado no existe.");
+    }
+
     public static FondoClienteHistoryDTO activarFondoCliente() throws FondoClienteHistoryException {
         throw new FondoClienteHistoryException("Este fondo de cliente ya estaba suspendido.");
     }

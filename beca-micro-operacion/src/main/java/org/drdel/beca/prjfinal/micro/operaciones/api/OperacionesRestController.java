@@ -95,20 +95,26 @@ public class OperacionesRestController extends AppController {
         return iFondoClienteHistoryService.obtenerTodosFondoClienteHistory();
     }
 
-    @PostMapping(value = {"/fondo-cliente"})
-    public ResponseEntity<Map<String,Object>> contratarFondo(@Valid @RequestBody FondoClienteDTO fondoClienteDTO,
+    @PostMapping(value = {"/fondo-cliente/{id}/{codIsin}"})
+    public ResponseEntity<Map<String,Object>> contratarFondo(@PathVariable Integer idCliente, @PathVariable String codIsin,
+                                                             @Valid @RequestBody FondoClienteDTO fondoClienteDTO,
                                                              BindingResult result){
         if (result.hasErrors()){
             return gestionarResponseNoValida(NO_VALIDO,result);
-        }else {
+        }
             Long id;
             FondoClienteDTO fondoClienteGuardado;
             try{
-                id= iOperacionContratacionService.contratarFondo(fondoClienteDTO);
-                fondoClienteGuardado= iOperacionContratacionService.
+                id = iOperacionContratacionService.contratarFondo(idCliente, codIsin, fondoClienteDTO);
+                fondoClienteGuardado = iFondoClienteService.obtenerFondoCliente(id);
+            } catch (Exception e){
+                return gestionarExceptionResponse(e);
             }
-        }
 
+        return gestionarResponse(
+                "El fondo ha sido contratado",
+                fondoClienteGuardado,
+                HttpStatus.OK);
     }
 
     @PatchMapping("/fondo-cliente/operative/{id}")
