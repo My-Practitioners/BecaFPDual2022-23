@@ -191,7 +191,30 @@ public class OperacionesRestController extends AppController {
 
     }
 
+    @PatchMapping("/fondo-cliente/modificarImporte/{id}/{importe}")
+    public ResponseEntity<Map<String, Object>> updateImporte(@PathVariable Long id, @PathVariable Double importe,
+                                                               @Valid @RequestBody FondoClienteHistoryDTO fondoClienteHistoryDto,
+                                                               BindingResult result) {
 
+        if(result.hasErrors()) {
+            return gestionarResponseNoValida(NO_VALIDO, result);
+        }
+
+        FondoClienteHistoryDTO dtoGuardado;
+
+        try {
+            iOperacionContratacionService.modificarImporte(fondoClienteHistoryDto, importe);
+            dtoGuardado = iFondoClienteHistoryService.obtenerFondoClienteHistory(id);
+        } catch (Exception e) {
+            return gestionarExceptionResponse(e);
+        }
+
+        return gestionarResponse(
+                ACTUALIZADO,
+                dtoGuardado,
+                HttpStatus.OK);
+
+    }
 
     private ResponseEntity<Map<String, Object>> gestionarResponse(String msg, FondoClienteHistoryDTO fondoClienteHistoryDto, HttpStatus status) {
 
