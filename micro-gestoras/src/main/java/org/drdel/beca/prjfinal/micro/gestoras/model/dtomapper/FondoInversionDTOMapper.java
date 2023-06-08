@@ -5,6 +5,7 @@ import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.FondoInversion;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FondoInversionDTOMapper {
@@ -55,7 +56,7 @@ public class FondoInversionDTOMapper {
         entity.setSubFondo(dto.getSubFondo());
         entity.setCodSupervisor(dto.getCodSupervisor());
         entity.setAudCreaDate(dto.getAudCreaDate());
-        entity.setAudModDate(dto.getAudModDate());
+        entity.setAudModDate(new Date());
         entity.setAudCreaProc(dto.getAudCreaProc());
         entity.setAudModProc(dto.getAudModProc());
         entity.setAudCreaUsu(dto.getAudCreaUsu());

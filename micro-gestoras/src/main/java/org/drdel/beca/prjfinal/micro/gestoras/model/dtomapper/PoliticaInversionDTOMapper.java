@@ -5,6 +5,7 @@ import org.drdel.beca.prjfinal.micro.gestoras.model.domain.PoliticaInversionDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.PoliticaInversion;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PoliticaInversionDTOMapper {
@@ -41,7 +42,7 @@ public class PoliticaInversionDTOMapper {
         entity.setIdEstadoPoliticaInversion(dto.getIdEstadoPoliticaInversion());
         entity.setDescripcion(dto.getDescripcion());
         entity.setAudCreaDate(dto.getAudCreaDate());
-        entity.setAudModDate(dto.getAudModDate());
+        entity.setAudModDate(new Date());
         entity.setAudCreaProc(dto.getAudCreaProc());
         entity.setAudModProc(dto.getAudModProc());
         entity.setAudCreaUsu(dto.getAudCreaUsu());

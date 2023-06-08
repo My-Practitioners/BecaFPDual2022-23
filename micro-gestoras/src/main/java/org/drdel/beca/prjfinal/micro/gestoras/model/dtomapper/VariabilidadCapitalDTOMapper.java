@@ -5,6 +5,7 @@ import org.drdel.beca.prjfinal.micro.gestoras.model.domain.VariabilidadCapitalDT
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.VariabilidadCapital;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VariabilidadCapitalDTOMapper {
@@ -43,7 +44,7 @@ public class VariabilidadCapitalDTOMapper {
         entity.setIdEstadoVariabilidadCapital(dto.getIdEstadoVariabilidadCapital());
         entity.setDescripcion(dto.getDescripcion());
         entity.setAudCreaDate(dto.getAudCreaDate());
-        entity.setAudModDate(dto.getAudModDate());
+        entity.setAudModDate(new Date());
         entity.setAudCreaProc(dto.getAudCreaProc());
         entity.setAudModProc(dto.getAudModProc());
         entity.setAudCreaUsu(dto.getAudCreaUsu());

@@ -4,6 +4,7 @@ import org.drdel.beca.prjfinal.micro.gestoras.model.domain.DireccionGestoraDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.DireccionGestora;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DireccionGestoraDTOMapper {
@@ -40,7 +41,7 @@ public class DireccionGestoraDTOMapper {
         entity.setIdGestora(dto.getIdGestora());
         entity.setDireccion(dto.getDireccion());
         entity.setAudCreaDate(dto.getAudCreaDate());
-        entity.setAudModDate(dto.getAudModDate());
+        entity.setAudModDate(new Date());
         entity.setAudCreaProc(dto.getAudCreaProc());
         entity.setAudModProc(dto.getAudModProc());
         entity.setAudCreaUsu(dto.getAudCreaUsu());

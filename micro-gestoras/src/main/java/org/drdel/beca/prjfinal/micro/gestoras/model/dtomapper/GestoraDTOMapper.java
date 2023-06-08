@@ -4,6 +4,7 @@ import org.drdel.beca.prjfinal.micro.gestoras.model.domain.GestoraDTO;
 import org.drdel.beca.prjfinal.micro.gestoras.model.entity.Gestora;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GestoraDTOMapper {
@@ -40,7 +41,7 @@ public class GestoraDTOMapper {
         entity.setIdEstadoGestora(dto.getIdEstadoGestora());
         entity.setNombre(dto.getNombre());
         entity.setAudCreaDate(dto.getAudCreaDate());
-        entity.setAudModDate(dto.getAudModDate());
+        entity.setAudModDate(new Date());
         entity.setAudCreaProc(dto.getAudCreaProc());
         entity.setAudModProc(dto.getAudModProc());
         entity.setAudCreaUsu(dto.getAudCreaUsu());
