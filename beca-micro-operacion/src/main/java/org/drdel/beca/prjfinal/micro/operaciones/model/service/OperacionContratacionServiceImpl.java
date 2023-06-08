@@ -40,41 +40,49 @@ public class OperacionContratacionServiceImpl implements IOperacionContratacionS
 
     @Override
     public Long activarFondoCliente(FondoClienteHistoryDTO dto) {
+        FondoClienteHistoryDTO fondoClienteHistoryDTO = new FondoClienteHistoryDTO();
         rules.checkToActiveFondoCliente(dto);
+        fondoClienteHistoryDTO.setImporte(dto.getImporte());
+        fondoClienteHistoryDTO.setIdFondoCliente(dto.getIdFondoCliente());
         dto.setIdEstadoContratacion(1);
         dto.setIdOperacionContratacion(4);
-        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(dto));
+        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(fondoClienteHistoryDTO));
         return dto.getIdFondoCliente();
     }
 
 
     @Override
     public Long suspenderFondoCliente(FondoClienteHistoryDTO dto) {
+        FondoClienteHistoryDTO fondoClienteHistoryDTO = new FondoClienteHistoryDTO();
         rules.checkToSuspendFondoCliente(dto);
-        dto.setIdEstadoContratacion(3);
-        dto.setIdOperacionContratacion(3);
-        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(dto));
+        fondoClienteHistoryDTO.setImporte(dto.getImporte());
+        fondoClienteHistoryDTO.setIdFondoCliente(dto.getIdFondoCliente());
+        fondoClienteHistoryDTO.setIdEstadoContratacion(3);
+        fondoClienteHistoryDTO.setIdOperacionContratacion(3);
+        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(fondoClienteHistoryDTO));
         return dto.getIdFondoCliente();
     }
 
     @Override
     public Long cancelarFondoCliente(FondoClienteHistoryDTO dto) {
+        FondoClienteHistoryDTO fondoClienteHistoryDTO = new FondoClienteHistoryDTO();
         rules.checkToCancelFondoCliente(dto);
-        dto.setIdEstadoContratacion(2);
-        dto.setIdOperacionContratacion(5);
-        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(dto));
+        fondoClienteHistoryDTO.setImporte(dto.getImporte());
+        fondoClienteHistoryDTO.setIdFondoCliente(dto.getIdFondoCliente());
+        fondoClienteHistoryDTO.setIdEstadoContratacion(2);
+        fondoClienteHistoryDTO.setIdOperacionContratacion(5);
+        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(fondoClienteHistoryDTO));
         return dto.getIdFondoCliente();
 
     }
 
     @Override
     public Long modificarImporte(FondoClienteHistoryDTO dto, double importe) {
-        int contadorHistorico = fondoClienteHistoryService.obtenerTodosFondoClienteHistory().size();
         FondoClienteHistoryDTO fondoClienteHistoryDTO = new FondoClienteHistoryDTO();
         rules.checkToModifyContratacion(dto);
         fondoClienteHistoryDTO.setImporte(importe);
+        fondoClienteHistoryDTO.setIdFondoCliente(dto.getIdFondoCliente());
         fondoClienteHistoryDTO.setIdEstadoContratacion(dto.getIdEstadoContratacion());
-        fondoClienteHistoryDTO.setIdFondoCliente(contadorHistorico + 1);
         fondoClienteHistoryDTO.setIdOperacionContratacion(dto.getIdOperacionContratacion());
         fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(fondoClienteHistoryDTO));
         return fondoClienteHistoryDTO.getIdFondoCliente();
@@ -104,11 +112,11 @@ public class OperacionContratacionServiceImpl implements IOperacionContratacionS
 
         iFondosClienteDao.save(FondoClienteDTOMapper.transformDTOToEntity(fondoClienteDTO));
 
-
-        /*fondoClienteHistoryDTO.setIdEstadoContratacion(1);
+        fondoClienteHistoryDTO.setIdFondoCliente(fondoClienteDTO.getIdFondoCliente());
+        fondoClienteHistoryDTO.setIdEstadoContratacion(1);
         fondoClienteHistoryDTO.setIdOperacionContratacion(1);
         fondoClienteHistoryDTO.setImporte(fondoClienteDTO.getImporte());
-        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(fondoClienteHistoryDTO));*/
+        fondosClienteHistoryDao.save(FondoClienteHistoryDTOMapper.transformDTOToEntity(fondoClienteHistoryDTO));
 
         return fondoClienteDTO.getIdFondoCliente();
     }
